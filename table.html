@@ -8,8 +8,10 @@
 
     <meta
       name="description"
-      content="View the latest league standings and competitive position of Teso Warriors Football Club."
+      content="View the Teso Warriors FC league table and competition standings."
     />
+
+    <link rel="icon" type="image/png" href="images/teso-warriors-crest.png" />
 
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -18,7 +20,13 @@
     <!-- Header -->
     <header class="site-header">
       <div class="container">
-        <a href="index.html" class="logo">TESO WARRIORS FC</a>
+        <a href="index.html" class="logo">
+          <img
+            src="images/teso-warriors-crest.png"
+            alt="Teso Warriors FC crest"
+          />
+          <span>TESO WARRIORS FC</span>
+        </a>
 
         <nav class="main-nav">
           <a href="index.html">Home</a>
@@ -40,69 +48,50 @@
       <!-- Page Hero -->
       <section class="page-hero">
         <div class="container">
-          <p class="section-label">COMPETITION</p>
+          <p class="section-label">MATCH CENTRE</p>
 
           <h1>LEAGUE<br />TABLE.</h1>
 
           <p>
-            Follow the competitive position of Teso Warriors FC throughout the
-            season.
+            Follow the Warriors' position and progress throughout the
+            competition.
           </p>
         </div>
       </section>
 
-      <!-- Table Introduction -->
-      <section class="table-intro">
-        <div class="container">
-          <div class="table-intro-grid">
-            <div>
-              <p class="section-label">STANDINGS</p>
-
-              <h2>The Race For Position.</h2>
-            </div>
-
-            <div>
-              <p>
-                The official league standings will be displayed here as
-                competition results are recorded throughout the season.
-              </p>
-
-              <p>
-                Statistics will include matches played, wins, draws, losses,
-                goals scored, goals conceded, goal difference and points.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- League Table -->
-      <section class="league-table-section">
+      <!-- Competition Header -->
+      <section class="table-section">
         <div class="container">
           <div class="section-heading">
-            <p class="section-label">CURRENT STANDINGS</p>
-            <h2>League Table</h2>
+            <p class="section-label">2026 SEASON</p>
+
+            <h2>Competition Standings</h2>
+
+            <p>
+              Official standings will be updated as competition information
+              becomes available.
+            </p>
           </div>
 
           <div class="table-wrapper">
             <table class="league-table">
               <thead>
                 <tr>
-                  <th>Pos</th>
-                  <th>Team</th>
-                  <th>P</th>
+                  <th>POS</th>
+                  <th>TEAM</th>
+                  <th>MP</th>
                   <th>W</th>
                   <th>D</th>
                   <th>L</th>
                   <th>GF</th>
                   <th>GA</th>
                   <th>GD</th>
-                  <th>Pts</th>
+                  <th>PTS</th>
                 </tr>
               </thead>
 
               <tbody>
-                <tr class="warriors-row">
+                <tr>
                   <td>—</td>
                   <td>
                     <strong>Teso Warriors FC</strong>
@@ -114,9 +103,7 @@
                   <td>—</td>
                   <td>—</td>
                   <td>—</td>
-                  <td>
-                    <strong>—</strong>
-                  </td>
+                  <td><strong>—</strong></td>
                 </tr>
 
                 <tr>
@@ -173,79 +160,121 @@
               </tbody>
             </table>
           </div>
-
-          <p class="table-note">
-            Official standings will be updated as verified competition data
-            becomes available.
-          </p>
         </div>
       </section>
 
-      <!-- Statistics -->
-      <section class="table-stats">
+      <!-- Table Explanation -->
+      <section class="table-info">
+        <div class="container">
+          <div class="table-info-grid">
+            <div>
+              <p class="section-label">TABLE GUIDE</p>
+
+              <h2>Understanding The Table.</h2>
+            </div>
+
+            <div class="table-guide">
+              <div>
+                <strong>MP</strong>
+                <span>Matches Played</span>
+              </div>
+
+              <div>
+                <strong>W</strong>
+                <span>Wins</span>
+              </div>
+
+              <div>
+                <strong>D</strong>
+                <span>Draws</span>
+              </div>
+
+              <div>
+                <strong>L</strong>
+                <span>Losses</span>
+              </div>
+
+              <div>
+                <strong>GF</strong>
+                <span>Goals For</span>
+              </div>
+
+              <div>
+                <strong>GA</strong>
+                <span>Goals Against</span>
+              </div>
+
+              <div>
+                <strong>GD</strong>
+                <span>Goal Difference</span>
+              </div>
+
+              <div>
+                <strong>PTS</strong>
+                <span>Points</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Performance -->
+      <section class="table-performance">
         <div class="container">
           <div class="section-heading">
-            <p class="section-label">TEAM PERFORMANCE</p>
-            <h2>Season Statistics</h2>
+            <p class="section-label">THE BIGGER PICTURE</p>
+
+            <h2>Progress Over Position.</h2>
+
+            <p>
+              League position is important, but Teso Warriors FC measures
+              progress through performance, player development, discipline and
+              the continued growth of the club.
+            </p>
           </div>
 
-          <div class="table-stats-grid">
-            <article class="table-stat">
+          <div class="performance-grid">
+            <div class="performance-card">
               <span>01</span>
-              <strong>—</strong>
-              <p>Matches Played</p>
-            </article>
+              <h3>Performance</h3>
+              <p>
+                Competing with purpose and maintaining high standards on the
+                pitch.
+              </p>
+            </div>
 
-            <article class="table-stat">
+            <div class="performance-card">
               <span>02</span>
-              <strong>—</strong>
-              <p>Wins</p>
-            </article>
+              <h3>Development</h3>
+              <p>
+                Improving players and building a stronger football structure.
+              </p>
+            </div>
 
-            <article class="table-stat">
+            <div class="performance-card">
               <span>03</span>
-              <strong>—</strong>
-              <p>Draws</p>
-            </article>
-
-            <article class="table-stat">
-              <span>04</span>
-              <strong>—</strong>
-              <p>Losses</p>
-            </article>
-
-            <article class="table-stat">
-              <span>05</span>
-              <strong>—</strong>
-              <p>Goals For</p>
-            </article>
-
-            <article class="table-stat">
-              <span>06</span>
-              <strong>—</strong>
-              <p>Points</p>
-            </article>
+              <h3>Consistency</h3>
+              <p>
+                Creating sustainable standards that support long-term success.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Competition CTA -->
-      <section class="table-cta">
+      <!-- CTA -->
+      <section class="home-cta">
         <div class="container">
-          <p class="section-label">MATCH CENTRE</p>
+          <p class="section-label">TESO WARRIORS FC</p>
 
           <h2>Every Point Matters.</h2>
 
           <p>
-            Follow fixtures and results as Teso Warriors FC continues its
-            competitive journey.
+            Follow fixtures, results and the Warriors' progress throughout the
+            season.
           </p>
 
-          <div class="hero-actions">
-            <a href="fixtures.html" class="btn btn-primary"> View Fixtures </a>
-
-            <a href="results.html" class="btn btn-secondary"> View Results </a>
-          </div>
+          <a href="fixtures.html" class="btn btn-primary"> View Fixtures </a>
         </div>
       </section>
     </main>
