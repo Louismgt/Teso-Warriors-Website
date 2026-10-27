@@ -4292,3 +4292,38 @@ button:focus-visible {
   color: #b5121b;
 }
 
+
+/* =========================================================
+   FINAL FOOTER MENU ALIGNMENT
+   ========================================================= */
+
+.site-footer .footer-links {
+  align-items: start;
+}
+
+.site-footer .footer-links > div {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+}
+
+.site-footer .footer-links > div > span {
+  display: block !important;
+  width: auto !important;
+  align-self: flex-start !important;
+  margin: 0 0 18px 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+.site-footer .footer-links > div > a {
+  display: block !important;
+  width: auto !important;
+  align-self: flex-start !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  text-align: left !important;
+}
+
