@@ -1,0 +1,1031 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Official Teso Warriors FC fixtures and Match Centre."
+    />
+
+    <title>Fixtures | Teso Warriors FC</title>
+
+    <link rel="icon" type="image/png" href="images/teso-warriors-crest.png" />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      /* =========================================================
+         FIXTURES PAGE
+         ========================================================= */
+
+      .fixtures-page {
+        background: #ffffff;
+        color: #111111;
+      }
+
+      /* =========================================================
+         HERO
+         ========================================================= */
+
+      .fixtures-hero {
+        position: relative;
+        overflow: hidden;
+        min-height: 430px;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(
+          105deg,
+          rgba(9, 9, 10, 0.98) 0%,
+          rgba(9, 9, 10, 0.96) 55%,
+          rgba(126, 0, 12, 0.93) 100%
+        );
+        color: #ffffff;
+      }
+
+      .fixtures-hero::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -160px;
+        width: 520px;
+        height: 650px;
+        background: rgba(200, 0, 20, 0.18);
+        transform: rotate(18deg);
+      }
+
+      .fixtures-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.02) 1px,
+            transparent 1px
+          ),
+          linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        background-size: 48px 48px;
+        pointer-events: none;
+      }
+
+      .fixtures-hero-inner {
+        position: relative;
+        z-index: 2;
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+      }
+
+      .fixtures-hero-copy {
+        max-width: 750px;
+      }
+
+      .fixtures-eyebrow {
+        display: inline-block;
+        margin-bottom: 18px;
+        color: #d11924;
+        font-size: 0.82rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .fixtures-hero h1 {
+        margin: 0;
+        font-size: clamp(3.5rem, 8vw, 7.5rem);
+        line-height: 0.9;
+        letter-spacing: -0.055em;
+        text-transform: uppercase;
+      }
+
+      .fixtures-hero p {
+        max-width: 650px;
+        margin: 28px 0 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 1.05rem;
+        line-height: 1.75;
+      }
+
+      .fixtures-hero-crest {
+        width: 260px;
+        flex: 0 0 260px;
+        opacity: 0.16;
+      }
+
+      .fixtures-hero-crest img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      /* =========================================================
+         MATCH CENTRE NAVIGATION
+         ========================================================= */
+
+      .match-centre-nav {
+        border-bottom: 1px solid #e6e6e6;
+        background: #ffffff;
+      }
+
+      .match-centre-nav-inner {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+        display: flex;
+        gap: 38px;
+      }
+
+      .match-centre-nav a {
+        position: relative;
+        display: inline-block;
+        padding: 23px 0;
+        color: #777777;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .match-centre-nav a:hover,
+      .match-centre-nav a.active {
+        color: #111111;
+      }
+
+      .match-centre-nav a.active::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        background: #c51620;
+      }
+
+      /* =========================================================
+         MAIN CONTENT
+         ========================================================= */
+
+      .fixtures-main {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 80px 0 100px;
+      }
+
+      .section-heading {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 30px;
+        margin-bottom: 32px;
+      }
+
+      .section-heading-copy span {
+        display: block;
+        margin-bottom: 12px;
+        color: #c51620;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .section-heading-copy h2 {
+        margin: 0;
+        color: #111111;
+        font-size: clamp(2.5rem, 6vw, 4.6rem);
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+      }
+
+      .section-status {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 18px;
+        background: #c51620;
+        color: #ffffff;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      /* =========================================================
+         NEXT MATCH CARD
+         ========================================================= */
+
+      .next-match-card {
+        overflow: hidden;
+        border-radius: 10px;
+        background: #111315;
+        color: #ffffff;
+        box-shadow: 0 28px 65px rgba(0, 0, 0, 0.12);
+      }
+
+      .next-match-info {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid #2c2f32;
+      }
+
+      .next-match-info-item {
+        padding: 24px 27px;
+      }
+
+      .next-match-info-item + .next-match-info-item {
+        border-left: 1px solid #2c2f32;
+      }
+
+      .next-match-info-item:nth-child(2) {
+        text-align: center;
+      }
+
+      .next-match-info-item:nth-child(3) {
+        text-align: right;
+      }
+
+      .next-match-info-item span,
+      .next-match-footer span {
+        display: block;
+        margin-bottom: 12px;
+        color: #777c82;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .next-match-info-item strong {
+        color: #ffffff;
+        font-size: 0.83rem;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+
+      .next-match-main {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 220px 1fr;
+        align-items: center;
+        min-height: 360px;
+        padding: 50px 55px;
+        background:
+          radial-gradient(
+            circle at 24% 50%,
+            rgba(155, 0, 18, 0.15),
+            transparent 27%
+          ),
+          #111315;
+      }
+
+      .next-match-team {
+        text-align: center;
+      }
+
+      .next-match-team-badge {
+        width: 140px;
+        height: 140px;
+        margin: 0 auto 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #373b3e;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.02);
+        color: #777c82;
+        font-size: 0.85rem;
+        font-weight: 800;
+        text-align: center;
+        padding: 14px;
+      }
+
+      .next-match-team-badge img {
+        width: 95px;
+        height: 95px;
+        object-fit: contain;
+      }
+
+      .next-match-team h3 {
+        margin: 0;
+        color: #ffffff;
+        font-size: 1.8rem;
+        line-height: 1.15;
+      }
+
+      .next-match-side {
+        display: block;
+        margin-top: 18px;
+        color: #d11924;
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .next-match-versus {
+        text-align: center;
+      }
+
+      .next-match-versus strong {
+        display: block;
+        color: #ffffff;
+        font-size: clamp(3rem, 6vw, 5rem);
+        line-height: 1;
+      }
+
+      .next-match-versus span {
+        display: block;
+        margin-top: 12px;
+        color: #666b70;
+        font-size: 0.65rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .next-match-footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-top: 1px solid #2c2f32;
+      }
+
+      .next-match-footer > div {
+        padding: 23px 27px;
+      }
+
+      .next-match-footer > div + div {
+        border-left: 1px solid #2c2f32;
+      }
+
+      .next-match-footer strong {
+        color: #c6c9cc;
+        font-size: 0.78rem;
+        font-weight: 500;
+      }
+
+      .next-match-unavailable {
+        padding: 70px 40px;
+        text-align: center;
+      }
+
+      .next-match-unavailable span {
+        display: block;
+        margin-bottom: 15px;
+        color: #d11924;
+        font-size: 0.74rem;
+        font-weight: 800;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+
+      .next-match-unavailable h3 {
+        margin: 0 0 12px;
+        color: #ffffff;
+        font-size: 2rem;
+      }
+
+      .next-match-unavailable p {
+        max-width: 600px;
+        margin: 0 auto;
+        color: #8d9296;
+        line-height: 1.7;
+      }
+
+      /* =========================================================
+         UPCOMING FIXTURES
+         ========================================================= */
+
+      .upcoming-fixtures-section {
+        padding-top: 95px;
+      }
+
+      .fixture-list {
+        border-top: 1px solid #dddddd;
+      }
+
+      .fixture-row {
+        display: grid;
+        grid-template-columns: 85px 155px 1fr 110px;
+        align-items: center;
+        min-height: 145px;
+        border-bottom: 1px solid #dddddd;
+      }
+
+      .fixture-row:hover {
+        background: #f7f7f7;
+      }
+
+      .fixture-row-number {
+        color: #c51620;
+        font-size: 0.75rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+      }
+
+      .fixture-row-date span {
+        display: block;
+        color: #111111;
+        font-size: 0.82rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .fixture-row-date strong {
+        display: block;
+        margin-top: 8px;
+        color: #8a8a8a;
+        font-size: 0.74rem;
+        font-weight: 700;
+      }
+
+      .fixture-row-match span {
+        display: block;
+        margin-bottom: 8px;
+        color: #c51620;
+        font-size: 0.66rem;
+        font-weight: 900;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .fixture-row-match h3 {
+        margin: 0;
+        color: #111111;
+        font-size: 1.45rem;
+      }
+
+      .fixture-row-match p {
+        margin: 9px 0 0;
+        color: #818181;
+        font-size: 0.82rem;
+      }
+
+      .fixture-row-side {
+        justify-self: end;
+        padding: 11px 14px;
+        background: #111315;
+        color: #ffffff;
+        font-size: 0.65rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+      }
+
+      .fixture-empty {
+        padding: 65px 20px;
+        text-align: center;
+        border-bottom: 1px solid #dddddd;
+      }
+
+      .fixture-empty-number {
+        display: block;
+        margin-bottom: 15px;
+        color: #c51620;
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .fixture-empty h3 {
+        margin: 0 0 12px;
+        font-size: 2rem;
+      }
+
+      .fixture-empty p {
+        max-width: 550px;
+        margin: 0 auto;
+        color: #777777;
+        line-height: 1.7;
+      }
+
+      .fixture-empty-note {
+        display: block;
+        margin-top: 20px;
+        color: #aaaaaa;
+        font-size: 0.65rem;
+        font-weight: 800;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      /* =========================================================
+         HOME GROUND
+         ========================================================= */
+
+      .home-ground-section {
+        margin-top: 100px;
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        background: #111315;
+        color: #ffffff;
+      }
+
+      .home-ground-copy {
+        padding: 65px;
+      }
+
+      .home-ground-copy span {
+        display: block;
+        margin-bottom: 16px;
+        color: #d11924;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .home-ground-copy h2 {
+        margin: 0;
+        font-size: clamp(2.4rem, 5vw, 4.6rem);
+        line-height: 0.95;
+        letter-spacing: -0.045em;
+      }
+
+      .home-ground-copy p {
+        max-width: 520px;
+        margin: 24px 0 0;
+        color: #989da1;
+        line-height: 1.8;
+      }
+
+      .home-ground-visual {
+        position: relative;
+        min-height: 390px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          135deg,
+          rgba(155, 0, 18, 0.9),
+          rgba(15, 16, 18, 0.96)
+        );
+      }
+
+      .home-ground-visual::before {
+        content: "";
+        position: absolute;
+        width: 430px;
+        height: 430px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+      }
+
+      .home-ground-visual img {
+        position: relative;
+        z-index: 2;
+        width: 200px;
+        opacity: 0.18;
+      }
+
+      /* =========================================================
+         MATCHDAY LINKS
+         ========================================================= */
+
+      .matchday-section {
+        padding-top: 95px;
+      }
+
+      .matchday-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .matchday-card {
+        position: relative;
+        min-height: 290px;
+        overflow: hidden;
+        padding: 35px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background: #f1f1f1;
+        text-decoration: none;
+        color: #111111;
+      }
+
+      .matchday-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -80px;
+        width: 190px;
+        height: 100%;
+        background: rgba(197, 22, 32, 0.09);
+        transform: skewX(-15deg);
+      }
+
+      .matchday-card span,
+      .matchday-card h3,
+      .matchday-card p {
+        position: relative;
+        z-index: 2;
+      }
+
+      .matchday-card span {
+        margin-bottom: auto;
+        color: #c51620;
+        font-size: 0.68rem;
+        font-weight: 900;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .matchday-card h3 {
+        margin: 0;
+        font-size: 2rem;
+      }
+
+      .matchday-card p {
+        margin: 12px 0 0;
+        color: #777777;
+        line-height: 1.6;
+      }
+
+      /* =========================================================
+         CTA
+         ========================================================= */
+
+      .fixtures-cta {
+        margin-top: 100px;
+        padding: 80px 50px;
+        text-align: center;
+        background: #c51620;
+        color: #ffffff;
+      }
+
+      .fixtures-cta span {
+        display: block;
+        margin-bottom: 15px;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .fixtures-cta h2 {
+        margin: 0;
+        font-size: clamp(2.7rem, 6vw, 5.4rem);
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+      }
+
+      .fixtures-cta p {
+        max-width: 630px;
+        margin: 23px auto 0;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.8;
+      }
+
+      /* =========================================================
+         RESPONSIVE
+         ========================================================= */
+
+      @media (max-width: 900px) {
+        .fixtures-hero {
+          min-height: 380px;
+        }
+
+        .fixtures-hero-crest {
+          display: none;
+        }
+
+        .next-match-main {
+          grid-template-columns: 1fr 120px 1fr;
+          padding: 45px 25px;
+        }
+
+        .next-match-team-badge {
+          width: 110px;
+          height: 110px;
+        }
+
+        .next-match-team-badge img {
+          width: 75px;
+          height: 75px;
+        }
+
+        .next-match-team h3 {
+          font-size: 1.35rem;
+        }
+
+        .fixture-row {
+          grid-template-columns: 60px 130px 1fr 90px;
+        }
+
+        .home-ground-section {
+          grid-template-columns: 1fr;
+        }
+
+        .matchday-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .fixtures-main,
+        .fixtures-hero-inner,
+        .match-centre-nav-inner {
+          width: min(100% - 28px, 1180px);
+        }
+
+        .fixtures-hero {
+          min-height: 330px;
+        }
+
+        .fixtures-hero h1 {
+          font-size: clamp(3rem, 16vw, 5rem);
+        }
+
+        .match-centre-nav-inner {
+          overflow-x: auto;
+          gap: 25px;
+        }
+
+        .match-centre-nav a {
+          flex: 0 0 auto;
+        }
+
+        .fixtures-main {
+          padding-top: 55px;
+        }
+
+        .section-heading {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .next-match-info {
+          grid-template-columns: 1fr;
+        }
+
+        .next-match-info-item,
+        .next-match-info-item:nth-child(2),
+        .next-match-info-item:nth-child(3) {
+          text-align: left;
+        }
+
+        .next-match-info-item + .next-match-info-item {
+          border-top: 1px solid #2c2f32;
+          border-left: 0;
+        }
+
+        .next-match-main {
+          grid-template-columns: 1fr;
+          gap: 38px;
+          padding: 45px 20px;
+        }
+
+        .next-match-versus {
+          order: 2;
+        }
+
+        .next-match-team:first-child {
+          order: 1;
+        }
+
+        .next-match-team:last-child {
+          order: 3;
+        }
+
+        .next-match-footer {
+          grid-template-columns: 1fr;
+        }
+
+        .next-match-footer > div + div {
+          border-top: 1px solid #2c2f32;
+          border-left: 0;
+        }
+
+        .fixture-row {
+          grid-template-columns: 45px 1fr;
+          gap: 18px;
+          padding: 25px 0;
+        }
+
+        .fixture-row-date {
+          grid-column: 2;
+        }
+
+        .fixture-row-match {
+          grid-column: 2;
+        }
+
+        .fixture-row-side {
+          grid-column: 2;
+          justify-self: start;
+        }
+
+        .home-ground-copy {
+          padding: 45px 28px;
+        }
+
+        .home-ground-visual {
+          min-height: 300px;
+        }
+
+        .fixtures-cta {
+          padding: 65px 25px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="fixtures-page">
+    <header class="site-header">
+      <div class="container">
+        <a
+          href="index.html"
+          class="site-logo"
+          aria-label="Teso Warriors FC Home"
+        >
+          <img src="images/teso-warriors-crest.png" alt="Teso Warriors FC" />
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">Club</a>
+          <a href="teams.html">Teams</a>
+          <a href="players.html">Players</a>
+          <a href="fixtures.html">Fixtures</a>
+          <a href="results.html">Results</a>
+          <a href="table.html">Table</a>
+          <a href="news.html">News</a>
+          <a href="media.html">Media</a>
+          <a href="academy.html">Academy</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="fixtures-hero">
+        <div class="fixtures-hero-inner">
+          <div class="fixtures-hero-copy">
+            <span class="fixtures-eyebrow">Match Centre</span>
+
+            <h1>Upcoming Fixtures.</h1>
+
+            <p>
+              Follow every confirmed Teso Warriors FC fixture throughout the
+              2026/27 season. Match dates, opponents, venues and kick-off
+              information are updated through the official Match Centre.
+            </p>
+          </div>
+
+          <div class="fixtures-hero-crest" aria-hidden="true">
+            <img src="images/teso-warriors-crest.png" alt="" />
+          </div>
+        </div>
+      </section>
+
+      <nav class="match-centre-nav" aria-label="Match Centre navigation">
+        <div class="match-centre-nav-inner">
+          <a href="fixtures.html" class="active">Fixtures</a>
+          <a href="results.html">Results</a>
+          <a href="table.html">League Table</a>
+        </div>
+      </nav>
+
+      <div class="fixtures-main">
+        <section>
+          <div class="section-heading">
+            <div class="section-heading-copy">
+              <span>Next Match</span>
+              <h2>The Next Challenge.</h2>
+            </div>
+
+            <div class="section-status">Upcoming</div>
+          </div>
+
+          <article class="next-match-card" id="next-match-card">
+            <div class="next-match-unavailable">
+              <span>Next Match</span>
+
+              <h3>Loading Fixture Information.</h3>
+
+              <p>
+                Official match information is being retrieved from the Teso
+                Warriors FC Match Centre.
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <section class="upcoming-fixtures-section">
+          <div class="section-heading">
+            <div class="section-heading-copy">
+              <span>Season Schedule</span>
+              <h2>Upcoming Fixtures.</h2>
+            </div>
+          </div>
+
+          <div class="fixture-list" id="fixture-list">
+            <article class="fixture-empty">
+              <span class="fixture-empty-number"> Match Centre </span>
+
+              <h3>Loading Fixtures.</h3>
+
+              <p>
+                The latest official Teso Warriors FC fixture information is
+                being retrieved.
+              </p>
+
+              <span class="fixture-empty-note">
+                Official information only
+              </span>
+            </article>
+          </div>
+        </section>
+
+        <section class="home-ground-section">
+          <div class="home-ground-copy">
+            <span>Our Home</span>
+
+            <h2>Soroti City Stadium.</h2>
+
+            <p>
+              Also known as Oligoi Stadium, Soroti City Stadium is the home
+              ground of Teso Warriors FC and the heart of our home matchdays.
+            </p>
+          </div>
+
+          <div class="home-ground-visual">
+            <img
+              src="images/teso-warriors-crest.png"
+              alt="Teso Warriors FC crest"
+            />
+          </div>
+        </section>
+
+        <section class="matchday-section">
+          <div class="section-heading">
+            <div class="section-heading-copy">
+              <span>Matchday</span>
+              <h2>Follow the Warriors.</h2>
+            </div>
+          </div>
+
+          <div class="matchday-grid">
+            <a href="results.html" class="matchday-card">
+              <span>01</span>
+              <h3>Results</h3>
+              <p>
+                Review the latest Teso Warriors FC match results and completed
+                fixtures.
+              </p>
+            </a>
+
+            <a href="news.html" class="matchday-card">
+              <span>02</span>
+              <h3>News</h3>
+              <p>
+                Follow match previews, reports, team news and official club
+                updates.
+              </p>
+            </a>
+
+            <a href="media.html" class="matchday-card">
+              <span>03</span>
+              <h3>Media</h3>
+              <p>
+                Experience Teso Warriors FC matchdays through official photos
+                and media.
+              </p>
+            </a>
+          </div>
+        </section>
+
+        <section class="fixtures-cta">
+          <span>Teso Warriors FC</span>
+
+          <h2>Matchday Starts Here.</h2>
+
+          <p>
+            From Soroti City Stadium to every away ground, follow the Warriors
+            throughout the 2026/27 campaign.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2026 Teso Warriors FC. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/fixtures.js"></script>
+  </body>
+</html>

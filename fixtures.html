@@ -2,33 +2,817 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Fixtures | Teso Warriors FC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <meta
       name="description"
-      content="View upcoming Teso Warriors FC fixtures, match information and home match details."
+      content="Official fixtures and match information for Teso Warriors FC."
     />
+
+    <title>Fixtures | Teso Warriors FC</title>
 
     <link rel="icon" type="image/png" href="images/teso-warriors-crest.png" />
 
     <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      /* =========================================================
+         TESO WARRIORS FC
+         MATCH CENTRE — FIXTURES
+         ========================================================= */
+
+      :root {
+        --tw-red: #b5121b;
+        --tw-red-dark: #850d14;
+        --tw-black: #0d0f11;
+        --tw-dark: #141719;
+        --tw-grey: #72777d;
+        --tw-light: #f4f4f3;
+        --tw-border: #dedede;
+        --tw-white: #ffffff;
+        --tw-gold: #c89b4c;
+      }
+
+      .fixtures-page {
+        margin: 0;
+        background: var(--tw-white);
+        color: var(--tw-black);
+      }
+
+      /* =========================================================
+         HEADER SAFETY
+         ========================================================= */
+
+      .fixtures-page .site-header {
+        position: relative;
+        z-index: 100;
+      }
+
+      .fixtures-page .site-logo img {
+        display: block;
+        width: 62px;
+        max-width: 62px;
+        height: 62px;
+        object-fit: contain;
+      }
+
+      /* =========================================================
+         HERO
+         ========================================================= */
+
+      .match-hero {
+        position: relative;
+        overflow: hidden;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(
+          105deg,
+          rgba(10, 11, 12, 0.99) 0%,
+          rgba(10, 11, 12, 0.96) 58%,
+          rgba(133, 13, 20, 0.96) 100%
+        );
+        color: var(--tw-white);
+      }
+
+      .match-hero::before {
+        content: "";
+        position: absolute;
+        right: -160px;
+        top: -120px;
+        width: 560px;
+        height: 760px;
+        background: rgba(255, 255, 255, 0.035);
+        transform: rotate(16deg);
+      }
+
+      .match-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+          );
+        background-size: 50px 50px;
+        pointer-events: none;
+      }
+
+      .match-hero-inner {
+        position: relative;
+        z-index: 2;
+        width: min(1200px, calc(100% - 40px));
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        align-items: center;
+        gap: 70px;
+      }
+
+      .hero-kicker {
+        display: block;
+        margin-bottom: 18px;
+        color: #df2632;
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .match-hero h1 {
+        max-width: 850px;
+        margin: 0;
+        color: var(--tw-white);
+        font-size: clamp(4rem, 9vw, 8rem);
+        line-height: 0.87;
+        letter-spacing: -0.06em;
+        text-transform: uppercase;
+      }
+
+      .match-hero p {
+        max-width: 660px;
+        margin: 30px 0 0;
+        color: rgba(255, 255, 255, 0.66);
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+
+      .hero-crest {
+        display: flex;
+        justify-content: center;
+        opacity: 0.2;
+      }
+
+      .hero-crest img {
+        width: 280px;
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      /* =========================================================
+         MATCH CENTRE NAV
+         ========================================================= */
+
+      .match-tabs {
+        border-bottom: 1px solid var(--tw-border);
+        background: var(--tw-white);
+      }
+
+      .match-tabs-inner {
+        width: min(1200px, calc(100% - 40px));
+        margin: 0 auto;
+        display: flex;
+        gap: 38px;
+      }
+
+      .match-tabs a {
+        position: relative;
+        padding: 24px 0;
+        color: #777777;
+        font-size: 0.73rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .match-tabs a:hover,
+      .match-tabs a.active {
+        color: var(--tw-black);
+      }
+
+      .match-tabs a.active::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: -1px;
+        left: 0;
+        height: 4px;
+        background: var(--tw-red);
+      }
+
+      /* =========================================================
+         CONTENT
+         ========================================================= */
+
+      .match-content {
+        width: min(1200px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 90px 0 110px;
+      }
+
+      .match-section-heading {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 30px;
+        margin-bottom: 35px;
+      }
+
+      .match-section-heading span {
+        display: block;
+        margin-bottom: 11px;
+        color: var(--tw-red);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .match-section-heading h2 {
+        margin: 0;
+        font-size: clamp(2.8rem, 6vw, 5rem);
+        line-height: 0.92;
+        letter-spacing: -0.05em;
+      }
+
+      .match-status {
+        padding: 13px 18px;
+        background: var(--tw-red);
+        color: var(--tw-white);
+        font-size: 0.68rem;
+        font-weight: 900;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      /* =========================================================
+         NEXT MATCH
+         ========================================================= */
+
+      .next-match-card {
+        overflow: hidden;
+        border-radius: 12px;
+        background: var(--tw-black);
+        color: var(--tw-white);
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.13);
+      }
+
+      .next-match-loading {
+        padding: 90px 30px;
+        text-align: center;
+      }
+
+      .next-match-loading span {
+        color: #df2632;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .next-match-loading h3 {
+        margin: 15px 0 10px;
+        color: var(--tw-white);
+        font-size: 2rem;
+      }
+
+      .next-match-loading p {
+        margin: 0;
+        color: #8c9094;
+      }
+
+      .next-match-meta {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid #2a2d30;
+      }
+
+      .next-match-meta-item {
+        padding: 26px 30px;
+      }
+
+      .next-match-meta-item + .next-match-meta-item {
+        border-left: 1px solid #2a2d30;
+      }
+
+      .next-match-meta-item:nth-child(2) {
+        text-align: center;
+      }
+
+      .next-match-meta-item:nth-child(3) {
+        text-align: right;
+      }
+
+      .next-match-meta-item span,
+      .next-match-bottom span {
+        display: block;
+        margin-bottom: 10px;
+        color: #73787e;
+        font-size: 0.66rem;
+        font-weight: 900;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+
+      .next-match-meta-item strong {
+        color: var(--tw-white);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+      }
+
+      .next-match-versus {
+        position: relative;
+        min-height: 385px;
+        display: grid;
+        grid-template-columns: 1fr 180px 1fr;
+        align-items: center;
+        padding: 55px 45px;
+        background:
+          radial-gradient(
+            circle at 25% 50%,
+            rgba(181, 18, 27, 0.17),
+            transparent 30%
+          ),
+          var(--tw-black);
+      }
+
+      .match-team {
+        text-align: center;
+      }
+
+      .match-team-badge {
+        width: 145px;
+        height: 145px;
+        margin: 0 auto 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #34383b;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.025);
+      }
+
+      .match-team-badge img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+      }
+
+      .opponent-initials {
+        color: #8e9398;
+        font-size: 1.6rem;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+      }
+
+      .match-team h3 {
+        margin: 0;
+        color: var(--tw-white);
+        font-size: clamp(1.4rem, 3vw, 2rem);
+      }
+
+      .team-location {
+        display: block;
+        margin-top: 15px;
+        color: #df2632;
+        font-size: 0.68rem;
+        font-weight: 900;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+
+      .match-vs {
+        text-align: center;
+      }
+
+      .match-vs strong {
+        display: block;
+        font-size: clamp(3.5rem, 7vw, 5.5rem);
+        line-height: 1;
+      }
+
+      .match-vs span {
+        display: block;
+        margin-top: 12px;
+        color: #5f6469;
+        font-size: 0.65rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .next-match-bottom {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-top: 1px solid #2a2d30;
+      }
+
+      .next-match-bottom > div {
+        padding: 25px 30px;
+      }
+
+      .next-match-bottom > div + div {
+        border-left: 1px solid #2a2d30;
+      }
+
+      .next-match-bottom strong {
+        color: #c7c9cc;
+        font-size: 0.83rem;
+      }
+
+      /* =========================================================
+         FIXTURE SCHEDULE
+         ========================================================= */
+
+      .schedule-section {
+        padding-top: 100px;
+      }
+
+      .fixtures-list {
+        border-top: 1px solid var(--tw-border);
+      }
+
+      .fixture-item {
+        display: grid;
+        grid-template-columns: 110px 170px 1fr 110px;
+        align-items: center;
+        min-height: 150px;
+        border-bottom: 1px solid var(--tw-border);
+        transition: background 0.2s ease;
+      }
+
+      .fixture-item:hover {
+        background: #f7f7f6;
+      }
+
+      .fixture-number {
+        color: var(--tw-red);
+        font-size: 0.75rem;
+        font-weight: 900;
+        letter-spacing: 0.13em;
+      }
+
+      .fixture-date strong {
+        display: block;
+        font-size: 1.1rem;
+      }
+
+      .fixture-date span {
+        display: block;
+        margin-top: 7px;
+        color: #8a8a8a;
+        font-size: 0.73rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .fixture-info .competition {
+        margin: 0 0 8px;
+        color: var(--tw-red);
+        font-size: 0.67rem;
+        font-weight: 900;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .fixture-info h3 {
+        margin: 0;
+        font-size: 1.45rem;
+      }
+
+      .fixture-info .venue {
+        margin: 9px 0 0;
+        color: #818181;
+        font-size: 0.82rem;
+      }
+
+      .fixture-side {
+        justify-self: end;
+        padding: 11px 14px;
+        background: var(--tw-black);
+        color: var(--tw-white);
+        font-size: 0.65rem;
+        font-weight: 900;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .fixture-empty {
+        padding: 65px 25px;
+        text-align: center;
+        border-bottom: 1px solid var(--tw-border);
+      }
+
+      .fixture-empty h3 {
+        margin: 0 0 10px;
+        font-size: 1.8rem;
+      }
+
+      .fixture-empty p {
+        margin: 0;
+        color: var(--tw-grey);
+      }
+
+      /* =========================================================
+         HOME GROUND
+         ========================================================= */
+
+      .ground-section {
+        margin-top: 105px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        overflow: hidden;
+        background: var(--tw-black);
+        color: var(--tw-white);
+      }
+
+      .ground-copy {
+        padding: 70px;
+      }
+
+      .ground-copy span {
+        display: block;
+        margin-bottom: 17px;
+        color: #df2632;
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .ground-copy h2 {
+        margin: 0;
+        color: var(--tw-white);
+        font-size: clamp(2.8rem, 5vw, 4.5rem);
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+      }
+
+      .ground-copy p {
+        max-width: 520px;
+        margin: 25px 0 0;
+        color: #92979b;
+        line-height: 1.8;
+      }
+
+      .ground-visual {
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background:
+          radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent 45%),
+          linear-gradient(135deg, var(--tw-red-dark), var(--tw-black));
+      }
+
+      .ground-visual img {
+        width: 230px;
+        max-width: 55%;
+        opacity: 0.25;
+      }
+
+      /* =========================================================
+         MATCHDAY LINKS
+         ========================================================= */
+
+      .matchday-section {
+        padding-top: 100px;
+      }
+
+      .matchday-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .matchday-link {
+        position: relative;
+        overflow: hidden;
+        min-height: 290px;
+        padding: 35px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background: var(--tw-light);
+        color: var(--tw-black);
+        text-decoration: none;
+      }
+
+      .matchday-link::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -90px;
+        width: 190px;
+        height: 100%;
+        background: rgba(181, 18, 27, 0.08);
+        transform: skewX(-15deg);
+      }
+
+      .matchday-link > * {
+        position: relative;
+        z-index: 2;
+      }
+
+      .matchday-link span {
+        margin-bottom: auto;
+        color: var(--tw-red);
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.15em;
+      }
+
+      .matchday-link h3 {
+        margin: 0;
+        font-size: 2rem;
+      }
+
+      .matchday-link p {
+        margin: 11px 0 0;
+        color: #767676;
+        line-height: 1.6;
+      }
+
+      /* =========================================================
+         CTA
+         ========================================================= */
+
+      .match-cta {
+        margin-top: 105px;
+        padding: 85px 40px;
+        text-align: center;
+        background: var(--tw-red);
+        color: var(--tw-white);
+      }
+
+      .match-cta span {
+        display: block;
+        margin-bottom: 15px;
+        font-size: 0.69rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .match-cta h2 {
+        margin: 0;
+        color: var(--tw-white);
+        font-size: clamp(3rem, 7vw, 5.5rem);
+        line-height: 0.92;
+        letter-spacing: -0.055em;
+      }
+
+      .match-cta p {
+        max-width: 650px;
+        margin: 23px auto 0;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.75;
+      }
+
+      /* =========================================================
+         RESPONSIVE
+         ========================================================= */
+
+      @media (max-width: 900px) {
+        .match-hero-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-crest {
+          display: none;
+        }
+
+        .next-match-versus {
+          grid-template-columns: 1fr 120px 1fr;
+        }
+
+        .fixture-item {
+          grid-template-columns: 70px 140px 1fr 90px;
+        }
+
+        .ground-section {
+          grid-template-columns: 1fr;
+        }
+
+        .matchday-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .match-hero {
+          min-height: 390px;
+        }
+
+        .match-hero-inner,
+        .match-tabs-inner,
+        .match-content {
+          width: min(100% - 28px, 1200px);
+        }
+
+        .match-tabs-inner {
+          overflow-x: auto;
+          gap: 27px;
+        }
+
+        .match-tabs a {
+          flex: 0 0 auto;
+        }
+
+        .match-content {
+          padding-top: 60px;
+        }
+
+        .match-section-heading {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .next-match-meta {
+          grid-template-columns: 1fr;
+        }
+
+        .next-match-meta-item,
+        .next-match-meta-item:nth-child(2),
+        .next-match-meta-item:nth-child(3) {
+          text-align: left;
+        }
+
+        .next-match-meta-item + .next-match-meta-item {
+          border-top: 1px solid #2a2d30;
+          border-left: 0;
+        }
+
+        .next-match-versus {
+          grid-template-columns: 1fr;
+          gap: 35px;
+          padding: 45px 20px;
+        }
+
+        .match-vs {
+          order: 2;
+        }
+
+        .match-team:first-child {
+          order: 1;
+        }
+
+        .match-team:last-child {
+          order: 3;
+        }
+
+        .next-match-bottom {
+          grid-template-columns: 1fr;
+        }
+
+        .next-match-bottom > div + div {
+          border-top: 1px solid #2a2d30;
+          border-left: 0;
+        }
+
+        .fixture-item {
+          grid-template-columns: 45px 1fr;
+          gap: 15px;
+          padding: 25px 0;
+        }
+
+        .fixture-number {
+          grid-row: 1 / span 3;
+        }
+
+        .fixture-date,
+        .fixture-info,
+        .fixture-side {
+          grid-column: 2;
+        }
+
+        .fixture-side {
+          justify-self: start;
+        }
+
+        .ground-copy {
+          padding: 45px 28px;
+        }
+
+        .ground-visual {
+          min-height: 280px;
+        }
+      }
+    </style>
   </head>
 
-  <body>
-    <!-- Header -->
+  <body class="fixtures-page">
+    <!-- =========================================================
+         SITE HEADER
+         ========================================================= -->
+
     <header class="site-header">
       <div class="container">
-        <a href="index.html" class="logo">
-          <img
-            src="images/teso-warriors-crest.png"
-            alt="Teso Warriors FC crest"
-          />
-          <span>TESO WARRIORS FC</span>
+        <a
+          href="index.html"
+          class="site-logo"
+          aria-label="Teso Warriors FC Home"
+        >
+          <img src="images/teso-warriors-crest.png" alt="Teso Warriors FC" />
         </a>
 
-        <nav class="main-nav">
+        <nav class="main-nav" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="about.html">Club</a>
           <a href="teams.html">Teams</a>
@@ -45,203 +829,236 @@
     </header>
 
     <main>
-      <!-- Page Hero -->
-      <section class="page-hero">
-        <div class="container">
-          <p class="section-label">MATCH CENTRE</p>
+      <!-- =======================================================
+           HERO
+           ======================================================= -->
 
-          <h1>UPCOMING<br />FIXTURES.</h1>
+      <section class="match-hero">
+        <div class="match-hero-inner">
+          <div>
+            <span class="hero-kicker"> Official Match Centre </span>
 
-          <p>
-            Follow the Warriors as they prepare for their next competitive
-            challenges.
-          </p>
-        </div>
-      </section>
-
-      <!-- Fixtures -->
-      <section class="fixtures-section">
-        <div class="container">
-          <div class="section-heading">
-            <p class="section-label">2026 SEASON</p>
-
-            <h2>Next Matches</h2>
+            <h1>Fixtures.</h1>
 
             <p>
-              Official fixture information will be published and updated by the
-              club.
+              Every challenge. Every ground. Every step of the 2026/27 campaign.
+              Follow the official Teso Warriors FC fixture schedule here.
             </p>
           </div>
 
-          <div class="fixtures-list">
-            <!-- Fixture 01 -->
-            <article class="fixture-card">
-              <div class="fixture-date">
-                <span class="fixture-day">TBC</span>
-                <span class="fixture-month">DATE</span>
-              </div>
-
-              <div class="fixture-details">
-                <p class="fixture-competition">COMPETITION TBC</p>
-
-                <div class="fixture-teams">
-                  <strong>Teso Warriors FC</strong>
-                  <span>VS</span>
-                  <strong>Opponent TBC</strong>
-                </div>
-
-                <p class="fixture-venue">
-                  Venue: Soroti Stadium (Oligoi Stadium)
-                </p>
-              </div>
-
-              <div class="fixture-time">
-                <span>TIME</span>
-                <strong>TBC</strong>
-              </div>
-            </article>
-
-            <!-- Fixture 02 -->
-            <article class="fixture-card">
-              <div class="fixture-date">
-                <span class="fixture-day">TBC</span>
-                <span class="fixture-month">DATE</span>
-              </div>
-
-              <div class="fixture-details">
-                <p class="fixture-competition">COMPETITION TBC</p>
-
-                <div class="fixture-teams">
-                  <strong>Teso Warriors FC</strong>
-                  <span>VS</span>
-                  <strong>Opponent TBC</strong>
-                </div>
-
-                <p class="fixture-venue">Venue: To Be Confirmed</p>
-              </div>
-
-              <div class="fixture-time">
-                <span>TIME</span>
-                <strong>TBC</strong>
-              </div>
-            </article>
-
-            <!-- Fixture 03 -->
-            <article class="fixture-card">
-              <div class="fixture-date">
-                <span class="fixture-day">TBC</span>
-                <span class="fixture-month">DATE</span>
-              </div>
-
-              <div class="fixture-details">
-                <p class="fixture-competition">COMPETITION TBC</p>
-
-                <div class="fixture-teams">
-                  <strong>Teso Warriors FC</strong>
-                  <span>VS</span>
-                  <strong>Opponent TBC</strong>
-                </div>
-
-                <p class="fixture-venue">Venue: To Be Confirmed</p>
-              </div>
-
-              <div class="fixture-time">
-                <span>TIME</span>
-                <strong>TBC</strong>
-              </div>
-            </article>
+          <div class="hero-crest" aria-hidden="true">
+            <img src="images/teso-warriors-crest.png" alt="" />
           </div>
         </div>
       </section>
 
-      <!-- Home Ground -->
-      <section class="home-ground">
-        <div class="container">
-          <div class="home-ground-grid">
+      <!-- =======================================================
+           MATCH CENTRE NAVIGATION
+           ======================================================= -->
+
+      <nav class="match-tabs" aria-label="Match Centre navigation">
+        <div class="match-tabs-inner">
+          <a href="fixtures.html" class="active">Fixtures</a>
+          <a href="results.html">Results</a>
+          <a href="table.html">League Table</a>
+        </div>
+      </nav>
+
+      <!-- =======================================================
+           PAGE CONTENT
+           ======================================================= -->
+
+      <div class="match-content">
+        <!-- NEXT MATCH -->
+
+        <section>
+          <div class="match-section-heading">
             <div>
-              <p class="section-label">HOME OF THE WARRIORS</p>
-
-              <h2>Soroti Stadium</h2>
-
-              <p class="ground-name">OLIGOI STADIUM</p>
+              <span>Next Match</span>
+              <h2>The Next Challenge.</h2>
             </div>
 
-            <div>
-              <p>
-                Teso Warriors FC is seeking to establish Soroti Stadium,
-                commonly known as Oligoi Stadium, as its home ground for home
-                matches, training sessions and approved football activities.
-              </p>
+            <div class="match-status">Upcoming</div>
+          </div>
 
-              <p>
-                All use of the facility remains subject to the requirements,
-                regulations and coordination of the relevant authorities.
-              </p>
+          <article class="next-match-card" id="next-match-card">
+            <div class="next-match-loading">
+              <span>Match Centre</span>
+
+              <h3>Loading the next fixture...</h3>
+
+              <p>Retrieving official Teso Warriors FC match information.</p>
+            </div>
+          </article>
+        </section>
+
+        <!-- UPCOMING FIXTURES -->
+
+        <section class="schedule-section">
+          <div class="match-section-heading">
+            <div>
+              <span>2026/27 Season</span>
+              <h2>Upcoming Fixtures.</h2>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- Matchday -->
-      <section class="matchday-section">
-        <div class="container">
-          <div class="section-heading">
-            <p class="section-label">MATCHDAY</p>
+          <div class="fixtures-list" id="fixtures-list">
+            <div class="fixture-empty">
+              <h3>Loading fixtures...</h3>
 
-            <h2>Follow The Warriors.</h2>
+              <p>Official fixture information is being retrieved.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- HOME GROUND -->
+
+        <section class="ground-section">
+          <div class="ground-copy">
+            <span>Our Home</span>
+
+            <h2>Soroti City Stadium.</h2>
 
             <p>
-              Match information, results, news and media will be updated through
-              the club's official digital channels.
+              Soroti City Stadium, also known as Oligoi Stadium, is the home of
+              Teso Warriors FC and the centre of our home matchdays.
             </p>
+          </div>
+
+          <div class="ground-visual">
+            <img
+              src="images/teso-warriors-crest.png"
+              alt="Teso Warriors FC crest"
+            />
+          </div>
+        </section>
+
+        <!-- MATCHDAY LINKS -->
+
+        <section class="matchday-section">
+          <div class="match-section-heading">
+            <div>
+              <span>Matchday</span>
+              <h2>Follow the Warriors.</h2>
+            </div>
           </div>
 
           <div class="matchday-grid">
-            <a href="results.html" class="matchday-card">
+            <a href="results.html" class="matchday-link">
               <span>01</span>
+
               <h3>Results</h3>
-              <p>See how the Warriors have performed.</p>
-              <strong>View Results →</strong>
+
+              <p>
+                Review completed matches and the latest Teso Warriors FC
+                results.
+              </p>
             </a>
 
-            <a href="news.html" class="matchday-card">
+            <a href="news.html" class="matchday-link">
               <span>02</span>
+
               <h3>News</h3>
-              <p>Follow the latest developments from the club.</p>
-              <strong>Read News →</strong>
+
+              <p>
+                Match previews, team updates, reports and official club news.
+              </p>
             </a>
 
-            <a href="media.html" class="matchday-card">
+            <a href="media.html" class="matchday-link">
               <span>03</span>
+
               <h3>Media</h3>
-              <p>Experience the club beyond the match.</p>
-              <strong>View Media →</strong>
+
+              <p>
+                Follow the Warriors through official matchday photography and
+                club media.
+              </p>
             </a>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- CTA -->
-      <section class="home-cta">
-        <div class="container">
-          <p class="section-label">TESO WARRIORS FC</p>
+        <!-- CTA -->
+
+        <section class="match-cta">
+          <span>Strength. Pride. Glory.</span>
 
           <h2>Matchday Starts Here.</h2>
 
-          <p>Stay connected with the Warriors throughout the season.</p>
-
-          <a href="contact.html" class="btn btn-primary"> Contact The Club </a>
-        </div>
-      </section>
+          <p>
+            From Soroti City Stadium to every away ground, follow Teso Warriors
+            FC throughout the 2026/27 campaign.
+          </p>
+        </section>
+      </div>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
-      <div class="container">
-        <p>&copy; 2026 Teso Warriors Football Club. All rights reserved.</p>
+      <div class="container footer-main">
+
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img
+              src="images/teso-warriors-crest.png"
+              alt="Teso Warriors FC"
+            />
+          </a>
+
+          <div>
+            <strong>TESO WARRIORS FC</strong>
+
+            <p>
+              Strength. Pride. Glory.
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <div>
+            <span>CLUB</span>
+            <a href="about.html">About</a>
+            <a href="teams.html">Teams</a>
+            <a href="players.html">Players</a>
+            <a href="academy.html">Academy</a>
+          </div>
+
+          <div>
+            <span>MATCH CENTRE</span>
+            <a href="fixtures.html">Fixtures</a>
+            <a href="results.html">Results</a>
+            <a href="table.html">League Table</a>
+          </div>
+
+          <div>
+            <span>FOLLOW</span>
+            <a href="news.html">News</a>
+            <a href="media.html">Media</a>
+            <a href="contact.html">Contact Club</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="container footer-bottom">
+        <p>
+          &copy; 2026 Teso Warriors Football Club.
+          All rights reserved.
+        </p>
+
+        <p>
+          Soroti, Uganda
+        </p>
       </div>
     </footer>
 
+    <!-- =========================================================
+         SCRIPTS
+         DO NOT CHANGE THE ORDER
+         ========================================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/fixtures.js"></script>
   </body>
 </html>

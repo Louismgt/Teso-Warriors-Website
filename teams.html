@@ -2,33 +2,569 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Teams | Teso Warriors FC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <meta
       name="description"
-      content="Explore the football structure of Teso Warriors FC, including the senior team, academy and women's football."
+      content="Explore the Teso Warriors FC first team, future football programmes, technical staff and player development pathway."
     />
+
+    <title>Teams | Teso Warriors FC</title>
 
     <link rel="icon" type="image/png" href="images/teso-warriors-crest.png" />
 
     <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      :root {
+        --tw-red: #b5121b;
+        --tw-red-dark: #7d0b12;
+        --tw-black: #0e1012;
+        --tw-dark: #17191b;
+        --tw-grey: #74797d;
+        --tw-light: #f5f5f3;
+        --tw-border: #dedede;
+        --tw-white: #ffffff;
+      }
+
+      .teams-page {
+        margin: 0;
+        background: var(--tw-white);
+        color: var(--tw-black);
+      }
+
+      .teams-page .site-header {
+        position: relative;
+        z-index: 100;
+      }
+
+      .teams-page .site-logo img {
+        display: block;
+        width: 62px;
+        max-width: 62px;
+        height: 62px;
+        object-fit: contain;
+      }
+
+      /* =========================================================
+         HERO
+         ========================================================= */
+
+      .teams-hero {
+        position: relative;
+        overflow: hidden;
+        min-height: 540px;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(
+          110deg,
+          rgba(12, 13, 15, 0.99) 0%,
+          rgba(12, 13, 15, 0.96) 58%,
+          rgba(125, 11, 18, 0.95) 100%
+        );
+        color: var(--tw-white);
+      }
+
+      .teams-hero::before {
+        content: "";
+        position: absolute;
+        top: -160px;
+        right: -170px;
+        width: 600px;
+        height: 820px;
+        background: rgba(255, 255, 255, 0.035);
+        transform: rotate(18deg);
+      }
+
+      .teams-hero-inner {
+        position: relative;
+        z-index: 2;
+        width: min(1200px, calc(100% - 40px));
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        align-items: center;
+        gap: 70px;
+      }
+
+      .teams-kicker {
+        display: block;
+        margin-bottom: 18px;
+        color: #df2632;
+        font-size: 0.75rem;
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .teams-hero h1 {
+        margin: 0;
+        color: var(--tw-white);
+        font-size: clamp(4rem, 8vw, 7.4rem);
+        line-height: 0.88;
+        letter-spacing: -0.06em;
+        text-transform: uppercase;
+      }
+
+      .teams-hero p {
+        max-width: 690px;
+        margin: 28px 0 0;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+
+      .teams-hero-crest {
+        display: flex;
+        justify-content: center;
+        opacity: 0.2;
+      }
+
+      .teams-hero-crest img {
+        width: 275px;
+        max-width: 100%;
+      }
+
+      /* =========================================================
+         SHARED
+         ========================================================= */
+
+      .teams-content {
+        width: min(1200px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 100px 0 110px;
+      }
+
+      .section-heading {
+        margin-bottom: 42px;
+      }
+
+      .section-label {
+        display: block;
+        margin-bottom: 13px;
+        color: var(--tw-red);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .section-heading h2 {
+        margin: 0;
+        font-size: clamp(2.8rem, 6vw, 5rem);
+        line-height: 0.94;
+        letter-spacing: -0.05em;
+      }
+
+      .section-heading p {
+        max-width: 720px;
+        margin: 20px 0 0;
+        color: #747474;
+        line-height: 1.8;
+      }
+
+      /* =========================================================
+         CLUB FOOTBALL STRUCTURE
+         ========================================================= */
+
+      .team-structure {
+        padding-bottom: 20px;
+      }
+
+      .team-structure-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr;
+        gap: 20px;
+      }
+
+      .team-card {
+        position: relative;
+        overflow: hidden;
+        min-height: 420px;
+        padding: 38px;
+        display: flex;
+        flex-direction: column;
+        background: var(--tw-light);
+        border-top: 4px solid var(--tw-red);
+      }
+
+      .team-card.primary {
+        background: linear-gradient(
+          145deg,
+          rgba(14, 16, 18, 0.97),
+          rgba(32, 13, 16, 0.97)
+        );
+        color: var(--tw-white);
+      }
+
+      .team-card-number {
+        color: var(--tw-red);
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+      }
+
+      .team-card-status {
+        display: inline-block;
+        width: fit-content;
+        margin-top: 18px;
+        padding: 8px 11px;
+        background: var(--tw-red);
+        color: var(--tw-white);
+        font-size: 0.6rem;
+        font-weight: 900;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .team-card.future .team-card-status {
+        background: var(--tw-black);
+      }
+
+      .team-card-body {
+        margin-top: auto;
+      }
+
+      .team-card h3 {
+        margin: 0;
+        font-size: clamp(1.9rem, 3vw, 2.7rem);
+        line-height: 1;
+      }
+
+      .team-card.primary h3 {
+        color: var(--tw-white);
+      }
+
+      .team-card p {
+        margin: 18px 0 0;
+        color: #747474;
+        line-height: 1.7;
+      }
+
+      .team-card.primary p {
+        color: #a2a6aa;
+      }
+
+      .team-card a {
+        display: inline-block;
+        margin-top: 25px;
+        color: var(--tw-red);
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .team-card.primary a {
+        color: #ffffff;
+      }
+
+      /* =========================================================
+         TECHNICAL TEAM
+         ========================================================= */
+
+      .technical-section {
+        padding-top: 110px;
+      }
+
+      .staff-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .staff-card {
+        overflow: hidden;
+        background: var(--tw-light);
+        border-top: 4px solid var(--tw-red);
+      }
+
+      .staff-photo {
+        height: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: linear-gradient(135deg, #17191b, #2c3033);
+      }
+
+      .staff-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+      }
+
+      .staff-placeholder {
+        width: 110px;
+        height: 110px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.17);
+        border-radius: 50%;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 2rem;
+        font-weight: 900;
+      }
+
+      .staff-content {
+        padding: 28px;
+      }
+
+      .staff-role {
+        display: block;
+        margin-bottom: 9px;
+        color: var(--tw-red);
+        font-size: 0.67rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .staff-content h3 {
+        margin: 0;
+        font-size: 1.55rem;
+      }
+
+      .staff-content p {
+        margin: 13px 0 0;
+        color: #757575;
+        line-height: 1.7;
+      }
+
+      .staff-empty {
+        grid-column: 1 / -1;
+        padding: 60px 30px;
+        text-align: center;
+        background: var(--tw-light);
+        border-top: 4px solid var(--tw-red);
+      }
+
+      .staff-empty h3 {
+        margin: 0 0 10px;
+        font-size: 1.8rem;
+      }
+
+      .staff-empty p {
+        margin: 0;
+        color: #777777;
+      }
+
+      /* =========================================================
+         WARRIOR STANDARD
+         ========================================================= */
+
+      .standard-section {
+        padding-top: 110px;
+      }
+
+      .standard-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+
+      .standard-card {
+        min-height: 260px;
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        background: var(--tw-black);
+        color: var(--tw-white);
+      }
+
+      .standard-card span {
+        margin-bottom: auto;
+        color: #df2632;
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.15em;
+      }
+
+      .standard-card h3 {
+        margin: 35px 0 10px;
+        color: var(--tw-white);
+        font-size: 1.7rem;
+      }
+
+      .standard-card p {
+        margin: 0;
+        color: #95999d;
+        line-height: 1.65;
+      }
+
+      /* =========================================================
+         PATHWAY
+         ========================================================= */
+
+      .pathway-section {
+        padding-top: 110px;
+      }
+
+      .pathway-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+
+      .pathway-card {
+        min-height: 250px;
+        padding: 30px;
+        background: var(--tw-light);
+        border-top: 4px solid var(--tw-red);
+      }
+
+      .pathway-card span {
+        display: block;
+        margin-bottom: 55px;
+        color: var(--tw-red);
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.15em;
+      }
+
+      .pathway-card h3 {
+        margin: 0 0 10px;
+        font-size: 1.7rem;
+      }
+
+      .pathway-card p {
+        margin: 0;
+        color: #777777;
+        line-height: 1.65;
+      }
+
+      /* =========================================================
+         CTA
+         ========================================================= */
+
+      .teams-cta {
+        margin-top: 110px;
+        padding: 85px 40px;
+        text-align: center;
+        background: var(--tw-red);
+        color: var(--tw-white);
+      }
+
+      .teams-cta span {
+        display: block;
+        margin-bottom: 15px;
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .teams-cta h2 {
+        margin: 0;
+        color: var(--tw-white);
+        font-size: clamp(3rem, 7vw, 5.4rem);
+        line-height: 0.92;
+        letter-spacing: -0.055em;
+      }
+
+      .teams-cta p {
+        max-width: 650px;
+        margin: 22px auto 0;
+        color: rgba(255, 255, 255, 0.83);
+        line-height: 1.8;
+      }
+
+      .teams-cta a {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 15px 24px;
+        background: var(--tw-white);
+        color: var(--tw-red);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.13em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      /* =========================================================
+         RESPONSIVE
+         ========================================================= */
+
+      @media (max-width: 950px) {
+        .teams-hero-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .teams-hero-crest {
+          display: none;
+        }
+
+        .team-structure-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .team-card.primary {
+          grid-column: 1 / -1;
+        }
+
+        .staff-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .standard-grid,
+        .pathway-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 680px) {
+        .teams-hero {
+          min-height: 450px;
+        }
+
+        .teams-hero-inner,
+        .teams-content {
+          width: min(100% - 28px, 1200px);
+        }
+
+        .teams-content {
+          padding-top: 65px;
+        }
+
+        .team-structure-grid,
+        .staff-grid,
+        .standard-grid,
+        .pathway-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .team-card.primary {
+          grid-column: auto;
+        }
+
+        .team-card {
+          min-height: 350px;
+        }
+
+        .teams-cta {
+          padding: 65px 25px;
+        }
+      }
+    </style>
   </head>
 
-  <body>
-    <!-- Header -->
+  <body class="teams-page">
     <header class="site-header">
       <div class="container">
-        <a href="index.html" class="logo">
-          <img
-            src="images/teso-warriors-crest.png"
-            alt="Teso Warriors FC crest"
-          />
-          <span>TESO WARRIORS FC</span>
+        <a
+          href="index.html"
+          class="site-logo"
+          aria-label="Teso Warriors FC Home"
+        >
+          <img src="images/teso-warriors-crest.png" alt="Teso Warriors FC" />
         </a>
 
-        <nav class="main-nav">
+        <nav class="main-nav" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="about.html">Club</a>
           <a href="teams.html">Teams</a>
@@ -45,178 +581,321 @@
     </header>
 
     <main>
-      <!-- Page Hero -->
-      <section class="page-hero">
-        <div class="container">
-          <p class="section-label">FOOTBALL STRUCTURE</p>
+      <!-- HERO -->
 
-          <h1>OUR<br />TEAMS.</h1>
+      <section class="teams-hero">
+        <div class="teams-hero-inner">
+          <div>
+            <span class="teams-kicker"> Teso Warriors FC </span>
 
-          <p>
-            A football structure built around competition, player development
-            and creating opportunities across the club.
-          </p>
-        </div>
-      </section>
+            <h1>Our Teams.</h1>
 
-      <!-- Teams -->
-      <section class="teams-section">
-        <div class="container">
-          <div class="teams-list">
-            <!-- Senior Team -->
-            <article class="team-feature">
-              <div class="team-feature-number">01</div>
+            <p>
+              From today's competitive first team to the football structures we
+              are building for tomorrow, Teso Warriors FC is creating a clear
+              pathway for players, coaches and future teams.
+            </p>
+          </div>
 
-              <div class="team-feature-content">
-                <p class="section-label">SENIOR FOOTBALL</p>
-
-                <h2>Senior Team</h2>
-
-                <p>
-                  The senior team represents Teso Warriors FC in competitive
-                  football and serves as the club's primary performance pathway.
-                </p>
-
-                <p>
-                  The team is built around discipline, tactical development,
-                  teamwork and a commitment to representing the Teso Sub-region
-                  with pride.
-                </p>
-
-                <a href="players.html" class="btn btn-primary">
-                  View Players
-                </a>
-              </div>
-            </article>
-
-            <!-- Academy -->
-            <article class="team-feature">
-              <div class="team-feature-number">02</div>
-
-              <div class="team-feature-content">
-                <p class="section-label">PLAYER DEVELOPMENT</p>
-
-                <h2>Academy</h2>
-
-                <p>
-                  The Teso Warriors FC Academy is focused on identifying,
-                  developing and preparing young footballers for higher levels
-                  of the game.
-                </p>
-
-                <p>
-                  The academy forms an important part of the club's long-term
-                  player pathway and development philosophy.
-                </p>
-
-                <a href="academy.html" class="btn btn-primary">
-                  Explore Academy
-                </a>
-              </div>
-            </article>
-
-            <!-- Women's Football -->
-            <article class="team-feature">
-              <div class="team-feature-number">03</div>
-
-              <div class="team-feature-content">
-                <p class="section-label">WOMEN'S FOOTBALL</p>
-
-                <h2>Women's Football</h2>
-
-                <p>
-                  Teso Warriors FC is committed to creating opportunities for
-                  women and girls through football.
-                </p>
-
-                <p>
-                  Women's football forms part of the club's wider vision of
-                  developing an inclusive and sustainable football institution
-                  within the Teso Sub-region.
-                </p>
-
-                <a href="contact.html" class="btn btn-primary">
-                  Contact The Club
-                </a>
-              </div>
-            </article>
+          <div class="teams-hero-crest" aria-hidden="true">
+            <img src="images/teso-warriors-crest.png" alt="" />
           </div>
         </div>
       </section>
 
-      <!-- Structure -->
-      <section class="club-structure">
-        <div class="container">
+      <div class="teams-content">
+        <!-- FOOTBALL STRUCTURE -->
+
+        <section class="team-structure">
           <div class="section-heading">
-            <p class="section-label">THE WARRIOR PATHWAY</p>
+            <span class="section-label"> Football Structure </span>
 
-            <h2>One Structure.<br />Multiple Pathways.</h2>
+            <h2>One Club. Building Every Level.</h2>
+
+            <p>
+              Our first team leads the club's competitive programme today, while
+              additional football pathways are developed responsibly for the
+              future.
+            </p>
           </div>
 
-          <div class="structure-grid">
-            <div class="structure-card">
+          <div class="team-structure-grid">
+            <!-- FIRST TEAM -->
+
+            <article class="team-card primary">
+              <span class="team-card-number"> 01 </span>
+
+              <span class="team-card-status"> Active </span>
+
+              <div class="team-card-body">
+                <h3>First Team</h3>
+
+                <p>
+                  The senior competitive team representing Teso Warriors FC in
+                  the NERFA Regional League during the 2026/27 season.
+                </p>
+
+                <a href="players.html"> View First Team Players → </a>
+              </div>
+            </article>
+
+            <!-- WOMEN -->
+
+            <article class="team-card future">
+              <span class="team-card-number"> 02 </span>
+
+              <span class="team-card-status"> Future Development </span>
+
+              <div class="team-card-body">
+                <h3>Women's Football</h3>
+
+                <p>
+                  Women's football remains part of the club's long-term sporting
+                  vision and will be developed when the appropriate structure
+                  and resources are in place.
+                </p>
+              </div>
+            </article>
+
+            <!-- ACADEMY -->
+
+            <article class="team-card future">
+              <span class="team-card-number"> 03 </span>
+
+              <span class="team-card-status"> Coming Soon </span>
+
+              <div class="team-card-body">
+                <h3>Academy</h3>
+
+                <p>
+                  Our future youth development programme is currently being
+                  developed around the Warrior Pathway.
+                </p>
+
+                <a href="academy.html"> Explore Academy Plans → </a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- TECHNICAL STAFF -->
+
+        <section class="technical-section">
+          <div class="section-heading">
+            <span class="section-label"> First Team Technical Staff </span>
+
+            <h2>The People Preparing the Warriors.</h2>
+
+            <p>
+              Meet the coaches and technical personnel responsible for
+              preparing, developing and guiding the Teso Warriors FC First Team.
+            </p>
+          </div>
+
+          <div class="staff-grid" id="staff-grid">
+            <div class="staff-empty">
+              <h3>Loading Technical Staff</h3>
+
+              <p>Retrieving official first-team staff information.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- WARRIOR STANDARD -->
+
+        <section class="standard-section">
+          <div class="section-heading">
+            <span class="section-label"> The Warrior Standard </span>
+
+            <h2>What We Expect.</h2>
+          </div>
+
+          <div class="standard-grid">
+            <article class="standard-card">
               <span>01</span>
-              <h3>Identify</h3>
-              <p>
-                Discover players with potential through football activities,
-                scouting and community engagement.
-              </p>
-            </div>
 
-            <div class="structure-card">
+              <h3>Discipline</h3>
+
+              <p>
+                High standards in training, competition, behaviour and
+                responsibility.
+              </p>
+            </article>
+
+            <article class="standard-card">
               <span>02</span>
-              <h3>Develop</h3>
-              <p>
-                Provide structured training, competition and guidance to help
-                players improve.
-              </p>
-            </div>
 
-            <div class="structure-card">
+              <h3>Development</h3>
+
+              <p>
+                Players and staff must continue learning, improving and
+                challenging themselves.
+              </p>
+            </article>
+
+            <article class="standard-card">
               <span>03</span>
-              <h3>Compete</h3>
-              <p>
-                Give players opportunities to test themselves in competitive
-                football.
-              </p>
-            </div>
 
-            <div class="structure-card">
+              <h3>Competition</h3>
+
+              <p>
+                We prepare to compete with purpose, courage and respect for
+                every opponent.
+              </p>
+            </article>
+
+            <article class="standard-card">
               <span>04</span>
+
               <h3>Progress</h3>
+
               <p>
-                Create pathways for players to progress within the club and
-                toward higher levels of football.
+                Every season should move our players and the entire football
+                club forward.
               </p>
-            </div>
+            </article>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- CTA -->
-      <section class="home-cta">
-        <div class="container">
-          <p class="section-label">TESO WARRIORS FC</p>
+        <!-- PLAYER PATHWAY -->
 
-          <h2>Build The Future.</h2>
+        <section class="pathway-section">
+          <div class="section-heading">
+            <span class="section-label"> The Warrior Pathway </span>
+
+            <h2>Discover. Nurture. Promote. Progress.</h2>
+
+            <p>
+              Teso Warriors FC exists to give talented footballers a platform to
+              develop, compete and reach their next level.
+            </p>
+          </div>
+
+          <div class="pathway-grid">
+            <article class="pathway-card">
+              <span>01</span>
+
+              <h3>Discover</h3>
+
+              <p>
+                Identify promising footballers through scouting, grassroots
+                football and community opportunities.
+              </p>
+            </article>
+
+            <article class="pathway-card">
+              <span>02</span>
+
+              <h3>Nurture</h3>
+
+              <p>
+                Develop ability through training, guidance, discipline and
+                competitive football.
+              </p>
+            </article>
+
+            <article class="pathway-card">
+              <span>03</span>
+
+              <h3>Promote</h3>
+
+              <p>
+                Give players opportunities to compete, demonstrate ability and
+                earn responsibility.
+              </p>
+            </article>
+
+            <article class="pathway-card">
+              <span>04</span>
+
+              <h3>Progress</h3>
+
+              <p>
+                Create pathways within Teso Warriors FC and towards higher
+                football opportunities.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- CTA -->
+
+        <section class="teams-cta">
+          <span> Teso Warriors FC </span>
+
+          <h2>One Club. One Direction.</h2>
 
           <p>
-            Explore our teams, follow the players and become part of the
-            journey.
+            Players, coaches, staff and supporters moving together with one
+            purpose.
           </p>
 
-          <a href="contact.html" class="btn btn-primary"> Contact The Club </a>
-        </div>
-      </section>
+          <a href="players.html"> Meet the Players </a>
+        </section>
+      </div>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
-      <div class="container">
-        <p>&copy; 2026 Teso Warriors Football Club. All rights reserved.</p>
+      <div class="container footer-main">
+
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img
+              src="images/teso-warriors-crest.png"
+              alt="Teso Warriors FC"
+            />
+          </a>
+
+          <div>
+            <strong>TESO WARRIORS FC</strong>
+
+            <p>
+              Strength. Pride. Glory.
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <div>
+            <span>CLUB</span>
+            <a href="about.html">About</a>
+            <a href="teams.html">Teams</a>
+            <a href="players.html">Players</a>
+            <a href="academy.html">Academy</a>
+          </div>
+
+          <div>
+            <span>MATCH CENTRE</span>
+            <a href="fixtures.html">Fixtures</a>
+            <a href="results.html">Results</a>
+            <a href="table.html">League Table</a>
+          </div>
+
+          <div>
+            <span>FOLLOW</span>
+            <a href="news.html">News</a>
+            <a href="media.html">Media</a>
+            <a href="contact.html">Contact Club</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="container footer-bottom">
+        <p>
+          &copy; 2026 Teso Warriors Football Club.
+          All rights reserved.
+        </p>
+
+        <p>
+          Soroti, Uganda
+        </p>
       </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/teams.js"></script>
   </body>
 </html>

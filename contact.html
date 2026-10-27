@@ -2,33 +2,483 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Contact | Teso Warriors FC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <meta
       name="description"
-      content="Contact Teso Warriors Football Club for official enquiries, partnerships, football opportunities and club information."
+      content="Contact Teso Warriors FC for football, media, partnership, community and club administration enquiries."
     />
+
+    <title>Contact | Teso Warriors FC</title>
 
     <link rel="icon" type="image/png" href="images/teso-warriors-crest.png" />
 
     <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      :root {
+        --tw-red: #b5121b;
+        --tw-red-dark: #7d0b12;
+        --tw-black: #0e1012;
+        --tw-dark: #16191b;
+        --tw-grey: #757a7f;
+        --tw-light: #f5f5f3;
+        --tw-border: #dedede;
+        --tw-white: #ffffff;
+        --tw-gold: #c79a4a;
+      }
+
+      .contact-page {
+        margin: 0;
+        background: var(--tw-white);
+        color: var(--tw-black);
+      }
+
+      .contact-page .site-header {
+        position: relative;
+        z-index: 100;
+      }
+
+      .contact-page .site-logo img {
+        display: block;
+        width: 62px;
+        max-width: 62px;
+        height: 62px;
+        object-fit: contain;
+      }
+
+      /* =========================================================
+         HERO
+         ========================================================= */
+
+      .contact-hero {
+        position: relative;
+        overflow: hidden;
+        min-height: 520px;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(
+          110deg,
+          rgba(12, 13, 15, 0.99) 0%,
+          rgba(12, 13, 15, 0.96) 58%,
+          rgba(125, 11, 18, 0.95) 100%
+        );
+        color: var(--tw-white);
+      }
+
+      .contact-hero::before {
+        content: "";
+        position: absolute;
+        top: -160px;
+        right: -160px;
+        width: 600px;
+        height: 800px;
+        background: rgba(255, 255, 255, 0.035);
+        transform: rotate(18deg);
+      }
+
+      .contact-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+          );
+        background-size: 50px 50px;
+        pointer-events: none;
+      }
+
+      .contact-hero-inner {
+        position: relative;
+        z-index: 2;
+        width: min(1200px, calc(100% - 40px));
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        align-items: center;
+        gap: 70px;
+      }
+
+      .contact-kicker {
+        display: block;
+        margin-bottom: 18px;
+        color: #e02833;
+        font-size: 0.76rem;
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .contact-hero h1 {
+        max-width: 850px;
+        margin: 0;
+        color: var(--tw-white);
+        font-size: clamp(4rem, 8vw, 7.4rem);
+        line-height: 0.88;
+        letter-spacing: -0.06em;
+        text-transform: uppercase;
+      }
+
+      .contact-hero p {
+        max-width: 670px;
+        margin: 30px 0 0;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+
+      .contact-hero-crest {
+        display: flex;
+        justify-content: center;
+        opacity: 0.2;
+      }
+
+      .contact-hero-crest img {
+        width: 275px;
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      /* =========================================================
+         MAIN CONTENT
+         ========================================================= */
+
+      .contact-content {
+        width: min(1200px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 100px 0 110px;
+      }
+
+      .section-label {
+        display: block;
+        margin-bottom: 13px;
+        color: var(--tw-red);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .section-heading {
+        margin-bottom: 42px;
+      }
+
+      .section-heading h2 {
+        margin: 0;
+        font-size: clamp(2.8rem, 6vw, 5rem);
+        line-height: 0.94;
+        letter-spacing: -0.05em;
+      }
+
+      .section-heading p {
+        max-width: 690px;
+        margin: 20px 0 0;
+        color: #747474;
+        line-height: 1.8;
+      }
+
+      /* =========================================================
+         CONTACT CARDS
+         ========================================================= */
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+
+      .contact-card {
+        min-height: 270px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        border-top: 4px solid var(--tw-red);
+        background: var(--tw-light);
+      }
+
+      .contact-card-number {
+        margin-bottom: auto;
+        color: var(--tw-red);
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.15em;
+      }
+
+      .contact-card h3 {
+        margin: 30px 0 12px;
+        font-size: 1.55rem;
+      }
+
+      .contact-card p {
+        margin: 0;
+        color: #757575;
+        line-height: 1.65;
+      }
+
+      .contact-card a {
+        display: inline-block;
+        margin-top: 15px;
+        color: var(--tw-black);
+        font-weight: 800;
+        text-decoration: none;
+        word-break: break-word;
+      }
+
+      .contact-card a:hover {
+        color: var(--tw-red);
+      }
+
+      /* =========================================================
+         CONNECT WITH CLUB
+         ========================================================= */
+
+      .connect-section {
+        padding-top: 110px;
+      }
+
+      .connect-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+
+      .connect-card {
+        position: relative;
+        overflow: hidden;
+        min-height: 250px;
+        padding: 34px;
+        background: var(--tw-black);
+        color: var(--tw-white);
+      }
+
+      .connect-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -90px;
+        width: 220px;
+        height: 100%;
+        background: rgba(181, 18, 27, 0.11);
+        transform: skewX(-15deg);
+      }
+
+      .connect-card > * {
+        position: relative;
+        z-index: 2;
+      }
+
+      .connect-card span {
+        display: block;
+        margin-bottom: 60px;
+        color: #e02833;
+        font-size: 0.69rem;
+        font-weight: 900;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .connect-card h3 {
+        margin: 0;
+        color: var(--tw-white);
+        font-size: 1.9rem;
+      }
+
+      .connect-card p {
+        max-width: 500px;
+        margin: 12px 0 0;
+        color: #999ea2;
+        line-height: 1.7;
+      }
+
+      /* =========================================================
+         CLUB ADMINISTRATION
+         ========================================================= */
+
+      .admin-section {
+        margin-top: 110px;
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        background: var(--tw-black);
+        color: var(--tw-white);
+      }
+
+      .admin-title {
+        padding: 65px;
+        background: var(--tw-red);
+      }
+
+      .admin-title span {
+        display: block;
+        margin-bottom: 15px;
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .admin-title h2 {
+        margin: 0;
+        color: var(--tw-white);
+        font-size: clamp(2.7rem, 5vw, 4.6rem);
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+      }
+
+      .admin-list {
+        padding: 65px;
+        display: grid;
+        gap: 28px;
+      }
+
+      .admin-person {
+        padding-bottom: 28px;
+        border-bottom: 1px solid #2b2e31;
+      }
+
+      .admin-person:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .admin-person span {
+        display: block;
+        margin-bottom: 7px;
+        color: #74797d;
+        font-size: 0.69rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .admin-person strong {
+        display: block;
+        color: var(--tw-white);
+        font-size: 1.25rem;
+      }
+
+      /* =========================================================
+         CTA
+         ========================================================= */
+
+      .contact-cta {
+        margin-top: 110px;
+        padding: 85px 40px;
+        text-align: center;
+        background: var(--tw-light);
+      }
+
+      .contact-cta span {
+        display: block;
+        margin-bottom: 14px;
+        color: var(--tw-red);
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .contact-cta h2 {
+        margin: 0;
+        font-size: clamp(3rem, 7vw, 5.5rem);
+        line-height: 0.92;
+        letter-spacing: -0.055em;
+      }
+
+      .contact-cta p {
+        max-width: 650px;
+        margin: 23px auto 0;
+        color: #747474;
+        line-height: 1.8;
+      }
+
+      .contact-cta a {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 15px 24px;
+        background: var(--tw-red);
+        color: var(--tw-white);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.13em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .contact-cta a:hover {
+        background: var(--tw-red-dark);
+      }
+
+      /* =========================================================
+         RESPONSIVE
+         ========================================================= */
+
+      @media (max-width: 1000px) {
+        .contact-hero-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-hero-crest {
+          display: none;
+        }
+
+        .contact-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .admin-section {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 700px) {
+        .contact-hero {
+          min-height: 440px;
+        }
+
+        .contact-hero-inner,
+        .contact-content {
+          width: min(100% - 28px, 1200px);
+        }
+
+        .contact-content {
+          padding-top: 65px;
+        }
+
+        .contact-grid,
+        .connect-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .admin-title,
+        .admin-list {
+          padding: 42px 28px;
+        }
+
+        .contact-cta {
+          padding: 65px 25px;
+        }
+      }
+    </style>
   </head>
 
-  <body>
-    <!-- Header -->
+  <body class="contact-page">
     <header class="site-header">
       <div class="container">
-        <a href="index.html" class="logo">
-          <img
-            src="images/teso-warriors-crest.png"
-            alt="Teso Warriors FC crest"
-          />
-          <span>TESO WARRIORS FC</span>
+        <a
+          href="index.html"
+          class="site-logo"
+          aria-label="Teso Warriors FC Home"
+        >
+          <img src="images/teso-warriors-crest.png" alt="Teso Warriors FC" />
         </a>
 
-        <nav class="main-nav">
+        <nav class="main-nav" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="about.html">Club</a>
           <a href="teams.html">Teams</a>
@@ -45,284 +495,251 @@
     </header>
 
     <main>
-      <!-- Page Hero -->
-      <section class="page-hero">
-        <div class="container">
-          <p class="section-label">GET IN TOUCH</p>
+      <section class="contact-hero">
+        <div class="contact-hero-inner">
+          <div>
+            <span class="contact-kicker"> Teso Warriors FC </span>
 
-          <h1>CONTACT<br />THE CLUB.</h1>
+            <h1>Reach the Warriors.</h1>
 
-          <p>
-            Connect with Teso Warriors FC for official enquiries, opportunities,
-            partnerships and club information.
-          </p>
-        </div>
-      </section>
+            <p>
+              Players. Supporters. Partners. Media. Community. One club, one
+              connection. Teso Warriors FC welcomes enquiries from everyone who
+              wants to connect with the club and its journey.
+            </p>
+          </div>
 
-      <!-- Contact Introduction -->
-      <section class="contact-intro">
-        <div class="container">
-          <div class="contact-intro-grid">
-            <div>
-              <p class="section-label">TESO WARRIORS FC</p>
-
-              <h2>Let's Build Together.</h2>
-            </div>
-
-            <div>
-              <p>
-                Teso Warriors FC welcomes communication from players, coaches,
-                supporters, organisations, partners and members of the wider
-                community.
-              </p>
-
-              <p>
-                For official club matters, please use the contact details
-                provided below.
-              </p>
-            </div>
+          <div class="contact-hero-crest" aria-hidden="true">
+            <img src="images/teso-warriors-crest.png" alt="" />
           </div>
         </div>
       </section>
 
-      <!-- Contact Details -->
-      <section class="contact-details">
-        <div class="container">
+      <div class="contact-content">
+        <section>
           <div class="section-heading">
-            <p class="section-label">OFFICIAL CONTACT</p>
+            <span class="section-label"> Contact the Club </span>
 
-            <h2>Reach The Warriors.</h2>
+            <h2>Start With the Right Channel.</h2>
+
+            <p>
+              Use the contact information below to reach the club directly. For
+              faster communication, please choose the channel that best matches
+              your enquiry.
+            </p>
           </div>
 
           <div class="contact-grid">
             <article class="contact-card">
-              <span>01</span>
+              <span class="contact-card-number">01</span>
 
-              <p class="contact-card-label">CLUB EMAIL</p>
-
-              <h3>tesowarriorsfc@gmail.com</h3>
-
-              <a href="mailto:tesowarriorsfc@gmail.com"> Send An Email → </a>
-            </article>
-
-            <article class="contact-card">
-              <span>02</span>
-
-              <p class="contact-card-label">CLUB PHONE</p>
-
-              <h3>+256 774 383 048</h3>
-
-              <a href="tel:+256774383048"> Call The Club → </a>
-            </article>
-
-            <article class="contact-card">
-              <span>03</span>
-
-              <p class="contact-card-label">LOCATION</p>
-
-              <h3>Soroti, Uganda</h3>
-
-              <p>Representing the Teso Sub-region.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Enquiries -->
-      <section class="contact-form-section">
-        <div class="container">
-          <div class="contact-form-grid">
-            <div>
-              <p class="section-label">SEND AN ENQUIRY</p>
-
-              <h2>How Can We Help?</h2>
+              <h3>Email Us</h3>
 
               <p>
-                Send the club a message using the form. This form will later be
-                connected to the club's official enquiry system.
+                For official club correspondence, partnerships, football matters
+                and general enquiries.
               </p>
-            </div>
 
-            <form class="contact-form">
-              <div class="form-group">
-                <label for="name">Full Name</label>
+              <a href="mailto:tesowarriorsfc@gmail.com">
+                tesowarriorsfc@gmail.com
+              </a>
+            </article>
 
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Your full name"
-                  required
-                />
-              </div>
+            <article class="contact-card">
+              <span class="contact-card-number">02</span>
 
-              <div class="form-group">
-                <label for="email">Email Address</label>
+              <h3>Call Us</h3>
 
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="you@example.com"
-                  required
-                />
-              </div>
+              <p>
+                Speak directly with the club for urgent or operational matters.
+              </p>
 
-              <div class="form-group">
-                <label for="subject">Subject</label>
+              <a href="tel:+256774383048"> +256 774 383 048 </a>
+            </article>
 
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  placeholder="What is your enquiry about?"
-                  required
-                />
-              </div>
+            <article class="contact-card">
+              <span class="contact-card-number">03</span>
 
-              <div class="form-group">
-                <label for="message">Message</label>
+              <h3>Visit Us</h3>
 
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="6"
-                  placeholder="Write your message..."
-                  required
-                ></textarea>
-              </div>
+              <p>
+                Teso Warriors FC is based in Soroti and plays its home matches
+                at Soroti City Stadium.
+              </p>
 
-              <button type="submit" class="btn btn-primary">
-                Send Enquiry
-              </button>
-            </form>
+              <strong> Soroti City, Uganda </strong>
+            </article>
+
+            <article class="contact-card">
+              <span class="contact-card-number">04</span>
+
+              <h3>Club Administration</h3>
+
+              <p>
+                Reach the club leadership for official, administrative and
+                institutional matters.
+              </p>
+
+              <strong> Teso Warriors FC </strong>
+            </article>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Opportunities -->
-      <section class="contact-opportunities">
-        <div class="container">
+        <section class="connect-section">
           <div class="section-heading">
-            <p class="section-label">WORK WITH THE CLUB</p>
+            <span class="section-label"> Connect With the Club </span>
 
-            <h2>Opportunities & Partnerships.</h2>
-
-            <p>
-              Teso Warriors FC is building relationships that can contribute to
-              the development and sustainability of the club.
-            </p>
+            <h2>What Can We Help With?</h2>
           </div>
 
-          <div class="opportunities-grid">
-            <div class="opportunity-card">
-              <span>01</span>
+          <div class="connect-grid">
+            <article class="connect-card">
+              <span>Football</span>
 
-              <h3>Players</h3>
+              <h3>Players & Football Matters</h3>
 
               <p>
-                Footballers interested in opportunities with the club can
-                contact the official club administration.
+                Player enquiries, football operations, registration matters,
+                technical communication and club participation.
               </p>
+            </article>
+
+            <article class="connect-card">
+              <span>Commercial</span>
+
+              <h3>Partnerships & Sponsorship</h3>
+
+              <p>
+                Speak with us about sponsorship, commercial partnerships,
+                institutional collaboration and opportunities to support the
+                club.
+              </p>
+            </article>
+
+            <article class="connect-card">
+              <span>Communications</span>
+
+              <h3>Media & Club Information</h3>
+
+              <p>
+                Media requests, interviews, official club information,
+                photography and communication enquiries.
+              </p>
+            </article>
+
+            <article class="connect-card">
+              <span>Community</span>
+
+              <h3>Community & Development</h3>
+
+              <p>
+                Community football, development initiatives, grassroots
+                engagement and opportunities to work with Teso Warriors FC.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="admin-section">
+          <div class="admin-title">
+            <span> Club Leadership </span>
+
+            <h2>Administration.</h2>
+          </div>
+
+          <div class="admin-list">
+            <div class="admin-person">
+              <span>Chairperson</span>
+
+              <strong> Mr. Lepi Stanley </strong>
             </div>
 
-            <div class="opportunity-card">
-              <span>02</span>
+            <div class="admin-person">
+              <span> Secretary / Chief Executive Officer </span>
 
-              <h3>Coaches & Staff</h3>
-
-              <p>
-                Qualified football professionals interested in contributing to
-                the club can submit an official enquiry.
-              </p>
+              <strong> Mr. Eniau David Louis </strong>
             </div>
 
-            <div class="opportunity-card">
-              <span>03</span>
+            <div class="admin-person">
+              <span> Official Club Email </span>
 
-              <h3>Partners</h3>
-
-              <p>
-                Organisations and businesses interested in supporting the club
-                are welcome to start a conversation.
-              </p>
-            </div>
-
-            <div class="opportunity-card">
-              <span>04</span>
-
-              <h3>Community</h3>
-
-              <p>
-                Community members and organisations can connect with the club
-                regarding football and development initiatives.
-              </p>
+              <strong> tesowarriorsfc@gmail.com </strong>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Administration -->
-      <section class="contact-administration">
-        <div class="container">
-          <div class="administration-grid">
-            <div>
-              <p class="section-label">CLUB ADMINISTRATION</p>
+        <section class="contact-cta">
+          <span> Teso Warriors FC </span>
 
-              <h2>Official Communication.</h2>
-            </div>
-
-            <div>
-              <p>
-                Teso Warriors FC maintains official communication channels for
-                club administration, football operations and stakeholder
-                engagement.
-              </p>
-
-              <div class="admin-contact">
-                <p>
-                  <strong>Chairperson</strong><br />
-                  Mr. Lepi Stanley
-                </p>
-
-                <p>
-                  <strong>Secretary / CEO</strong><br />
-                  Eniau David Louis
-                </p>
-              </div>
-
-              <p>
-                For formal club matters, please contact the club through the
-                official email address or telephone number above.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA -->
-      <section class="home-cta">
-        <div class="container">
-          <p class="section-label">TESO WARRIORS FC</p>
-
-          <h2>Start The Conversation.</h2>
+          <h2>Start the Conversation.</h2>
 
           <p>
-            Whether you want to support, partner, play or work with the club,
-            we'd like to hear from you.
+            Whether you are a supporter, player, partner, journalist or member
+            of the community, we welcome the opportunity to connect.
           </p>
 
-          <a href="mailto:tesowarriorsfc@gmail.com" class="btn btn-primary">
-            Email The Club
+          <a href="mailto:tesowarriorsfc@gmail.com">
+            Contact Teso Warriors FC
           </a>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
-      <div class="container">
-        <p>&copy; 2026 Teso Warriors Football Club. All rights reserved.</p>
+      <div class="container footer-main">
+
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img
+              src="images/teso-warriors-crest.png"
+              alt="Teso Warriors FC"
+            />
+          </a>
+
+          <div>
+            <strong>TESO WARRIORS FC</strong>
+
+            <p>
+              Strength. Pride. Glory.
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <div>
+            <span>CLUB</span>
+            <a href="about.html">About</a>
+            <a href="teams.html">Teams</a>
+            <a href="players.html">Players</a>
+            <a href="academy.html">Academy</a>
+          </div>
+
+          <div>
+            <span>MATCH CENTRE</span>
+            <a href="fixtures.html">Fixtures</a>
+            <a href="results.html">Results</a>
+            <a href="table.html">League Table</a>
+          </div>
+
+          <div>
+            <span>FOLLOW</span>
+            <a href="news.html">News</a>
+            <a href="media.html">Media</a>
+            <a href="contact.html">Contact Club</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="container footer-bottom">
+        <p>
+          &copy; 2026 Teso Warriors Football Club.
+          All rights reserved.
+        </p>
+
+        <p>
+          Soroti, Uganda
+        </p>
       </div>
     </footer>
 

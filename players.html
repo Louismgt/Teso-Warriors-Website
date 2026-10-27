@@ -12,12 +12,10 @@
     />
 
     <link rel="icon" type="image/png" href="images/teso-warriors-crest.png" />
-
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
   <body>
-    <!-- Header -->
     <header class="site-header">
       <div class="container">
         <a href="index.html" class="logo">
@@ -45,85 +43,271 @@
     </header>
 
     <main>
-      <!-- Page Hero -->
-      <section class="page-hero">
+      <!-- Players Hero -->
+      <section class="players-hero">
+        <div class="players-hero-watermark">
+          <img src="images/teso-warriors-crest.png" alt="" aria-hidden="true" />
+        </div>
+
         <div class="container">
-          <p class="section-label">THE WARRIORS</p>
+          <div class="players-hero-content">
+            <p class="section-label">THE WARRIORS</p>
 
-          <h1>OUR<br />PLAYERS.</h1>
+            <h1>
+              MEET THE<br />
+              <span>WARRIORS.</span>
+            </h1>
 
-          <p>
-            The players who represent Teso Warriors FC on the pitch and carry
-            the responsibility of representing the Teso Sub-region.
-          </p>
+            <p>
+              The players who carry the badge, compete for the club and
+              represent the Teso Sub-region.
+            </p>
+
+            <div class="players-hero-meta">
+              <div>
+                <strong id="player-count">—</strong>
+                <span>REGISTERED PLAYERS</span>
+              </div>
+
+              <div>
+                <strong>2026</strong>
+                <span>SEASON</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- Senior Squad -->
-      <section class="players-section">
+      <!-- Squad Navigation -->
+      <section class="squad-navigation">
         <div class="container">
-          <div class="section-heading">
-            <p class="section-label">SENIOR TEAM</p>
+          <div class="squad-navigation-inner">
+            <div>
+              <p class="section-label">SQUAD</p>
+              <h2>First Team</h2>
+            </div>
 
-            <h2>First Team Squad</h2>
+            <div class="squad-tabs">
+              <button type="button" class="squad-tab active" data-team="senior">
+                First Team
+              </button>
+              <button type="button" class="squad-tab" data-team="academy">
+                Academy
+              </button>
+              <button type="button" class="squad-tab" data-team="women">
+                Women's Team
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <p>
-              Official squad information will be published and updated by the
-              club.
+      <!-- Position Filters -->
+      <section class="position-filters">
+        <div class="container">
+          <div class="position-filter-inner">
+            <button
+              type="button"
+              class="position-filter active"
+              data-position="all"
+            >
+              All
+            </button>
+            <button
+              type="button"
+              class="position-filter"
+              data-position="goalkeeper"
+            >
+              Goalkeepers
+            </button>
+            <button
+              type="button"
+              class="position-filter"
+              data-position="defender"
+            >
+              Defenders
+            </button>
+            <button
+              type="button"
+              class="position-filter"
+              data-position="midfielder"
+            >
+              Midfielders
+            </button>
+            <button
+              type="button"
+              class="position-filter"
+              data-position="forward"
+            >
+              Forwards
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Player Roster -->
+      <section class="players-roster">
+        <div class="container">
+          <div class="roster-heading">
+            <div>
+              <p class="section-label">SENIOR TEAM</p>
+              <h2>The Squad.</h2>
+            </div>
+
+            <p id="roster-status">
+              Official squad information managed by Teso Warriors FC.
             </p>
           </div>
 
-          <div class="players-grid">
-            <article class="player-card">
-              <div class="player-number">01</div>
-
-              <div class="player-card-content">
-                <p class="player-position">GOALKEEPER</p>
-                <h3>Squad Information</h3>
-                <p>Player profile coming soon.</p>
-              </div>
-            </article>
-
-            <article class="player-card">
-              <div class="player-number">02</div>
-
-              <div class="player-card-content">
-                <p class="player-position">DEFENDER</p>
-                <h3>Squad Information</h3>
-                <p>Player profile coming soon.</p>
-              </div>
-            </article>
-
-            <article class="player-card">
-              <div class="player-number">03</div>
-
-              <div class="player-card-content">
-                <p class="player-position">MIDFIELDER</p>
-                <h3>Squad Information</h3>
-                <p>Player profile coming soon.</p>
-              </div>
-            </article>
-
-            <article class="player-card">
-              <div class="player-number">04</div>
-
-              <div class="player-card-content">
-                <p class="player-position">FORWARD</p>
-                <h3>Squad Information</h3>
-                <p>Player profile coming soon.</p>
-              </div>
-            </article>
+          <div id="players-grid" class="players-grid">
+            <div class="players-loading">
+              <span class="loading-line"></span>
+              <span class="loading-line"></span>
+              <span class="loading-line"></span>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Player Development -->
+      <!-- Player Identity -->
+      <section class="player-identity">
+        <div class="container">
+          <div class="player-identity-grid">
+            <div class="player-identity-crest">
+              <img
+                src="images/teso-warriors-crest.png"
+                alt="Teso Warriors FC crest"
+              />
+            </div>
+
+            <div class="player-identity-content">
+              <p class="section-label">THE WARRIOR ID</p>
+              <h2>Every Player.<br />One Identity.</h2>
+
+              <p>
+                Teso Warriors FC is developing a structured player
+                identification system designed to maintain accurate records
+                throughout a player's journey with the club.
+              </p>
+
+              <p>
+                The <strong>TWF Player ID</strong> can connect registration,
+                contracts, medical records, performance records, match records
+                and disciplinary documentation.
+              </p>
+
+              <div class="player-id-example">
+                <span>PLAYER ID</span>
+                <strong>TWF-2026-001</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Warrior Pathway -->
+      <section class="player-pathway">
+        <div class="container">
+          <div class="pathway-introduction">
+            <div class="pathway-introduction-left">
+              <p class="section-label">THE WARRIOR PATHWAY</p>
+
+              <h2>
+                <span class="pathway-heading-line">From Potential</span>
+                <span class="pathway-heading-accent">To Performance.</span>
+              </h2>
+
+              <p class="pathway-intro">
+                Teso Warriors FC exists to provide a platform where young
+                footballers can be discovered, developed and given opportunities
+                to progress.
+              </p>
+            </div>
+
+            <div class="pathway-introduction-right">
+              <p>
+                We believe talent can be found everywhere, but opportunity is
+                not always available. Our role is to identify potential, nurture
+                it through structured football development, and create pathways
+                that can open doors to better opportunities within and beyond
+                the club.
+              </p>
+
+              <p>
+                We want our players to grow from promising young footballers
+                into confident, disciplined and capable athletes who can compete
+                at higher levels. When a player progresses, the club progresses
+                with them — through stronger teams, greater opportunities, a
+                stronger football identity and a growing reputation for
+                developing talent.
+              </p>
+            </div>
+          </div>
+
+          <div class="pathway-grid">
+            <article class="pathway-card">
+              <span>01</span>
+              <h3>Discover</h3>
+              <p>
+                Identify talented players through scouting, grassroots football,
+                community engagement and open opportunities.
+              </p>
+            </article>
+
+            <article class="pathway-card">
+              <span>02</span>
+              <h3>Nurture</h3>
+              <p>
+                Provide the training, guidance, discipline and competitive
+                environment needed to develop their potential.
+              </p>
+            </article>
+
+            <article class="pathway-card">
+              <span>03</span>
+              <h3>Promote</h3>
+              <p>
+                Give players opportunities to compete, be seen, earn
+                responsibility and demonstrate their ability.
+              </p>
+            </article>
+
+            <article class="pathway-card">
+              <span>04</span>
+              <h3>Progress</h3>
+              <p>
+                Create pathways for players to advance within Teso Warriors FC
+                or move on to higher levels and better opportunities.
+              </p>
+            </article>
+          </div>
+
+          <div class="pathway-future-banner">
+            <div>
+              <p class="pathway-future-label">OUR SHARED FUTURE</p>
+
+              <h3>
+                When our players move forward,
+                <strong>Teso Warriors FC moves forward with them.</strong>
+              </h3>
+            </div>
+
+            <div class="pathway-future-meta">
+              <strong
+                >TALENT&nbsp; | &nbsp;OPPORTUNITY&nbsp; | &nbsp;PROGRESS</strong
+              >
+              <span>MORE THAN A CLUB. A PATHWAY.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Development -->
       <section class="player-development">
         <div class="container">
           <div class="development-grid">
             <div>
               <p class="section-label">PLAYER DEVELOPMENT</p>
-
               <h2>Developing More Than Footballers.</h2>
             </div>
 
@@ -149,107 +333,249 @@
         </div>
       </section>
 
-      <!-- Player ID -->
-      <section class="player-id-section">
-        <div class="container">
-          <div class="section-heading">
-            <p class="section-label">CLUB REGISTRATION</p>
-
-            <h2>The Warrior Identity.</h2>
-          </div>
-
-          <div class="player-id-content">
-            <div class="player-id-number">TWF-2026-001</div>
-
-            <div>
-              <h3>TWF Player ID</h3>
-
-              <p>
-                Teso Warriors FC is developing a structured player
-                identification system designed to maintain accurate records
-                throughout a player's journey with the club.
-              </p>
-
-              <p>
-                The TWF Player ID can be used across registration, contracts,
-                medical records, performance records, match records and
-                disciplinary documentation.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Academy Pathway -->
-      <section class="player-pathway">
-        <div class="container">
-          <div class="section-heading">
-            <p class="section-label">THE WARRIOR PATHWAY</p>
-
-            <h2>From Potential<br />To Performance.</h2>
-          </div>
-
-          <div class="pathway-grid">
-            <div class="pathway-card">
-              <span>01</span>
-              <h3>Identify</h3>
-              <p>
-                Find players with potential through scouting, football
-                activities and community engagement.
-              </p>
-            </div>
-
-            <div class="pathway-card">
-              <span>02</span>
-              <h3>Develop</h3>
-              <p>
-                Build technical, tactical, physical and personal capabilities
-                through structured development.
-              </p>
-            </div>
-
-            <div class="pathway-card">
-              <span>03</span>
-              <h3>Compete</h3>
-              <p>
-                Provide opportunities to gain competitive experience and
-                understand the demands of football.
-              </p>
-            </div>
-
-            <div class="pathway-card">
-              <span>04</span>
-              <h3>Progress</h3>
-              <p>
-                Support players as they progress within the club or toward
-                higher levels of football.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- CTA -->
       <section class="home-cta">
         <div class="container">
           <p class="section-label">TESO WARRIORS FC</p>
-
           <h2>Every Warrior Has A Journey.</h2>
-
           <p>Follow the players, the teams and the development of the club.</p>
-
-          <a href="contact.html" class="btn btn-primary"> Contact The Club </a>
+          <a href="contact.html" class="btn btn-primary">Contact The Club</a>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
-      <div class="container">
-        <p>&copy; 2026 Teso Warriors Football Club. All rights reserved.</p>
+      <div class="container footer-main">
+
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img
+              src="images/teso-warriors-crest.png"
+              alt="Teso Warriors FC"
+            />
+          </a>
+
+          <div>
+            <strong>TESO WARRIORS FC</strong>
+
+            <p>
+              Strength. Pride. Glory.
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <div>
+            <span>CLUB</span>
+            <a href="about.html">About</a>
+            <a href="teams.html">Teams</a>
+            <a href="players.html">Players</a>
+            <a href="academy.html">Academy</a>
+          </div>
+
+          <div>
+            <span>MATCH CENTRE</span>
+            <a href="fixtures.html">Fixtures</a>
+            <a href="results.html">Results</a>
+            <a href="table.html">League Table</a>
+          </div>
+
+          <div>
+            <span>FOLLOW</span>
+            <a href="news.html">News</a>
+            <a href="media.html">Media</a>
+            <a href="contact.html">Contact Club</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="container footer-bottom">
+        <p>
+          &copy; 2026 Teso Warriors Football Club.
+          All rights reserved.
+        </p>
+
+        <p>
+          Soroti, Uganda
+        </p>
       </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
     <script src="js/main.js"></script>
+
+    <script>
+      const playersGrid = document.getElementById("players-grid");
+      const playerCount = document.getElementById("player-count");
+      const rosterStatus = document.getElementById("roster-status");
+
+      let allPlayers = [];
+
+      async function loadPlayers() {
+        try {
+          const { data, error } = await window.twfSupabase
+            .from("players")
+            .select(
+              "player_id, first_name, last_name, position, jersey_number, photo_url, bio",
+            )
+            .eq("status", "active")
+            .order("jersey_number", {
+              ascending: true,
+              nullsFirst: false,
+            });
+
+          if (error) {
+            throw error;
+          }
+
+          allPlayers = data || [];
+          playerCount.textContent = String(allPlayers.length).padStart(2, "0");
+          renderPlayers(allPlayers);
+        } catch (error) {
+          console.error("Failed to load players:", error);
+
+          playerCount.textContent = "—";
+          rosterStatus.textContent =
+            "Squad information is temporarily unavailable.";
+
+          playersGrid.innerHTML = `
+            <div class="players-error">
+              <p class="section-label">UNAVAILABLE</p>
+              <h3>Squad Information Could Not Be Loaded.</h3>
+              <p>
+                Please try again later or contact the club for official player
+                information.
+              </p>
+            </div>
+          `;
+        }
+      }
+
+      function renderPlayers(players) {
+        if (!players.length) {
+          playersGrid.innerHTML = `
+            <div class="players-empty">
+              <div class="players-empty-crest">
+                <img
+                  src="images/teso-warriors-crest.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+
+              <div class="players-empty-content">
+                <p class="section-label">SQUAD INFORMATION</p>
+                <h3>Player Profiles Coming Soon.</h3>
+                <p>
+                  Official Teso Warriors FC player profiles will appear here
+                  as the squad is registered in the club's digital system.
+                </p>
+              </div>
+            </div>
+          `;
+
+          return;
+        }
+
+        playersGrid.innerHTML = players
+          .map((player) => {
+            const fullName = `${player.first_name} ${player.last_name}`;
+
+            const jerseyNumber =
+              player.jersey_number !== null
+                ? String(player.jersey_number).padStart(2, "0")
+                : "—";
+
+            const photo = player.photo_url
+              ? `
+                <img
+                  src="${player.photo_url}"
+                  alt="${fullName}"
+                  loading="lazy"
+                />
+              `
+              : `
+                <div class="player-photo-placeholder">
+                  <img
+                    src="images/teso-warriors-crest.png"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                </div>
+              `;
+
+            const normalizedPosition = (player.position || "player")
+              .toLowerCase()
+              .replace(/s$/, "");
+
+            return `
+              <article
+                class="player-card"
+                data-player-position="${normalizedPosition}"
+              >
+                <div class="player-card-image">
+                  ${photo}
+                  <span class="player-card-number">${jerseyNumber}</span>
+                </div>
+
+                <div class="player-card-content">
+                  <p class="player-position">${player.position || "PLAYER"}</p>
+                  <h3>${fullName}</h3>
+
+                  <div class="player-card-footer">
+                    <span>${player.player_id}</span>
+                    <span>VIEW PROFILE →</span>
+                  </div>
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+
+        rosterStatus.textContent = `${players.length} active player${players.length === 1 ? "" : "s"} registered.`;
+      }
+
+      function filterPlayers(position) {
+        if (position === "all") {
+          renderPlayers(allPlayers);
+          return;
+        }
+
+        const filteredPlayers = allPlayers.filter((player) => {
+          const normalizedPosition = (player.position || "player")
+            .toLowerCase()
+            .replace(/s$/, "");
+
+          return normalizedPosition === position;
+        });
+
+        renderPlayers(filteredPlayers);
+      }
+
+      document.querySelectorAll(".position-filter").forEach((button) => {
+        button.addEventListener("click", () => {
+          document
+            .querySelectorAll(".position-filter")
+            .forEach((item) => item.classList.remove("active"));
+
+          button.classList.add("active");
+          filterPlayers(button.dataset.position);
+        });
+      });
+
+      document.querySelectorAll(".squad-tab").forEach((button) => {
+        button.addEventListener("click", () => {
+          document
+            .querySelectorAll(".squad-tab")
+            .forEach((item) => item.classList.remove("active"));
+
+          button.classList.add("active");
+        });
+      });
+
+      loadPlayers();
+    </script>
   </body>
 </html>
