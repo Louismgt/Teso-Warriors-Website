@@ -4276,3 +4276,19 @@ button:focus-visible {
   object-fit: contain;
 }
 
+
+/* Homepage official club email */
+
+.footer-email {
+  display: inline-block;
+  margin-top: 12px;
+  color: #ffffff;
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-email:hover {
+  color: #b5121b;
+}
+
