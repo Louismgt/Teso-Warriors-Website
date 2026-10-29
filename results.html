@@ -361,7 +361,159 @@
         }
       }
     </style>
-  </head>
+  
+<style>
+  /* =========================================================
+     PRE-SEASON RESULT CARD
+     ========================================================= */
+
+  .result-card-empty {
+    display: grid !important;
+    grid-template-columns: 135px 235px minmax(520px, 1fr) 235px !important;
+    align-items: center !important;
+    gap: 28px !important;
+    min-height: 190px;
+    padding: 28px 36px !important;
+  }
+
+  .result-card-empty .result-date,
+  .result-card-empty .result-competition,
+  .result-card-empty .result-venue {
+    min-width: 0;
+  }
+
+  .result-card-empty .result-matchup {
+    display: grid;
+    grid-template-columns: 1fr 105px 1fr;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+  }
+
+  .result-card-empty .result-club {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .result-card-empty .result-club:last-child {
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  .result-card-empty .result-club strong {
+    font-size: 1.05rem;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+
+  .result-club-crest {
+    width: 58px;
+    height: 58px;
+    flex: 0 0 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    border-radius: 50%;
+
+    background: #ffffff;
+    border: 1px solid rgba(14, 16, 18, 0.14);
+  }
+
+  .result-club-crest img {
+    display: block;
+    width: 92%;
+    height: 92%;
+    object-fit: contain;
+  }
+
+  .result-card-empty .result-club:first-child .result-club-crest img {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.18);
+  }
+
+  .result-versus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    text-align: center;
+  }
+
+  .result-versus strong {
+    color: #b5121b;
+    font-size: 1.65rem;
+    line-height: 1;
+  }
+
+  .result-versus span {
+    color: #777f88;
+    font-size: 0.58rem;
+    font-weight: 900;
+    letter-spacing: 0.11em;
+    white-space: nowrap;
+  }
+
+  .result-card-empty .result-venue {
+    text-align: right;
+  }
+
+  .result-card-empty .result-venue span {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 1100px) {
+    .result-card-empty {
+      grid-template-columns: 110px 1fr !important;
+    }
+
+    .result-card-empty .result-matchup,
+    .result-card-empty .result-venue {
+      grid-column: 1 / -1;
+    }
+
+    .result-card-empty .result-venue {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .result-card-empty {
+      display: block !important;
+      padding: 28px 22px !important;
+    }
+
+    .result-card-empty > * + * {
+      margin-top: 24px;
+    }
+
+    .result-card-empty .result-matchup {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .result-card-empty .result-club,
+    .result-card-empty .result-club:last-child {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .result-card-empty .result-venue,
+    .result-card-empty .result-date,
+    .result-card-empty .result-competition {
+      text-align: center;
+    }
+  }
+</style>
+
+</head>
   <body>
     <header class="site-header">
       <div class="container">
@@ -450,57 +602,52 @@
             </p>
           </div>
           <div class="results-list">
-            <article class="result-card">
-              <div class="result-date"><span>TBC</span><small>DATE</small></div>
+            <article class="result-card result-card-empty">
+              <div class="result-date">
+                <span>30 OCT</span>
+                <small>2026</small>
+              </div>
+
               <div class="result-competition">
-                <p>COMPETITION TBC</p>
-                <span>2026 SEASON</span>
+                <p>NERFA REGIONAL LEAGUE</p>
+                <span>2026/27 SEASON</span>
               </div>
-              <div class="result-teams">
-                <strong>Teso Warriors FC</strong>
-                <div class="result-score">
-                  <span>—</span><small>FULL TIME</small><span>—</span>
+
+              <div class="result-matchup">
+                <div class="result-club">
+                  <span class="result-club-crest">
+                    <img
+                      src="images/teso-warriors-crest.png"
+                      alt="Teso Warriors FC crest"
+                    />
+                  </span>
+
+                  <strong>Teso Warriors FC</strong>
                 </div>
-                <strong>Opponent TBC</strong>
+
+                <div class="result-versus">
+                  <strong>VS</strong>
+                  <span>NO RESULTS YET</span>
+                </div>
+
+                <div class="result-club">
+                  <span class="result-club-crest">
+                    <img
+                      src="images/teams/rupa-united-fc.jpeg"
+                      alt="Rupa United FC crest"
+                    />
+                  </span>
+
+                  <strong>Rupa United FC</strong>
+                </div>
               </div>
+
               <div class="result-venue">
-                <span>VENUE</span><strong>TBC</strong>
+                <span>FIRST FIXTURE</span>
+                <strong>Soroti City Stadium (Oligoi)</strong>
               </div>
             </article>
-            <article class="result-card">
-              <div class="result-date"><span>TBC</span><small>DATE</small></div>
-              <div class="result-competition">
-                <p>COMPETITION TBC</p>
-                <span>2026 SEASON</span>
-              </div>
-              <div class="result-teams">
-                <strong>Teso Warriors FC</strong>
-                <div class="result-score">
-                  <span>—</span><small>FULL TIME</small><span>—</span>
-                </div>
-                <strong>Opponent TBC</strong>
-              </div>
-              <div class="result-venue">
-                <span>VENUE</span><strong>TBC</strong>
-              </div>
-            </article>
-            <article class="result-card">
-              <div class="result-date"><span>TBC</span><small>DATE</small></div>
-              <div class="result-competition">
-                <p>COMPETITION TBC</p>
-                <span>2026 SEASON</span>
-              </div>
-              <div class="result-teams">
-                <strong>Teso Warriors FC</strong>
-                <div class="result-score">
-                  <span>—</span><small>FULL TIME</small><span>—</span>
-                </div>
-                <strong>Opponent TBC</strong>
-              </div>
-              <div class="result-venue">
-                <span>VENUE</span><strong>TBC</strong>
-              </div>
-            </article>
+
           </div>
         </div>
       </section>
@@ -634,6 +781,9 @@
         </p>
       </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/results.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
