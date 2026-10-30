@@ -13,23 +13,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  const matchesPlayedElement = document.querySelector("#matches-played");
+  const matchesPlayedElement =
+    document.querySelector("#matches-played");
 
-  const winsElement = document.querySelector("#wins");
+  const winsElement =
+    document.querySelector("#wins");
 
-  const drawsElement = document.querySelector("#draws");
+  const drawsElement =
+    document.querySelector("#draws");
 
-  const lossesElement = document.querySelector("#losses");
+  const lossesElement =
+    document.querySelector("#losses");
 
-  const pointsElement = document.querySelector("#points");
+  const pointsElement =
+    document.querySelector("#points");
 
-  const resultsList = document.querySelector("#results-list");
+  const resultsList =
+    document.querySelector("#results-list");
 
-  /*
-   * =========================================================
-   * HELPERS
-   * =========================================================
-   */
+  /* =========================================================
+     HELPERS
+     ========================================================= */
 
   function escapeHTML(value) {
     if (value === null || value === undefined) {
@@ -83,71 +87,77 @@ document.addEventListener("DOMContentLoaded", async () => {
       return "";
     }
 
-    const scorerMarker = notes.toLowerCase().indexOf("scorers:");
+    const marker =
+      notes.toLowerCase().indexOf("scorers:");
 
-    if (scorerMarker === -1) {
+    if (marker === -1) {
       return escapeHTML(notes);
     }
 
-    const scorers = notes.slice(scorerMarker + 8).trim();
-
-    return escapeHTML(scorers);
+    return escapeHTML(
+      notes.slice(marker + 8).trim(),
+    );
   }
 
-  /*
-   * =========================================================
-   * LOAD SEASON RECORD
-   * =========================================================
-   */
+  /* =========================================================
+     SEASON RECORD
+     ========================================================= */
 
   async function loadSeasonRecord() {
     try {
-      const { data, error } = await supabase
-        .from("season_record")
-        .select(
-          `
-              matches_played,
-              wins,
-              draws,
-              losses,
-              points
+      const { data, error } =
+        await supabase
+          .from("season_record")
+          .select(
+            `
+            matches_played,
+            wins,
+            draws,
+            losses,
+            points
             `,
-        )
-        .single();
+          )
+          .single();
 
       if (error) {
         throw error;
       }
 
       if (matchesPlayedElement) {
-        matchesPlayedElement.textContent = data?.matches_played ?? 0;
+        matchesPlayedElement.textContent =
+          data?.matches_played ?? 0;
       }
 
       if (winsElement) {
-        winsElement.textContent = data?.wins ?? 0;
+        winsElement.textContent =
+          data?.wins ?? 0;
       }
 
       if (drawsElement) {
-        drawsElement.textContent = data?.draws ?? 0;
+        drawsElement.textContent =
+          data?.draws ?? 0;
       }
 
       if (lossesElement) {
-        lossesElement.textContent = data?.losses ?? 0;
+        lossesElement.textContent =
+          data?.losses ?? 0;
       }
 
       if (pointsElement) {
-        pointsElement.textContent = data?.points ?? 0;
+        pointsElement.textContent =
+          data?.points ?? 0;
       }
     } catch (error) {
-      console.error("Unable to load season record:", error);
+      console.error(
+        "Unable to load season record:",
+        error,
+      );
     }
   }
 
-  /*
-   * =========================================================
-   * RENDER RESULTS
-   * =========================================================
-   */
+  /* =========================================================
+     RESULTS
+     ========================================================= */
 
   function renderResults(results) {
     if (!resultsList) {
@@ -173,162 +183,186 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     resultsList.innerHTML = results
       .map((result) => {
-        const date = formatMatchDate(result.match_date);
+        const date =
+          formatMatchDate(result.match_date);
 
-        const opponent = escapeHTML(result.opponent);
+        const opponent =
+          escapeHTML(result.opponent);
 
-        const competition = escapeHTML(result.competition || "Regional League");
+        const competition =
+          escapeHTML(
+            result.competition ||
+              "Regional League",
+          );
 
-        const venue = escapeHTML(result.venue || "Venue TBC");
+        const venue =
+          escapeHTML(
+            result.venue ||
+              "Venue TBC",
+          );
 
-        const tesoScore = Number(result.teso_warriors_score ?? 0);
+        const tesoScore =
+          Number(
+            result.teso_warriors_score ?? 0,
+          );
 
-        const opponentScore = Number(result.opponent_score ?? 0);
+        const opponentScore =
+          Number(
+            result.opponent_score ?? 0,
+          );
 
-        const homeAway = String(result.home_away || "home").toLowerCase();
+        const homeAway =
+          String(
+            result.home_away || "home",
+          )
+            .trim()
+            .toLowerCase();
 
-        const opponentLogo = getOpponentLogo(result.opponent);
+        const opponentLogo =
+          getOpponentLogo(
+            result.opponent,
+          );
 
-        const scorerText = buildScorerText(result.notes);
+        const scorers =
+          buildScorerText(
+            result.notes,
+          );
 
-        let firstTeamName = "Teso Warriors FC";
+        const tesoTeamHTML = `
+          <div class="result-team">
+            <span class="result-team-crest">
+              <img
+                src="images/teso-warriors-crest.png"
+                alt="Teso Warriors FC crest"
+              />
+            </span>
 
-        let secondTeamName = opponent;
+            <strong>
+              Teso Warriors FC
+            </strong>
+          </div>
+        `;
 
-        let firstTeamScore = tesoScore;
+        const opponentTeamHTML = `
+          <div class="result-team">
+            ${
+              opponentLogo
+                ? `
+                  <span class="result-team-crest">
+                    <img
+                      src="${escapeHTML(opponentLogo)}"
+                      alt="${opponent} crest"
+                    />
+                  </span>
+                `
+                : ""
+            }
 
-        let secondTeamScore = opponentScore;
+            <strong>
+              ${opponent}
+            </strong>
+          </div>
+        `;
 
-        let firstTeamLogo = "images/teso-warriors-crest.png";
+        let leftTeam =
+          tesoTeamHTML;
 
-        let secondTeamLogo = opponentLogo;
+        let rightTeam =
+          opponentTeamHTML;
+
+        let leftScore =
+          tesoScore;
+
+        let rightScore =
+          opponentScore;
 
         if (homeAway === "away") {
-          firstTeamName = opponent;
+          leftTeam =
+            opponentTeamHTML;
 
-          secondTeamName = "Teso Warriors FC";
+          rightTeam =
+            tesoTeamHTML;
 
-          firstTeamScore = opponentScore;
+          leftScore =
+            opponentScore;
 
-          secondTeamScore = tesoScore;
-
-          firstTeamLogo = opponentLogo;
-
-          secondTeamLogo = "images/teso-warriors-crest.png";
+          rightScore =
+            tesoScore;
         }
 
-        const firstLogoHTML = firstTeamLogo
-          ? `
-                <span class="result-team-crest">
-                  <img
-                    src="${escapeHTML(firstTeamLogo)}"
-                    alt="${escapeHTML(firstTeamName)} crest"
-                  />
-                </span>
-              `
-          : "";
+        const scorersHTML =
+          scorers
+            ? `
+              <div class="result-scorers">
+                <strong>
+                  Teso Warriors Scorers
+                </strong>
 
-        const secondLogoHTML = secondTeamLogo
-          ? `
-                <span class="result-team-crest">
-                  <img
-                    src="${escapeHTML(secondTeamLogo)}"
-                    alt="${escapeHTML(secondTeamName)} crest"
-                  />
-                </span>
-              `
-          : "";
+                <br />
 
-        const scorerHTML = scorerText
-          ? `
-                <div class="result-scorers">
-                  <strong>
-                    Teso Warriors Scorers
-                  </strong>
-
-                  <br />
-
-                  ${scorerText}
-                </div>
-              `
-          : "";
+                ${scorers}
+              </div>
+            `
+            : "";
 
         return `
-            <article class="result-card">
-              <div class="result-date">
-                <span>
-                  ${escapeHTML(date.dayMonth)}
-                </span>
+          <article class="result-card">
+            <div class="result-date">
+              <span>
+                ${escapeHTML(date.dayMonth)}
+              </span>
 
-                <small>
-                  ${escapeHTML(date.year)}
-                </small>
-              </div>
+              <small>
+                ${escapeHTML(date.year)}
+              </small>
+            </div>
 
-              <div class="result-competition">
-                <p>
-                  ${competition}
-                </p>
+            <div class="result-competition">
+              <p>
+                ${competition}
+              </p>
 
-                <span>
-                  2026/27 SEASON
-                </span>
-              </div>
+              <span>
+                2026/27 SEASON
+              </span>
+            </div>
 
-              <div class="result-match-area">
-                <div class="result-teams">
-                  <div class="result-team">
-                    ${firstLogoHTML}
+            <div class="result-match-area">
+              <div class="result-teams">
 
-                    <strong>
-                      ${escapeHTML(firstTeamName)}
-                    </strong>
-                  </div>
+                ${leftTeam}
 
-                  <div class="result-score">
-                    <strong>
-                      ${firstTeamScore}
-                      -
-                      ${secondTeamScore}
-                    </strong>
+                <div class="result-score">
+                  <strong>
+                    ${leftScore} - ${rightScore}
+                  </strong>
 
-                    <span>
-                      FULL TIME
-                    </span>
-                  </div>
-
-                  <div class="result-team">
-                    ${secondLogoHTML}
-
-                    <strong>
-                      ${escapeHTML(secondTeamName)}
-                    </strong>
-                  </div>
+                  <span>
+                    FULL TIME
+                  </span>
                 </div>
 
-                ${scorerHTML}
+                ${rightTeam}
+
               </div>
 
-              <div class="result-venue">
-                <span>
-                  VENUE
-                </span>
+              ${scorersHTML}
+            </div>
 
-                <strong>
-                  ${venue}
-                </strong>
-              </div>
-            </article>
-          `;
+            <div class="result-venue">
+              <span>
+                VENUE
+              </span>
+
+              <strong>
+                ${venue}
+              </strong>
+            </div>
+          </article>
+        `;
       })
       .join("");
   }
-
-  /*
-   * =========================================================
-   * LOAD RESULTS
-   * =========================================================
-   */
 
   async function loadResults() {
     if (!resultsList) {
@@ -336,25 +370,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-      const { data, error } = await supabase
-        .from("results")
-        .select(
-          `
-              id,
-              fixture_id,
-              competition,
-              opponent,
-              match_date,
-              venue,
-              home_away,
-              teso_warriors_score,
-              opponent_score,
-              notes
+      const { data, error } =
+        await supabase
+          .from("results")
+          .select(
+            `
+            id,
+            fixture_id,
+            competition,
+            opponent,
+            match_date,
+            venue,
+            home_away,
+            teso_warriors_score,
+            opponent_score,
+            notes
             `,
-        )
-        .order("match_date", {
-          ascending: false,
-        });
+          )
+          .order(
+            "match_date",
+            {
+              ascending: false,
+            },
+          );
 
       if (error) {
         throw error;
@@ -362,7 +400,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       renderResults(data);
     } catch (error) {
-      console.error("Unable to load results:", error);
+      console.error(
+        "Unable to load results:",
+        error,
+      );
 
       resultsList.innerHTML = `
         <article class="results-empty">
@@ -378,11 +419,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  /*
-   * =========================================================
-   * INITIAL LOAD
-   * =========================================================
-   */
+  /* =========================================================
+     INITIAL LOAD
+     ========================================================= */
 
-  await Promise.all([loadSeasonRecord(), loadResults()]);
+  await Promise.all([
+    loadSeasonRecord(),
+    loadResults(),
+  ]);
 });
