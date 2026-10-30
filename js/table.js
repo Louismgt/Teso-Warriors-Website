@@ -9,19 +9,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   const supabase = window.twfSupabase;
   const tableBody = document.querySelector("#league-table-body");
 
-  if (!supabase) {
-    console.error("Supabase connection not found.");
+  if (!supabase || !tableBody) {
+    console.error("League table could not initialise.");
     return;
   }
 
-  if (!tableBody) {
-    console.error("League table body not found.");
-    return;
-  }
+  const snapshotPosition =
+    document.querySelector("#snapshot-position");
 
-  /* =========================================================
-     HELPERS
-     ========================================================= */
+  const snapshotMatches =
+    document.querySelector("#snapshot-matches");
+
+  const snapshotPoints =
+    document.querySelector("#snapshot-points");
+
+  const snapshotGD =
+    document.querySelector("#snapshot-gd");
 
   function escapeHTML(value) {
     if (value === null || value === undefined) {
@@ -70,25 +73,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       return "?";
     }
 
-    if (words.length === 1) {
-      return words[0]
-        .slice(0, 2)
-        .toUpperCase();
-    }
-
     return words
       .slice(0, 2)
-      .map((word) => word.charAt(0))
+      .map((word) => word[0])
       .join("")
       .toUpperCase();
   }
 
   function getRowClass(team) {
-    const teamName = String(team.team_name || "")
+    const name = String(team.team_name || "")
       .trim()
       .toLowerCase();
 
-    if (teamName === "teso warriors fc") {
+    if (name === "teso warriors fc") {
       return "warriors-row";
     }
 
@@ -133,9 +130,57 @@ document.addEventListener("DOMContentLoaded", async () => {
     `;
   }
 
-  /* =========================================================
-     RENDER TABLE
-     ========================================================= */
+  function updateWarriorsSnapshot(standings) {
+    const warriors = standings.find(
+      (team) =>
+        String(team.team_name || "")
+          .trim()
+          .toLowerCase() === "teso warriors fc",
+    );
+
+    if (!warriors) {
+      return;
+    }
+
+    if (snapshotPosition) {
+      snapshotPosition.textContent =
+        `${warriors.position}${getOrdinal(warriors.position)}`;
+    }
+
+    if (snapshotMatches) {
+      snapshotMatches.textContent =
+        warriors.matches_played ?? 0;
+    }
+
+    if (snapshotPoints) {
+      snapshotPoints.textContent =
+        warriors.points ?? 0;
+    }
+
+    if (snapshotGD) {
+      snapshotGD.textContent =
+        formatGoalDifference(warriors.goal_difference);
+    }
+  }
+
+  function getOrdinal(position) {
+    const number = Number(position);
+
+    if (number >= 11 && number <= 13) {
+      return "th";
+    }
+
+    switch (number % 10) {
+      case 1:
+        return "st";
+      case 2:
+        return "nd";
+      case 3:
+        return "rd";
+      default:
+        return "th";
+    }
+  }
 
   function renderStandings(standings) {
     if (!standings || standings.length === 0) {
@@ -150,6 +195,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
+    updateWarriorsSnapshot(standings);
+
     tableBody.innerHTML = standings
       .map((team) => {
         const isWarriors =
@@ -161,9 +208,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <tr class="${getRowClass(team)}">
 
             <td class="position-column">
-              <strong>
-                ${escapeHTML(team.position)}
-              </strong>
+              <strong>${escapeHTML(team.position)}</strong>
             </td>
 
             <td class="team-column">
@@ -178,11 +223,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                   ${
                     isWarriors
-                      ? `
-                        <span>
-                          THE WARRIORS
-                        </span>
-                      `
+                      ? "<span>THE WARRIORS</span>"
                       : ""
                   }
                 </div>
@@ -190,31 +231,16 @@ document.addEventListener("DOMContentLoaded", async () => {
               </div>
             </td>
 
-            <td>
-              ${escapeHTML(team.matches_played)}
-            </td>
+            <td>${escapeHTML(team.matches_played)}</td>
+            <td>${escapeHTML(team.wins)}</td>
+            <td>${escapeHTML(team.draws)}</td>
+            <td>${escapeHTML(team.losses)}</td>
+            <td>${escapeHTML(team.goals_for)}</td>
+            <td>${escapeHTML(team.goals_against)}</td>
 
-            <td>
-              ${escapeHTML(team.wins)}
-            </td>
-
-            <td>
-              ${escapeHTML(team.draws)}
-            </td>
-
-            <td>
-              ${escapeHTML(team.losses)}
-            </td>
-
-            <td>
-              ${escapeHTML(team.goals_for)}
-            </td>
-
-            <td>
-              ${escapeHTML(team.goals_against)}
-            </td>
-
-            <td class="${goalDifferenceClass(team.goal_difference)}">
+            <td class="${goalDifferenceClass(
+              team.goal_difference,
+            )}">
               ${formatGoalDifference(team.goal_difference)}
             </td>
 
@@ -227,10 +253,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       })
       .join("");
   }
-
-  /* =========================================================
-     LOAD OFFICIAL STANDINGS
-     ========================================================= */
 
   async function loadStandings() {
     try {
@@ -252,20 +274,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             competition
           `,
         )
-        .eq(
-          "season",
-          "2026/27",
-        )
+        .eq("season", "2026/27")
         .eq(
           "competition",
           "North East Regional League",
         )
-        .order(
-          "position",
-          {
-            ascending: true,
-          },
-        );
+        .order("position", {
+          ascending: true,
+        });
 
       if (error) {
         throw error;
@@ -282,7 +298,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         <tr>
           <td colspan="10" class="table-loading">
             Unable to load the league table.
-            Please refresh the page or try again shortly.
           </td>
         </tr>
       `;

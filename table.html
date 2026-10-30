@@ -188,6 +188,198 @@
           gap: 0.8rem;
         }
       }
+
+      /* =========================================================
+         WARRIORS SNAPSHOT + TABLE GUIDE
+         ========================================================= */
+
+      .table-insight-section {
+        padding: 6rem 0;
+        background: #f5f6f8;
+      }
+
+      .table-insight-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 520px);
+        gap: 4rem;
+        align-items: end;
+        margin-bottom: 2.75rem;
+      }
+
+      .table-insight-header h2 {
+        margin: 0.5rem 0 0;
+        max-width: 700px;
+        font-size: clamp(2.7rem, 5vw, 5rem);
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+      }
+
+      .table-insight-header > p {
+        margin: 0;
+        color: #667085;
+        line-height: 1.75;
+      }
+
+      .warriors-snapshot {
+        display: grid;
+        grid-template-columns: 1.5fr repeat(3, 1fr);
+        gap: 1px;
+        background: #dfe3e8;
+        border: 1px solid #dfe3e8;
+        margin-bottom: 2rem;
+      }
+
+      .snapshot-primary,
+      .snapshot-card {
+        min-height: 180px;
+        padding: 1.6rem;
+        background: #ffffff;
+      }
+
+      .snapshot-primary {
+        position: relative;
+        overflow: hidden;
+        background: #0b0d10;
+        color: #ffffff;
+      }
+
+      .snapshot-primary::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 8px;
+        height: 100%;
+        background: #b5121b;
+      }
+
+      .snapshot-primary span,
+      .snapshot-card span {
+        display: block;
+        color: #b5121b;
+        font-size: 0.67rem;
+        font-weight: 900;
+        letter-spacing: 0.15em;
+      }
+
+      .snapshot-primary strong,
+      .snapshot-card strong {
+        display: block;
+        margin: 1rem 0 0.45rem;
+        font-size: 3.2rem;
+        line-height: 1;
+        letter-spacing: -0.06em;
+      }
+
+      .snapshot-primary strong {
+        color: #ffffff;
+      }
+
+      .snapshot-card strong {
+        color: #111418;
+      }
+
+      .snapshot-primary p,
+      .snapshot-card p {
+        margin: 0;
+        color: #7b8492;
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+
+      .snapshot-primary p {
+        color: rgba(255, 255, 255, 0.62);
+      }
+
+      .table-guide-modern {
+        display: grid;
+        grid-template-columns: minmax(250px, 0.7fr) minmax(0, 1.8fr);
+        gap: 1px;
+        background: #dfe3e8;
+        border: 1px solid #dfe3e8;
+      }
+
+      .table-guide-modern-heading {
+        padding: 2.2rem;
+        background: #ffffff;
+      }
+
+      .table-guide-modern-heading h3 {
+        margin: 0.6rem 0 1rem;
+        font-size: 2.2rem;
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      .table-guide-modern-heading > p:last-child {
+        margin: 0;
+        color: #667085;
+        line-height: 1.7;
+      }
+
+      .table-guide-modern-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+        background: #dfe3e8;
+      }
+
+      .table-guide-modern-grid article {
+        display: grid;
+        grid-template-columns: 58px 1fr;
+        gap: 1rem;
+        align-items: center;
+        min-height: 105px;
+        padding: 1.25rem 1.4rem;
+        background: #ffffff;
+      }
+
+      .table-guide-modern-grid article > strong {
+        color: #b5121b;
+        font-size: 1.35rem;
+        font-weight: 900;
+      }
+
+      .table-guide-modern-grid span {
+        display: block;
+        margin-bottom: 0.25rem;
+        color: #111418;
+        font-size: 0.82rem;
+        font-weight: 900;
+      }
+
+      .table-guide-modern-grid p {
+        margin: 0;
+        color: #788190;
+        font-size: 0.72rem;
+        line-height: 1.4;
+      }
+
+      @media (max-width: 900px) {
+        .table-insight-header {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .warriors-snapshot {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .table-guide-modern {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .warriors-snapshot {
+          grid-template-columns: 1fr;
+        }
+
+        .table-guide-modern-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
     </style>
   </head>
 
@@ -397,70 +589,134 @@
       </section>
 
       <!-- =========================================================
-           TABLE GUIDE
+           WARRIORS SNAPSHOT + TABLE GUIDE
            ========================================================= -->
 
-      <section class="table-guide-section">
+      <section class="table-insight-section">
         <div class="container">
-          <div class="table-guide-header">
-            <div>
-              <p class="section-label">
-                TABLE GUIDE
-              </p>
 
-              <h2>
-                Know The Numbers.
-              </h2>
+          <div class="table-insight-header">
+            <div>
+              <p class="section-label">SEASON SNAPSHOT</p>
+              <h2>Where The Warriors Stand.</h2>
             </div>
 
             <p>
-              The table records the competitive journey of every team
-              across the season. Each column tells a different part of
-              that story.
+              A quick view of Teso Warriors FC's current position and
+              competitive record in the North East Regional League.
             </p>
           </div>
 
-          <div class="table-guide-grid">
-            <div class="guide-item">
-              <strong>MP</strong>
-              <span>Matches Played</span>
-            </div>
+          <div class="warriors-snapshot">
 
-            <div class="guide-item">
-              <strong>W</strong>
-              <span>Wins</span>
-            </div>
+            <article class="snapshot-primary">
+              <span>CURRENT POSITION</span>
+              <strong id="snapshot-position">—</strong>
+              <p>North East Regional League</p>
+            </article>
 
-            <div class="guide-item">
-              <strong>D</strong>
-              <span>Draws</span>
-            </div>
+            <article class="snapshot-card">
+              <span>MP</span>
+              <strong id="snapshot-matches">—</strong>
+              <p>Matches Played</p>
+            </article>
 
-            <div class="guide-item">
-              <strong>L</strong>
-              <span>Losses</span>
-            </div>
+            <article class="snapshot-card">
+              <span>PTS</span>
+              <strong id="snapshot-points">—</strong>
+              <p>Points</p>
+            </article>
 
-            <div class="guide-item">
-              <strong>GF</strong>
-              <span>Goals For</span>
-            </div>
+            <article class="snapshot-card">
+              <span>GD</span>
+              <strong id="snapshot-gd">—</strong>
+              <p>Goal Difference</p>
+            </article>
 
-            <div class="guide-item">
-              <strong>GA</strong>
-              <span>Goals Against</span>
-            </div>
-
-            <div class="guide-item">
-              <strong>GD</strong>
-              <span>Goal Difference</span>
-            </div>
-
-            <div class="guide-item">
-              <strong>PTS</strong>
-              <span>Points</span>
-            </div>
           </div>
+
+          <div class="table-guide-modern">
+
+            <div class="table-guide-modern-heading">
+              <p class="section-label">TABLE GUIDE</p>
+              <h3>Know The Numbers.</h3>
+
+              <p>
+                Each statistic helps explain a club's position,
+                performance and progress across the season.
+              </p>
+            </div>
+
+            <div class="table-guide-modern-grid">
+
+              <article>
+                <strong>MP</strong>
+                <div>
+                  <span>Matches Played</span>
+                  <p>Total league matches completed.</p>
+                </div>
+              </article>
+
+              <article>
+                <strong>W</strong>
+                <div>
+                  <span>Wins</span>
+                  <p>Matches won by the club.</p>
+                </div>
+              </article>
+
+              <article>
+                <strong>D</strong>
+                <div>
+                  <span>Draws</span>
+                  <p>Matches ending level.</p>
+                </div>
+              </article>
+
+              <article>
+                <strong>L</strong>
+                <div>
+                  <span>Losses</span>
+                  <p>Matches lost by the club.</p>
+                </div>
+              </article>
+
+              <article>
+                <strong>GF</strong>
+                <div>
+                  <span>Goals For</span>
+                  <p>Total goals scored.</p>
+                </div>
+              </article>
+
+              <article>
+                <strong>GA</strong>
+                <div>
+                  <span>Goals Against</span>
+                  <p>Total goals conceded.</p>
+                </div>
+              </article>
+
+              <article>
+                <strong>GD</strong>
+                <div>
+                  <span>Goal Difference</span>
+                  <p>Goals scored minus goals conceded.</p>
+                </div>
+              </article>
+
+              <article>
+                <strong>PTS</strong>
+                <div>
+                  <span>Points</span>
+                  <p>Three for a win and one for a draw.</p>
+                </div>
+              </article>
+
+            </div>
+
+          </div>
+
         </div>
       </section>
 
