@@ -3,14 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Results | Teso Warriors FC</title>
+
     <meta
       name="description"
       content="Follow Teso Warriors FC match results, scores and competitive record throughout the season."
     />
+
     <link rel="icon" type="image/png" href="images/teso-warriors-crest.png" />
+
     <link rel="stylesheet" href="css/style.css" />
+
     <style>
+      /* =========================================================
+         RESULTS HERO
+         ========================================================= */
+
       .results-hero {
         position: relative;
         overflow: hidden;
@@ -18,8 +27,9 @@
         display: flex;
         align-items: center;
         background: #0b0d10;
-        color: #fff;
+        color: #ffffff;
       }
+
       .results-hero::after {
         content: "";
         position: absolute;
@@ -32,6 +42,7 @@
         );
         pointer-events: none;
       }
+
       .results-hero-watermark {
         position: absolute;
         right: 4%;
@@ -40,36 +51,43 @@
         transform: translateY(-50%);
         opacity: 0.09;
       }
+
       .results-hero-watermark img {
         display: block;
         width: 100%;
         height: auto;
       }
+
       .results-hero-content {
         position: relative;
         z-index: 1;
         max-width: 760px;
       }
+
       .results-hero h1 {
         margin: 1rem 0 1.25rem;
         font-size: clamp(4rem, 8vw, 7.8rem);
         line-height: 0.82;
         letter-spacing: -0.065em;
       }
+
       .results-hero h1 span {
         color: #b5121b;
       }
+
       .results-hero-content > p:not(.section-label) {
         max-width: 680px;
         color: rgba(255, 255, 255, 0.72);
         font-size: 1.05rem;
         line-height: 1.7;
       }
+
       .results-hero-links {
         display: flex;
         gap: 0.5rem;
         margin-top: 2rem;
       }
+
       .results-hero-links a {
         padding: 0.75rem 1.1rem;
         border: 1px solid rgba(255, 255, 255, 0.18);
@@ -80,20 +98,28 @@
         text-transform: uppercase;
         transition: 0.2s;
       }
+
       .results-hero-links a:hover,
       .results-hero-links a.active {
         background: #b5121b;
         border-color: #b5121b;
-        color: #fff;
+        color: #ffffff;
       }
+
+      /* =========================================================
+         SEASON RECORD
+         ========================================================= */
+
       .results-summary {
         background: #f5f6f8;
         padding: 5.5rem 0;
       }
+
       .results-summary .section-heading {
         max-width: 760px;
         margin-bottom: 2.75rem;
       }
+
       .results-stats {
         display: grid;
         grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -101,11 +127,13 @@
         background: #dfe2e6;
         border: 1px solid #dfe2e6;
       }
+
       .result-stat {
         min-height: 170px;
         padding: 1.7rem;
-        background: #fff;
+        background: #ffffff;
       }
+
       .result-stat > span {
         display: block;
         color: #b5121b;
@@ -113,6 +141,7 @@
         font-weight: 900;
         letter-spacing: 0.16em;
       }
+
       .result-stat strong {
         display: block;
         margin: 1rem 0 0.45rem;
@@ -121,35 +150,49 @@
         letter-spacing: -0.05em;
         color: #0b0d10;
       }
+
       .result-stat p {
         margin: 0;
         color: #697386;
         font-size: 0.78rem;
         font-weight: 700;
       }
+
+      /* =========================================================
+         RESULTS LIST
+         ========================================================= */
+
       .results-section {
         padding: 6rem 0;
-        background: #fff;
+        background: #ffffff;
       }
+
       .results-section .section-heading {
         margin-bottom: 2.5rem;
       }
+
       .results-list {
         display: grid;
-        gap: 1rem;
+        gap: 1.25rem;
       }
+
       .result-card {
         display: grid;
-        grid-template-columns: 130px 180px minmax(0, 1fr) 180px;
+        grid-template-columns: 120px 190px minmax(0, 1fr) 210px;
         align-items: center;
         gap: 1.5rem;
-        padding: 1.35rem 1.5rem;
+
+        padding: 1.6rem 1.7rem;
+
         background: #f7f8fa;
+
         border: 1px solid #e1e4e8;
         border-left: 4px solid #b5121b;
         border-radius: 8px;
+
         box-shadow: 0 8px 24px rgba(11, 13, 16, 0.045);
       }
+
       .result-date,
       .result-competition,
       .result-venue {
@@ -157,11 +200,13 @@
         flex-direction: column;
         gap: 0.3rem;
       }
+
       .result-date span {
         font-size: 1.35rem;
         font-weight: 900;
         line-height: 1;
       }
+
       .result-date small,
       .result-venue span,
       .result-competition span {
@@ -170,6 +215,7 @@
         font-weight: 900;
         letter-spacing: 0.12em;
       }
+
       .result-competition p {
         margin: 0;
         color: #1a2029;
@@ -177,568 +223,629 @@
         font-weight: 800;
         letter-spacing: 0.06em;
       }
+
       .result-competition span {
         color: #727b8a;
       }
+
+      .result-match-area {
+        min-width: 0;
+      }
+
       .result-teams {
         display: grid;
         grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
         align-items: center;
-        gap: 1.2rem;
+        gap: 1rem;
       }
-      .result-teams > strong:last-child {
-        text-align: left;
-      }
-      .result-score {
+
+      .result-team {
         display: flex;
         align-items: center;
-        gap: 0.55rem;
+        gap: 0.8rem;
+        min-width: 0;
       }
-      .result-score span {
-        min-width: 30px;
-        text-align: center;
-        font-size: 1.5rem;
-        font-weight: 900;
+
+      .result-team:last-child {
+        justify-content: flex-end;
+        text-align: right;
       }
-      .result-score small {
-        color: #7a8391;
-        font-size: 0.58rem;
+
+      .result-team strong {
+        font-size: 0.95rem;
+        line-height: 1.25;
+      }
+
+      .result-team-crest {
+        width: 48px;
+        height: 48px;
+        flex: 0 0 48px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        overflow: hidden;
+        border-radius: 50%;
+
+        background: #ffffff;
+
+        border: 1px solid rgba(11, 13, 16, 0.12);
+      }
+
+      .result-team-crest img {
+        width: 90%;
+        height: 90%;
+        object-fit: contain;
+      }
+
+      .result-score {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .result-score strong {
+        color: #0b0d10;
+        font-size: 1.7rem;
         font-weight: 900;
-        letter-spacing: 0.1em;
         white-space: nowrap;
       }
+
+      .result-score span {
+        color: #747d8a;
+        font-size: 0.58rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+      }
+
+      .result-scorers {
+        margin-top: 1rem;
+        padding-top: 0.85rem;
+
+        border-top: 1px solid #e2e5e9;
+
+        color: #5f6875;
+
+        font-size: 0.75rem;
+        line-height: 1.6;
+      }
+
+      .result-scorers strong {
+        color: #b5121b;
+        font-size: 0.68rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
       .result-venue {
         align-items: flex-end;
       }
+
       .result-venue span {
         color: #727b8a;
       }
+
       .result-venue strong {
+        max-width: 210px;
         font-size: 0.8rem;
         text-align: right;
       }
+
+      .results-empty {
+        padding: 3rem;
+
+        background: #f7f8fa;
+
+        border: 1px solid #e1e4e8;
+        border-left: 4px solid #b5121b;
+        border-radius: 8px;
+      }
+
+      .results-empty span {
+        color: #b5121b;
+        font-size: 0.65rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+      }
+
+      .results-empty h3 {
+        margin: 0.7rem 0 0.5rem;
+        font-size: 1.7rem;
+      }
+
+      .results-empty p {
+        margin: 0;
+        color: #687181;
+      }
+
+      /* =========================================================
+         MATCH REPORTS
+         ========================================================= */
+
       .match-reports {
         padding: 5.5rem 0;
         background: #0b0d10;
-        color: #fff;
+        color: #ffffff;
       }
+
       .reports-grid {
         display: grid;
         grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
         gap: 5rem;
         align-items: center;
       }
+
       .match-reports h2 {
         margin: 0.8rem 0 0;
+
         font-size: clamp(3rem, 5vw, 5.2rem);
+
         line-height: 0.9;
         letter-spacing: -0.05em;
       }
+
       .match-reports .section-label {
         color: #b5121b;
       }
+
       .match-reports .reports-grid > div:last-child {
         max-width: 650px;
       }
+
       .match-reports .reports-grid p:not(.section-label) {
         color: rgba(255, 255, 255, 0.7);
         line-height: 1.8;
       }
+
+      /* =========================================================
+         MATCH ACTION
+         ========================================================= */
+
       .results-media {
         padding: 5.5rem 0;
         background: #f5f6f8;
       }
+
       .results-media .section-heading {
         max-width: 760px;
         margin-bottom: 2.5rem;
       }
+
       .results-media-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 1.25rem;
       }
+
       .results-media-card {
         display: grid;
+
         grid-template-columns: 64px 1fr;
         grid-template-rows: auto auto auto;
+
         column-gap: 1.1rem;
+
         min-height: 180px;
+
         overflow: hidden;
-        background: #fff;
+
+        background: #ffffff;
+
         border: 1px solid #e0e3e7;
         border-radius: 8px;
+
         box-shadow: 0 8px 24px rgba(11, 13, 16, 0.05);
       }
+
       .results-media-card > span {
-        grid-row: 1/-1;
+        grid-row: 1 / -1;
+
         display: flex;
         align-items: center;
         justify-content: center;
+
         width: 64px;
         height: 100%;
+
         background: #b5121b;
-        color: #fff;
+
+        color: #ffffff;
+
         font-size: 1.35rem;
         font-weight: 900;
       }
+
       .results-media-card h3 {
         margin: 1.65rem 1rem 0 0;
         font-size: 1.25rem;
       }
+
       .results-media-card p {
         margin: 0.4rem 1rem 0 0;
         color: #667085;
         line-height: 1.5;
       }
+
       .results-media-card strong {
         margin: 0.8rem 1rem 1.3rem 0;
         color: #b5121b;
         font-size: 0.78rem;
       }
-      @media (max-width: 950px) {
+
+      /* =========================================================
+         RESPONSIVE
+         ========================================================= */
+
+      @media (max-width: 1000px) {
         .results-stats {
           grid-template-columns: repeat(3, 1fr);
         }
+
         .result-card {
-          grid-template-columns: 100px minmax(0, 1fr) 150px;
+          grid-template-columns: 110px minmax(0, 1fr);
         }
+
         .result-competition {
           display: none;
         }
+
+        .result-venue {
+          grid-column: 1 / -1;
+          align-items: flex-start;
+        }
+
+        .result-venue strong {
+          text-align: left;
+        }
+
         .results-media-grid {
           grid-template-columns: 1fr;
         }
       }
+
       @media (max-width: 700px) {
         .results-hero {
           min-height: 420px;
         }
+
         .results-hero-watermark {
           width: 300px;
           right: -70px;
           opacity: 0.07;
         }
+
         .results-hero-links {
           flex-wrap: wrap;
         }
+
         .results-stats {
           grid-template-columns: repeat(2, 1fr);
         }
+
         .result-card {
           grid-template-columns: 1fr;
           gap: 1rem;
         }
+
         .result-competition {
           display: flex;
         }
+
         .result-teams {
           grid-template-columns: 1fr;
-          gap: 0.6rem;
         }
+
+        .result-team,
+        .result-team:last-child {
+          justify-content: center;
+          text-align: center;
+        }
+
         .result-score {
-          order: 3;
+          margin: 0.5rem 0;
         }
+
         .result-venue {
-          align-items: flex-start;
+          grid-column: auto;
         }
-        .result-venue strong {
-          text-align: left;
-        }
+
         .reports-grid {
           grid-template-columns: 1fr;
           gap: 2rem;
         }
       }
+
       @media (max-width: 450px) {
         .results-stats {
           grid-template-columns: 1fr;
         }
+
         .result-stat {
           min-height: auto;
         }
+
         .results-hero h1 {
           font-size: 3.6rem;
         }
       }
     </style>
-  
-<style>
-  /* =========================================================
-     PRE-SEASON RESULT CARD
-     ========================================================= */
+  </head>
 
-  .result-card-empty {
-    display: grid !important;
-    grid-template-columns: 135px 235px minmax(520px, 1fr) 235px !important;
-    align-items: center !important;
-    gap: 28px !important;
-    min-height: 190px;
-    padding: 28px 36px !important;
-  }
-
-  .result-card-empty .result-date,
-  .result-card-empty .result-competition,
-  .result-card-empty .result-venue {
-    min-width: 0;
-  }
-
-  .result-card-empty .result-matchup {
-    display: grid;
-    grid-template-columns: 1fr 105px 1fr;
-    align-items: center;
-    gap: 18px;
-    min-width: 0;
-  }
-
-  .result-card-empty .result-club {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    min-width: 0;
-  }
-
-  .result-card-empty .result-club:last-child {
-    justify-content: flex-end;
-    text-align: right;
-  }
-
-  .result-card-empty .result-club strong {
-    font-size: 1.05rem;
-    line-height: 1.25;
-    white-space: nowrap;
-  }
-
-  .result-club-crest {
-    width: 58px;
-    height: 58px;
-    flex: 0 0 58px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
-    border-radius: 50%;
-
-    background: #ffffff;
-    border: 1px solid rgba(14, 16, 18, 0.14);
-  }
-
-  .result-club-crest img {
-    display: block;
-    width: 92%;
-    height: 92%;
-    object-fit: contain;
-  }
-
-  .result-card-empty .result-club:first-child .result-club-crest img {
-    width: 100%;
-    height: 100%;
-    transform: scale(1.18);
-  }
-
-  .result-versus {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    text-align: center;
-  }
-
-  .result-versus strong {
-    color: #b5121b;
-    font-size: 1.65rem;
-    line-height: 1;
-  }
-
-  .result-versus span {
-    color: #777f88;
-    font-size: 0.58rem;
-    font-weight: 900;
-    letter-spacing: 0.11em;
-    white-space: nowrap;
-  }
-
-  .result-card-empty .result-venue {
-    text-align: right;
-  }
-
-  .result-card-empty .result-venue span {
-    display: block;
-    margin-bottom: 8px;
-  }
-
-  @media (max-width: 1100px) {
-    .result-card-empty {
-      grid-template-columns: 110px 1fr !important;
-    }
-
-    .result-card-empty .result-matchup,
-    .result-card-empty .result-venue {
-      grid-column: 1 / -1;
-    }
-
-    .result-card-empty .result-venue {
-      text-align: left;
-    }
-  }
-
-  @media (max-width: 680px) {
-    .result-card-empty {
-      display: block !important;
-      padding: 28px 22px !important;
-    }
-
-    .result-card-empty > * + * {
-      margin-top: 24px;
-    }
-
-    .result-card-empty .result-matchup {
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-
-    .result-card-empty .result-club,
-    .result-card-empty .result-club:last-child {
-      justify-content: center;
-      text-align: center;
-    }
-
-    .result-card-empty .result-venue,
-    .result-card-empty .result-date,
-    .result-card-empty .result-competition {
-      text-align: center;
-    }
-  }
-</style>
-
-</head>
   <body>
+    <!-- =========================================================
+         HEADER
+         ========================================================= -->
+
     <header class="site-header">
       <div class="container">
-        <a href="index.html" class="logo"
-          ><img
+        <a href="index.html" class="logo">
+          <img
             src="images/teso-warriors-crest.png"
             alt="Teso Warriors FC crest"
-          /><span>TESO WARRIORS FC</span></a
-        >
+          />
+
+          <span>TESO WARRIORS FC</span>
+        </a>
+
         <nav class="main-nav">
-          <a href="index.html">Home</a><a href="about.html">Club</a
-          ><a href="teams.html">Teams</a><a href="players.html">Players</a
-          ><a href="fixtures.html">Fixtures</a><a href="results.html">Results</a
-          ><a href="table.html">Table</a><a href="news.html">News</a
-          ><a href="media.html">Media</a><a href="academy.html">Academy</a
-          ><a href="contact.html">Contact</a>
+          <a href="index.html">Home</a>
+          <a href="about.html">Club</a>
+          <a href="teams.html">Teams</a>
+          <a href="players.html">Players</a>
+          <a href="fixtures.html">Fixtures</a>
+          <a href="results.html">Results</a>
+          <a href="table.html">Table</a>
+          <a href="news.html">News</a>
+          <a href="media.html">Media</a>
+          <a href="academy.html">Academy</a>
+          <a href="contact.html">Contact</a>
         </nav>
       </div>
     </header>
 
     <main>
+      <!-- =========================================================
+           HERO
+           ========================================================= -->
+
       <section class="results-hero">
         <div class="results-hero-watermark">
           <img src="images/teso-warriors-crest.png" alt="" aria-hidden="true" />
         </div>
+
         <div class="container">
           <div class="results-hero-content">
             <p class="section-label">MATCH CENTRE</p>
-            <h1>MATCH<br /><span>RESULTS.</span></h1>
+
+            <h1>
+              MATCH
+              <br />
+              <span>RESULTS.</span>
+            </h1>
+
             <p>
               The score tells the outcome. The record tells the journey. Follow
               every competitive result as the Warriors continue to build.
             </p>
+
             <div class="results-hero-links">
-              <a href="fixtures.html">Fixtures</a
-              ><a href="results.html" class="active">Results</a
-              ><a href="table.html">League Table</a>
+              <a href="fixtures.html">Fixtures</a>
+
+              <a href="results.html" class="active"> Results </a>
+
+              <a href="table.html"> League Table </a>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- =========================================================
+           SEASON RECORD
+           ========================================================= -->
+
       <section class="results-summary">
         <div class="container">
           <div class="section-heading">
-            <p class="section-label">2026 SEASON</p>
+            <p class="section-label">2026/27 SEASON</p>
+
             <h2>Season Record.</h2>
+
             <p>
-              Official match statistics will be updated as results are recorded
-              by the club.
+              Official competitive record calculated automatically from Teso
+              Warriors FC match results.
             </p>
           </div>
+
           <div class="results-stats">
             <div class="result-stat">
-              <span>MP</span><strong>—</strong>
+              <span>MP</span>
+
+              <strong id="matches-played">—</strong>
+
               <p>Matches Played</p>
             </div>
+
             <div class="result-stat">
-              <span>W</span><strong>—</strong>
+              <span>W</span>
+
+              <strong id="wins">—</strong>
+
               <p>Wins</p>
             </div>
+
             <div class="result-stat">
-              <span>D</span><strong>—</strong>
+              <span>D</span>
+
+              <strong id="draws">—</strong>
+
               <p>Draws</p>
             </div>
+
             <div class="result-stat">
-              <span>L</span><strong>—</strong>
+              <span>L</span>
+
+              <strong id="losses">—</strong>
+
               <p>Losses</p>
             </div>
+
             <div class="result-stat">
-              <span>PTS</span><strong>—</strong>
+              <span>PTS</span>
+
+              <strong id="points">—</strong>
+
               <p>Points</p>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- =========================================================
+           RESULTS
+           ========================================================= -->
+
       <section class="results-section">
         <div class="container">
           <div class="section-heading">
             <p class="section-label">MATCH HISTORY</p>
+
             <h2>Latest Results.</h2>
+
             <p>
               Official results and match information from the Warriors'
               competitive schedule.
             </p>
           </div>
-          <div class="results-list">
-            <article class="result-card result-card-empty">
-              <div class="result-date">
-                <span>30 OCT</span>
-                <small>2026</small>
-              </div>
 
-              <div class="result-competition">
-                <p>NERFA REGIONAL LEAGUE</p>
-                <span>2026/27 SEASON</span>
-              </div>
+          <div class="results-list" id="results-list">
+            <article class="results-empty">
+              <span>MATCH CENTRE</span>
 
-              <div class="result-matchup">
-                <div class="result-club">
-                  <span class="result-club-crest">
-                    <img
-                      src="images/teso-warriors-crest.png"
-                      alt="Teso Warriors FC crest"
-                    />
-                  </span>
+              <h3>Loading Results.</h3>
 
-                  <strong>Teso Warriors FC</strong>
-                </div>
-
-                <div class="result-versus">
-                  <strong>VS</strong>
-                  <span>NO RESULTS YET</span>
-                </div>
-
-                <div class="result-club">
-                  <span class="result-club-crest">
-                    <img
-                      src="images/teams/rupa-united-fc.jpeg"
-                      alt="Rupa United FC crest"
-                    />
-                  </span>
-
-                  <strong>Rupa United FC</strong>
-                </div>
-              </div>
-
-              <div class="result-venue">
-                <span>FIRST FIXTURE</span>
-                <strong>Soroti City Stadium (Oligoi)</strong>
-              </div>
+              <p>Official Teso Warriors FC results are being retrieved.</p>
             </article>
-
           </div>
         </div>
       </section>
+
+      <!-- =========================================================
+           MATCH REPORTS
+           ========================================================= -->
 
       <section class="match-reports">
         <div class="container">
           <div class="reports-grid">
             <div>
               <p class="section-label">BEYOND THE SCORE</p>
+
               <h2>Match Reports.</h2>
             </div>
+
             <div>
               <p>
-                Results tell part of the story. Match reports will give
-                supporters a closer look at the Warriors' performances, key
-                moments and developments from each match.
+                Results tell part of the story. Match reports give supporters a
+                closer look at the Warriors' performances, key moments and
+                developments from each match.
               </p>
-              <a href="news.html" class="btn btn-primary">View Club News</a>
+
+              <a href="news.html" class="btn btn-primary"> View Club News </a>
             </div>
           </div>
         </div>
       </section>
+
+      <!-- =========================================================
+           MATCHDAY MEDIA
+           ========================================================= -->
 
       <section class="results-media">
         <div class="container">
           <div class="section-heading">
             <p class="section-label">MATCHDAY MEDIA</p>
+
             <h2>Match Action.</h2>
+
             <p>
-              Match photography, videos and official reports will bring every
-              match closer to the Warriors' supporters.
+              Match photography, videos and official reports bring every match
+              closer to the Warriors' supporters.
             </p>
           </div>
+
           <div class="results-media-grid">
-            <a href="media.html" class="results-media-card"
-              ><span>01</span>
+            <a href="media.html" class="results-media-card">
+              <span>01</span>
+
               <h3>Match Photos</h3>
+
               <p>Official matchday photography.</p>
-              <strong>View Media →</strong></a
-            >
-            <a href="media.html" class="results-media-card"
-              ><span>02</span>
+
+              <strong> View Media → </strong>
+            </a>
+
+            <a href="media.html" class="results-media-card">
+              <span>02</span>
+
               <h3>Match Videos</h3>
+
               <p>Follow the Warriors in action.</p>
-              <strong>View Videos →</strong></a
-            >
-            <a href="news.html" class="results-media-card"
-              ><span>03</span>
+
+              <strong> View Videos → </strong>
+            </a>
+
+            <a href="news.html" class="results-media-card">
+              <span>03</span>
+
               <h3>Match Reports</h3>
+
               <p>Read the story behind the score.</p>
-              <strong>Read Reports →</strong></a
-            >
+
+              <strong> Read Reports → </strong>
+            </a>
           </div>
         </div>
       </section>
+
+      <!-- =========================================================
+           CTA
+           ========================================================= -->
 
       <section class="home-cta">
         <div class="container">
           <p class="section-label">TESO WARRIORS FC</p>
+
           <h2>Every Match Matters.</h2>
+
           <p>
             Follow the Warriors through every challenge, performance and
             milestone.
           </p>
-          <a href="fixtures.html" class="btn btn-primary">View Fixtures</a>
+
+          <a href="fixtures.html" class="btn btn-primary"> View Fixtures </a>
         </div>
       </section>
     </main>
 
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
     <footer class="site-footer">
       <div class="container footer-main">
-
         <div class="footer-brand">
           <a href="index.html" class="footer-logo">
-            <img
-              src="images/teso-warriors-crest.png"
-              alt="Teso Warriors FC"
-            />
+            <img src="images/teso-warriors-crest.png" alt="Teso Warriors FC" />
           </a>
 
           <div>
-            <strong>TESO WARRIORS FC</strong>
+            <strong> TESO WARRIORS FC </strong>
 
-            <p>
-              Strength. Pride. Glory.
-            </p>
+            <p>Strength. Pride. Glory.</p>
 
-            <a
-              href="mailto:admin@tesowarriors.com"
-              class="footer-email"
-            >
+            <a href="mailto:admin@tesowarriors.com" class="footer-email">
               admin@tesowarriors.com
             </a>
           </div>
@@ -747,6 +854,7 @@
         <div class="footer-links">
           <div>
             <span>CLUB</span>
+
             <a href="about.html">About</a>
             <a href="teams.html">Teams</a>
             <a href="players.html">Players</a>
@@ -755,6 +863,7 @@
 
           <div>
             <span>MATCH CENTRE</span>
+
             <a href="fixtures.html">Fixtures</a>
             <a href="results.html">Results</a>
             <a href="table.html">League Table</a>
@@ -762,28 +871,31 @@
 
           <div>
             <span>FOLLOW</span>
+
             <a href="news.html">News</a>
             <a href="media.html">Media</a>
             <a href="contact.html">Contact Club</a>
           </div>
         </div>
-
       </div>
 
       <div class="container footer-bottom">
-        <p>
-          &copy; 2026 Teso Warriors Football Club.
-          All rights reserved.
-        </p>
+        <p>&copy; 2026 Teso Warriors Football Club. All rights reserved.</p>
 
-        <p>
-          Soroti, Uganda
-        </p>
+        <p>Soroti, Uganda</p>
       </div>
     </footer>
+
+    <!-- =========================================================
+         JAVASCRIPT
+         ========================================================= -->
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script src="js/supabase.js"></script>
-    <script src="js/results.js"></script>
+
     <script src="js/main.js"></script>
+
+    <script src="js/results.js"></script>
   </body>
 </html>

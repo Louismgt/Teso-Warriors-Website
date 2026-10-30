@@ -1,264 +1,29 @@
 /*
  * =========================================================
  * TESO WARRIORS FC
- * DYNAMIC RESULTS
+ * RESULTS PAGE
  * =========================================================
  */
 
 document.addEventListener("DOMContentLoaded", async () => {
   const supabase = window.twfSupabase;
 
-  const emptyCard =
-    document.querySelector(".result-card-empty");
-
-  if (!supabase || !emptyCard) {
-    console.error(
-      "Results page could not initialize.",
-    );
+  if (!supabase) {
+    console.error("Supabase connection not found.");
     return;
   }
 
-  const teamLogos = {
-    "teso warriors fc":
-      "images/teso-warriors-crest.png",
+  const matchesPlayedElement = document.querySelector("#matches-played");
 
-    "rupa united fc":
-      "images/teams/rupa-united-fc.jpeg",
+  const winsElement = document.querySelector("#wins");
 
-    "ateker fc":
-      "images/teams/ateker-fc.jpeg",
+  const drawsElement = document.querySelector("#draws");
 
-    "myda fc":
-      "images/teams/myda-fc.jpeg",
+  const lossesElement = document.querySelector("#losses");
 
-    "kamet united fc":
-      "images/teams/kamet-united-fc.jpeg",
+  const pointsElement = document.querySelector("#points");
 
-    "tapoh fc":
-      "images/teams/tapoh-fc.jpeg",
-
-    "kumi united fc":
-      "images/teams/kumi-united-fc.jpeg",
-
-    "obule earthquake fc":
-      "images/teams/obule-earthquake-fc.jpeg",
-
-    "soroti thunders fc":
-      "images/teams/soroti-thunders-fc.jpeg",
-
-    "kadami united fc":
-      "images/teams/kadami-united-fc.jpeg",
-
-    "kapchorwa vikings fc":
-      "images/teams/kapchorwa-vikings-fc.jpeg",
-
-    "tita sc":
-      "images/teams/tita-sc.jpeg",
-  };
-
-  /*
-   * =========================================================
-   * STYLES
-   * =========================================================
-   */
-
-  const style = document.createElement("style");
-
-  style.textContent = `
-    .result-card-live {
-      display: grid !important;
-      grid-template-columns:
-        120px
-        220px
-        minmax(520px, 1fr)
-        220px !important;
-
-      align-items: center !important;
-
-      gap: 28px !important;
-
-      min-height: 175px;
-
-      padding: 28px 36px !important;
-
-      margin-bottom: 22px;
-    }
-
-    .result-live-matchup {
-      display: grid;
-
-      grid-template-columns:
-        minmax(0, 1fr)
-        105px
-        minmax(0, 1fr);
-
-      align-items: center;
-
-      gap: 16px;
-    }
-
-    .result-live-club {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-
-      min-width: 0;
-    }
-
-    .result-live-club.away {
-      justify-content: flex-end;
-      text-align: right;
-    }
-
-    .result-live-club strong {
-      font-size: 1rem;
-      line-height: 1.3;
-    }
-
-    .result-live-crest {
-      width: 58px;
-      height: 58px;
-
-      flex: 0 0 58px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      overflow: hidden;
-
-      border-radius: 50%;
-
-      background: #ffffff;
-
-      border:
-        1px solid
-        rgba(14, 16, 18, 0.14);
-    }
-
-    .result-live-crest img {
-      display: block;
-
-      width: 92%;
-      height: 92%;
-
-      object-fit: contain;
-    }
-
-    .result-live-crest img.teso {
-      width: 100%;
-      height: 100%;
-
-      transform: scale(1.18);
-    }
-
-    .result-live-score {
-      text-align: center;
-    }
-
-    .result-live-score strong {
-      display: block;
-
-      color: #101214;
-
-      font-size: 1.8rem;
-      line-height: 1;
-    }
-
-    .result-live-score span {
-      display: block;
-
-      margin-top: 8px;
-
-      color: #747c85;
-
-      font-size: 0.58rem;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-
-      text-transform: uppercase;
-    }
-
-    .result-live-venue {
-      text-align: right;
-    }
-
-    .result-live-venue span {
-      display: block;
-
-      margin-bottom: 8px;
-
-      color: #777f88;
-
-      font-size: 0.62rem;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-
-      text-transform: uppercase;
-    }
-
-    .result-live-venue strong {
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-
-    @media (max-width: 1100px) {
-      .result-card-live {
-        grid-template-columns:
-          110px
-          1fr !important;
-      }
-
-      .result-live-matchup,
-      .result-live-venue {
-        grid-column: 1 / -1;
-      }
-
-      .result-live-venue {
-        text-align: left;
-      }
-    }
-
-    @media (max-width: 680px) {
-      .result-card-live {
-        display: block !important;
-
-        padding:
-          28px 22px !important;
-      }
-
-      .result-card-live > * + * {
-        margin-top: 24px;
-      }
-
-      .result-live-matchup {
-        grid-template-columns: 1fr;
-
-        gap: 18px;
-      }
-
-      .result-live-club,
-      .result-live-club.away {
-        justify-content: center;
-
-        text-align: center;
-      }
-
-      .result-live-score {
-        padding: 5px 0;
-      }
-
-      .result-live-venue,
-      .result-card-live
-      .result-date,
-      .result-card-live
-      .result-competition {
-        text-align: center;
-      }
-    }
-  `;
-
-  document.head.appendChild(style);
+  const resultsList = document.querySelector("#results-list");
 
   /*
    * =========================================================
@@ -267,7 +32,11 @@ document.addEventListener("DOMContentLoaded", async () => {
    */
 
   function escapeHTML(value) {
-    return String(value ?? "")
+    if (value === null || value === undefined) {
+      return "";
+    }
+
+    return String(value)
       .replaceAll("&", "&amp;")
       .replaceAll("<", "&lt;")
       .replaceAll(">", "&gt;")
@@ -275,287 +44,345 @@ document.addEventListener("DOMContentLoaded", async () => {
       .replaceAll("'", "&#039;");
   }
 
-  function normalize(value) {
-    return String(value ?? "")
-      .trim()
-      .replace(/\s+/g, " ")
-      .toLowerCase();
-  }
-
-  function formatDate(dateString) {
+  function formatMatchDate(dateString) {
     if (!dateString) {
       return {
-        main: "DATE",
+        dayMonth: "TBC",
         year: "",
       };
     }
 
-    const date =
-      new Date(
-        `${dateString}T12:00:00`,
-      );
+    const date = new Date(`${dateString}T00:00:00`);
 
     return {
-      main:
-        new Intl.DateTimeFormat(
-          "en-GB",
-          {
-            day: "2-digit",
-            month: "short",
-          },
-        )
-          .format(date)
-          .toUpperCase(),
+      dayMonth: date
+        .toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "short",
+        })
+        .toUpperCase(),
 
-      year:
-        String(
-          date.getFullYear(),
-        ),
+      year: date.getFullYear(),
     };
   }
 
-  function crest(teamName) {
-    const key =
-      normalize(teamName);
+  function getOpponentLogo(opponent) {
+    const normalized = String(opponent || "")
+      .trim()
+      .toLowerCase();
 
-    const logo =
-      teamLogos[key];
+    if (normalized.includes("rupa")) {
+      return "images/teams/rupa-united-fc.jpeg";
+    }
 
-    if (!logo) {
+    return "";
+  }
+
+  function buildScorerText(notes) {
+    if (!notes) {
       return "";
     }
 
-    const tesoClass =
-      key === "teso warriors fc"
-        ? "teso"
-        : "";
+    const scorerMarker = notes.toLowerCase().indexOf("scorers:");
 
-    return `
-      <span class="result-live-crest">
-        <img
-          src="${escapeHTML(logo)}"
-          alt="${escapeHTML(teamName)} crest"
-          class="${tesoClass}"
-        />
-      </span>
-    `;
-  }
-
-  function getMatch(result) {
-    const isAway =
-      normalize(result.home_away) ===
-      "away";
-
-    if (isAway) {
-      return {
-        homeName:
-          result.opponent,
-
-        awayName:
-          "Teso Warriors FC",
-
-        homeScore:
-          result.opponent_score,
-
-        awayScore:
-          result.teso_warriors_score,
-      };
+    if (scorerMarker === -1) {
+      return escapeHTML(notes);
     }
 
-    return {
-      homeName:
-        "Teso Warriors FC",
+    const scorers = notes.slice(scorerMarker + 8).trim();
 
-      awayName:
-        result.opponent,
-
-      homeScore:
-        result.teso_warriors_score,
-
-      awayScore:
-        result.opponent_score,
-    };
+    return escapeHTML(scorers);
   }
 
   /*
    * =========================================================
-   * RENDER RESULT
+   * LOAD SEASON RECORD
    * =========================================================
    */
 
-  function renderResult(result) {
-    const date =
-      formatDate(
-        result.match_date,
-      );
+  async function loadSeasonRecord() {
+    try {
+      const { data, error } = await supabase
+        .from("season_record")
+        .select(
+          `
+              matches_played,
+              wins,
+              draws,
+              losses,
+              points
+            `,
+        )
+        .single();
 
-    const match =
-      getMatch(result);
+      if (error) {
+        throw error;
+      }
 
-    return `
-      <article
-        class="result-card result-card-live"
-      >
-        <div class="result-date">
-          <span>
-            ${escapeHTML(date.main)}
-          </span>
+      if (matchesPlayedElement) {
+        matchesPlayedElement.textContent = data?.matches_played ?? 0;
+      }
 
-          <small>
-            ${escapeHTML(date.year)}
-          </small>
-        </div>
+      if (winsElement) {
+        winsElement.textContent = data?.wins ?? 0;
+      }
 
-        <div class="result-competition">
-          <p>
-            ${escapeHTML(
-              result.competition ||
-              "NERFA REGIONAL LEAGUE",
-            )}
-          </p>
+      if (drawsElement) {
+        drawsElement.textContent = data?.draws ?? 0;
+      }
 
-          <span>
-            2026/27 SEASON
-          </span>
-        </div>
+      if (lossesElement) {
+        lossesElement.textContent = data?.losses ?? 0;
+      }
 
-        <div class="result-live-matchup">
-
-          <div class="result-live-club">
-            ${crest(match.homeName)}
-
-            <strong>
-              ${escapeHTML(
-                match.homeName,
-              )}
-            </strong>
-          </div>
-
-          <div class="result-live-score">
-            <strong>
-              ${escapeHTML(
-                match.homeScore,
-              )}
-              -
-              ${escapeHTML(
-                match.awayScore,
-              )}
-            </strong>
-
-            <span>
-              Full Time
-            </span>
-          </div>
-
-          <div
-            class="
-              result-live-club
-              away
-            "
-          >
-            <strong>
-              ${escapeHTML(
-                match.awayName,
-              )}
-            </strong>
-
-            ${crest(match.awayName)}
-          </div>
-
-        </div>
-
-        <div class="result-live-venue">
-          <span>
-            Venue
-          </span>
-
-          <strong>
-            ${escapeHTML(
-              result.venue ||
-              "Venue TBC",
-            )}
-          </strong>
-        </div>
-      </article>
-    `;
+      if (pointsElement) {
+        pointsElement.textContent = data?.points ?? 0;
+      }
+    } catch (error) {
+      console.error("Unable to load season record:", error);
+    }
   }
 
   /*
    * =========================================================
-   * LOAD COMPLETED RESULTS
+   * RENDER RESULTS
    * =========================================================
    */
 
-  try {
-    const {
-      data,
-      error,
-    } = await supabase
-      .from("results")
-      .select(`
-        id,
-        fixture_id,
-        competition,
-        opponent,
-        match_date,
-        venue,
-        home_away,
-        teso_warriors_score,
-        opponent_score,
-        notes,
-        created_at
-      `)
-      .not(
-        "teso_warriors_score",
-        "is",
-        null,
-      )
-      .not(
-        "opponent_score",
-        "is",
-        null,
-      )
-      .order(
-        "match_date",
-        {
-          ascending: false,
-        },
-      );
-
-    if (error) {
-      throw error;
-    }
-
-    if (!data?.length) {
-      /*
-       * No completed match yet.
-       * Keep our existing
-       * "NO RESULTS YET" card.
-       */
+  function renderResults(results) {
+    if (!resultsList) {
       return;
     }
 
-    const html =
-      data
-        .map(renderResult)
-        .join("");
+    if (!results || results.length === 0) {
+      resultsList.innerHTML = `
+        <article class="results-empty">
+          <span>MATCH CENTRE</span>
 
-    emptyCard.insertAdjacentHTML(
-      "beforebegin",
-      html,
-    );
+          <h3>No Results Recorded Yet.</h3>
 
-    /*
-     * Real results now exist,
-     * so remove the placeholder.
-     */
+          <p>
+            Official results will appear here once
+            competitive matches have been completed.
+          </p>
+        </article>
+      `;
 
-    emptyCard.remove();
+      return;
+    }
 
-  } catch (error) {
-    console.error(
-      "Results loading error:",
-      error,
-    );
+    resultsList.innerHTML = results
+      .map((result) => {
+        const date = formatMatchDate(result.match_date);
+
+        const opponent = escapeHTML(result.opponent);
+
+        const competition = escapeHTML(result.competition || "Regional League");
+
+        const venue = escapeHTML(result.venue || "Venue TBC");
+
+        const tesoScore = Number(result.teso_warriors_score ?? 0);
+
+        const opponentScore = Number(result.opponent_score ?? 0);
+
+        const homeAway = String(result.home_away || "home").toLowerCase();
+
+        const opponentLogo = getOpponentLogo(result.opponent);
+
+        const scorerText = buildScorerText(result.notes);
+
+        let firstTeamName = "Teso Warriors FC";
+
+        let secondTeamName = opponent;
+
+        let firstTeamScore = tesoScore;
+
+        let secondTeamScore = opponentScore;
+
+        let firstTeamLogo = "images/teso-warriors-crest.png";
+
+        let secondTeamLogo = opponentLogo;
+
+        if (homeAway === "away") {
+          firstTeamName = opponent;
+
+          secondTeamName = "Teso Warriors FC";
+
+          firstTeamScore = opponentScore;
+
+          secondTeamScore = tesoScore;
+
+          firstTeamLogo = opponentLogo;
+
+          secondTeamLogo = "images/teso-warriors-crest.png";
+        }
+
+        const firstLogoHTML = firstTeamLogo
+          ? `
+                <span class="result-team-crest">
+                  <img
+                    src="${escapeHTML(firstTeamLogo)}"
+                    alt="${escapeHTML(firstTeamName)} crest"
+                  />
+                </span>
+              `
+          : "";
+
+        const secondLogoHTML = secondTeamLogo
+          ? `
+                <span class="result-team-crest">
+                  <img
+                    src="${escapeHTML(secondTeamLogo)}"
+                    alt="${escapeHTML(secondTeamName)} crest"
+                  />
+                </span>
+              `
+          : "";
+
+        const scorerHTML = scorerText
+          ? `
+                <div class="result-scorers">
+                  <strong>
+                    Teso Warriors Scorers
+                  </strong>
+
+                  <br />
+
+                  ${scorerText}
+                </div>
+              `
+          : "";
+
+        return `
+            <article class="result-card">
+              <div class="result-date">
+                <span>
+                  ${escapeHTML(date.dayMonth)}
+                </span>
+
+                <small>
+                  ${escapeHTML(date.year)}
+                </small>
+              </div>
+
+              <div class="result-competition">
+                <p>
+                  ${competition}
+                </p>
+
+                <span>
+                  2026/27 SEASON
+                </span>
+              </div>
+
+              <div class="result-match-area">
+                <div class="result-teams">
+                  <div class="result-team">
+                    ${firstLogoHTML}
+
+                    <strong>
+                      ${escapeHTML(firstTeamName)}
+                    </strong>
+                  </div>
+
+                  <div class="result-score">
+                    <strong>
+                      ${firstTeamScore}
+                      -
+                      ${secondTeamScore}
+                    </strong>
+
+                    <span>
+                      FULL TIME
+                    </span>
+                  </div>
+
+                  <div class="result-team">
+                    ${secondLogoHTML}
+
+                    <strong>
+                      ${escapeHTML(secondTeamName)}
+                    </strong>
+                  </div>
+                </div>
+
+                ${scorerHTML}
+              </div>
+
+              <div class="result-venue">
+                <span>
+                  VENUE
+                </span>
+
+                <strong>
+                  ${venue}
+                </strong>
+              </div>
+            </article>
+          `;
+      })
+      .join("");
   }
+
+  /*
+   * =========================================================
+   * LOAD RESULTS
+   * =========================================================
+   */
+
+  async function loadResults() {
+    if (!resultsList) {
+      return;
+    }
+
+    try {
+      const { data, error } = await supabase
+        .from("results")
+        .select(
+          `
+              id,
+              fixture_id,
+              competition,
+              opponent,
+              match_date,
+              venue,
+              home_away,
+              teso_warriors_score,
+              opponent_score,
+              notes
+            `,
+        )
+        .order("match_date", {
+          ascending: false,
+        });
+
+      if (error) {
+        throw error;
+      }
+
+      renderResults(data);
+    } catch (error) {
+      console.error("Unable to load results:", error);
+
+      resultsList.innerHTML = `
+        <article class="results-empty">
+          <span>MATCH CENTRE</span>
+
+          <h3>Unable to Load Results.</h3>
+
+          <p>
+            Please refresh the page or try again shortly.
+          </p>
+        </article>
+      `;
+    }
+  }
+
+  /*
+   * =========================================================
+   * INITIAL LOAD
+   * =========================================================
+   */
+
+  await Promise.all([loadSeasonRecord(), loadResults()]);
 });
