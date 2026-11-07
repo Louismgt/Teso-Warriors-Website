@@ -254,54 +254,364 @@ document.addEventListener("DOMContentLoaded", async () => {
       .join("");
   }
 
-  async function loadStandings() {
-    try {
-      const { data, error } = await supabase
-        .from("league_standings")
-        .select(
-          `
-            position,
-            team_name,
-            matches_played,
-            wins,
-            draws,
-            losses,
-            goals_for,
-            goals_against,
-            goal_difference,
-            points,
-            season,
-            competition
-          `,
-        )
-        .eq("season", "2026/27")
-        .eq(
-          "competition",
-          "North East Regional League",
-        )
-        .order("position", {
-          ascending: true,
-        });
+  
+  /* TWF-OFFICIAL-STANDINGS-2026-11-07-START */
 
-      if (error) {
-        throw error;
-      }
+  const OFFICIAL_STANDINGS_2026_11_07 = [
+    {
+      position: 1,
+      pos: 1,
 
-      renderStandings(data);
-    } catch (error) {
-      console.error(
-        "Unable to load league standings:",
-        error,
-      );
+      club: "MYDA FC",
+      club_name: "MYDA FC",
+      team: "MYDA FC",
+      team_name: "MYDA FC",
 
-      tableBody.innerHTML = `
-        <tr>
-          <td colspan="10" class="table-loading">
-            Unable to load the league table.
-          </td>
-        </tr>
-      `;
+      played: 1,
+      p: 1,
+
+      won: 1,
+      wins: 1,
+      w: 1,
+
+      drawn: 0,
+      draws: 0,
+      d: 0,
+
+      lost: 0,
+      losses: 0,
+      l: 0,
+
+      goal_difference: 7,
+      gd: 7,
+
+      points: 3,
+      pts: 3
+    },
+
+    {
+      position: 2,
+      pos: 2,
+
+      club: "Teso Warriors FC",
+      club_name: "Teso Warriors FC",
+      team: "Teso Warriors FC",
+      team_name: "Teso Warriors FC",
+
+      played: 1,
+      p: 1,
+
+      won: 1,
+      wins: 1,
+      w: 1,
+
+      drawn: 0,
+      draws: 0,
+      d: 0,
+
+      lost: 0,
+      losses: 0,
+      l: 0,
+
+      goal_difference: 3,
+      gd: 3,
+
+      points: 3,
+      pts: 3
+    },
+
+    {
+      position: 3,
+      pos: 3,
+
+      club: "Kumi United FC",
+      club_name: "Kumi United FC",
+      team: "Kumi United FC",
+      team_name: "Kumi United FC",
+
+      played: 1,
+      p: 1,
+
+      won: 1,
+      wins: 1,
+      w: 1,
+
+      drawn: 0,
+      draws: 0,
+      d: 0,
+
+      lost: 0,
+      losses: 0,
+      l: 0,
+
+      goal_difference: 2,
+      gd: 2,
+
+      points: 3,
+      pts: 3
+    },
+
+    {
+      position: 4,
+      pos: 4,
+
+      club: "Obule Earth Quake FC",
+      club_name: "Obule Earth Quake FC",
+      team: "Obule Earth Quake FC",
+      team_name: "Obule Earth Quake FC",
+
+      played: 1,
+      p: 1,
+
+      won: 0,
+      wins: 0,
+      w: 0,
+
+      drawn: 1,
+      draws: 1,
+      d: 1,
+
+      lost: 0,
+      losses: 0,
+      l: 0,
+
+      goal_difference: 0,
+      gd: 0,
+
+      points: 1,
+      pts: 1
+    },
+
+    {
+      position: 5,
+      pos: 5,
+
+      club: "Tita SC",
+      club_name: "Tita SC",
+      team: "Tita SC",
+      team_name: "Tita SC",
+
+      played: 1,
+      p: 1,
+
+      won: 0,
+      wins: 0,
+      w: 0,
+
+      drawn: 1,
+      draws: 1,
+      d: 1,
+
+      lost: 0,
+      losses: 0,
+      l: 0,
+
+      goal_difference: 0,
+      gd: 0,
+
+      points: 1,
+      pts: 1
+    },
+
+    {
+      position: 6,
+      pos: 6,
+
+      club: "Ateker FC",
+      club_name: "Ateker FC",
+      team: "Ateker FC",
+      team_name: "Ateker FC",
+
+      played: 0,
+      p: 0,
+
+      won: 0,
+      wins: 0,
+      w: 0,
+
+      drawn: 0,
+      draws: 0,
+      d: 0,
+
+      lost: 0,
+      losses: 0,
+      l: 0,
+
+      goal_difference: 0,
+      gd: 0,
+
+      points: 0,
+      pts: 0
+    },
+
+    {
+      position: 7,
+      pos: 7,
+
+      club: "Kapchorwa Vikings Academy FC",
+      club_name: "Kapchorwa Vikings Academy FC",
+      team: "Kapchorwa Vikings Academy FC",
+      team_name: "Kapchorwa Vikings Academy FC",
+
+      played: 0,
+      p: 0,
+
+      won: 0,
+      wins: 0,
+      w: 0,
+
+      drawn: 0,
+      draws: 0,
+      d: 0,
+
+      lost: 0,
+      losses: 0,
+      l: 0,
+
+      goal_difference: 0,
+      gd: 0,
+
+      points: 0,
+      pts: 0
+    },
+
+    {
+      position: 8,
+      pos: 8,
+
+      club: "Tapoh FC",
+      club_name: "Tapoh FC",
+      team: "Tapoh FC",
+      team_name: "Tapoh FC",
+
+      played: 0,
+      p: 0,
+
+      won: 0,
+      wins: 0,
+      w: 0,
+
+      drawn: 0,
+      draws: 0,
+      d: 0,
+
+      lost: 0,
+      losses: 0,
+      l: 0,
+
+      goal_difference: 0,
+      gd: 0,
+
+      points: 0,
+      pts: 0
+    },
+
+    {
+      position: 9,
+      pos: 9,
+
+      club: "Kadam United FC",
+      club_name: "Kadam United FC",
+      team: "Kadam United FC",
+      team_name: "Kadam United FC",
+
+      played: 1,
+      p: 1,
+
+      won: 0,
+      wins: 0,
+      w: 0,
+
+      drawn: 0,
+      draws: 0,
+      d: 0,
+
+      lost: 1,
+      losses: 1,
+      l: 1,
+
+      goal_difference: -2,
+      gd: -2,
+
+      points: 0,
+      pts: 0
+    },
+
+    {
+      position: 10,
+      pos: 10,
+
+      club: "Rupa United FC",
+      club_name: "Rupa United FC",
+      team: "Rupa United FC",
+      team_name: "Rupa United FC",
+
+      played: 1,
+      p: 1,
+
+      won: 0,
+      wins: 0,
+      w: 0,
+
+      drawn: 0,
+      draws: 0,
+      d: 0,
+
+      lost: 1,
+      losses: 1,
+      l: 1,
+
+      goal_difference: -3,
+      gd: -3,
+
+      points: 0,
+      pts: 0
+    },
+
+    {
+      position: 11,
+      pos: 11,
+
+      club: "Kamet United FC",
+      club_name: "Kamet United FC",
+      team: "Kamet United FC",
+      team_name: "Kamet United FC",
+
+      played: 1,
+      p: 1,
+
+      won: 0,
+      wins: 0,
+      w: 0,
+
+      drawn: 0,
+      draws: 0,
+      d: 0,
+
+      lost: 1,
+      losses: 1,
+      l: 1,
+
+      goal_difference: -7,
+      gd: -7,
+
+      points: 0,
+      pts: 0
     }
+  ];
+
+  /* TWF-OFFICIAL-STANDINGS-2026-11-07-END */
+
+async function loadStandings() {
+    console.log(
+      "Loading official North East Regional League standings — 7 November 2026"
+    );
+
+    const standings = OFFICIAL_STANDINGS_2026_11_07;
+
+    renderStandings(standings);
+
+    return standings;
   }
 
   await loadStandings();
