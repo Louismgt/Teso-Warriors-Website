@@ -328,6 +328,55 @@
         color: #747474;
       }
 
+
+      /* MATCH REPORT FEATURE PHOTO */
+
+      .featured-story-photo {
+        position: relative;
+        min-height: 520px;
+        overflow: hidden;
+        background: #17191b;
+      }
+
+      .featured-story-photo img {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+
+        width: 100%;
+        max-width: none;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: center;
+
+        filter: none;
+      }
+
+      .featured-story-photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+
+        background: linear-gradient(
+          to top,
+          rgba(0,0,0,.62),
+          rgba(0,0,0,.03) 60%
+        );
+      }
+
+      .featured-story-photo .match-label {
+        z-index: 3;
+        color: #ffffff;
+      }
+
+      @media (max-width: 850px) {
+        .featured-story-photo {
+          min-height: 420px;
+        }
+      }
+
       @media (max-width: 850px) {
         .featured-story {
           grid-template-columns: 1fr;
@@ -415,87 +464,147 @@
 
         <!-- FIRST OFFICIAL STORY -->
 
+        
         <article class="featured-story">
+
           <div class="featured-story-copy">
-            <span class="story-category"> First Team / Match Preview </span>
 
-            <span class="story-date"> 27 October 2026 </span>
+            <span class="story-category">
+              First Team / Match Report
+            </span>
 
-            <h2>Warriors Begin 2026/27 Campaign at Home Against Rupa United</h2>
+            <span class="story-date">
+              7 November 2026
+            </span>
+
+            <h2>
+              Teso Warriors Earn Deserved Away Win Over Ateker FC
+            </h2>
 
             <p>
-              Teso Warriors FC will begin its 2026/27 NERFA Regional League
-              campaign at home against Rupa United FC.
+              Teso Warriors FC secured a hard-fought 1-0 away victory
+              over Ateker FC in a physical North East Regional League
+              contest at Moroto Booma Grounds.
             </p>
 
             <div class="fixture-details">
+
               <div class="fixture-detail">
                 <span>Competition</span>
-                <strong> NERFA Regional League </strong>
+                <strong>North East Regional League</strong>
+              </div>
+
+              <div class="fixture-detail">
+                <span>Result</span>
+                <strong>Ateker FC 0-1 Teso Warriors FC</strong>
               </div>
 
               <div class="fixture-detail">
                 <span>Date</span>
-                <strong> Friday, 30 October 2026 </strong>
-              </div>
-
-              <div class="fixture-detail">
-                <span>Kick-Off</span>
-                <strong> 3:00 PM </strong>
+                <strong>Saturday, 7 November 2026</strong>
               </div>
 
               <div class="fixture-detail">
                 <span>Venue</span>
-                <strong> Soroti Stadium </strong>
+                <strong>Moroto Booma Grounds, Moroto</strong>
               </div>
+
             </div>
+
           </div>
 
-          <div class="featured-story-visual">
+          <div class="featured-story-visual featured-story-photo">
+
             <img
-              src="images/teso-warriors-crest.png"
-              alt="Teso Warriors FC crest"
+              src="images/news/ateker-fc-v-teso-warriors-2026-11-07.jpg"
+              alt="Teso Warriors FC in action during the 1-0 away victory over Ateker FC in Moroto"
             />
 
-            <span class="match-label"> League Opener / 2026-27 </span>
+            <span class="match-label">
+              Match Report / Away Victory
+            </span>
+
           </div>
+
         </article>
+
 
         <!-- STORY TEXT -->
 
+        
         <div class="article-body">
+
           <p>
-            Teso Warriors FC turns its attention to the opening challenge of the
-            new season as the Warriors prepare to welcome Rupa United FC to
-            Soroti Stadium.
+            Teso Warriors FC secured an important 1-0 away victory
+            over Ateker FC in the North East Regional League,
+            continuing a strong start to the 2026/27 campaign.
           </p>
 
           <p>
-            The fixture marks the beginning of the club's first-round NERFA
-            Regional League programme for the 2026/27 season.
+            The match at Moroto Booma Grounds was a highly physical
+            contest, with both teams competing strongly throughout.
+            The Warriors matched the intensity of the hosts, remained
+            disciplined and stayed focused in difficult away conditions.
           </p>
 
           <p>
-            The team enters the campaign focused on discipline, continuous
-            development and competing strongly while proudly representing the
-            Teso Sub-region.
+            Despite the physical nature of the game, Teso Warriors
+            produced the better overall performance and created enough
+            chances to deserve all three points.
           </p>
 
           <p>
-            Players and technical staff will now complete their final
-            preparations ahead of Friday's 3:00 PM kick-off.
+            The team showed determination, organisation and attacking
+            intent, repeatedly finding its way into dangerous areas
+            and creating opportunities to extend the advantage.
           </p>
 
           <p>
-            Supporters are encouraged to follow the club's official channels and
-            website for matchday information, results and club updates
-            throughout the season.
+            While the victory was deserved, the performance also
+            highlighted an important area for improvement. The Warriors
+            created enough chances to make the result more comfortable
+            and will continue working to improve their finishing.
           </p>
 
-          <div class="article-signoff">Strength. Pride. Glory.</div>
+          <h3>Key Takeaways</h3>
+
+          <p>
+            <strong>Deserved victory:</strong>
+            Teso Warriors created enough opportunities and did enough
+            over the course of the match to merit the three points.
+          </p>
+
+          <p>
+            <strong>Physical contest:</strong>
+            Ateker FC provided a demanding challenge, but the Warriors
+            competed strongly and maintained their discipline.
+          </p>
+
+          <p>
+            <strong>Positive chance creation:</strong>
+            The team continued to create opportunities in dangerous
+            attacking areas.
+          </p>
+
+          <p>
+            <strong>Finishing remains a focus:</strong>
+            Greater efficiency in front of goal could have made the
+            result more comfortable, and this remains an area the team
+            hopes to improve.
+          </p>
+
+          <p>
+            The victory takes Teso Warriors to two wins from their
+            opening two league matches, with five goals scored and
+            one conceded.
+          </p>
+
+          <div class="article-signoff">
+            Strength. Pride. Glory.
+          </div>
+
         </div>
-
-        <!-- FUTURE NEWS -->
+<!-- FUTURE NEWS -->
 
         <section class="more-news">
           <div class="news-section-heading">
