@@ -80,13 +80,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     if (normalized.includes("ateker")) {
-      const possibleAtekerLogos = [
-        "images/teams/ateker-fc.png",
-        "images/teams/ateker-fc.jpeg",
-        "images/teams/ateker-fc.jpg"
-      ];
-
-      return possibleAtekerLogos[0];
+      return "images/teams/ateker-fc.jpeg";
     }
 
     return "";
