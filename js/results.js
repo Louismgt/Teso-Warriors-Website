@@ -79,6 +79,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       return "images/teams/rupa-united-fc.jpeg";
     }
 
+    if (normalized.includes("ateker")) {
+      const possibleAtekerLogos = [
+        "images/teams/ateker-fc.png",
+        "images/teams/ateker-fc.jpeg",
+        "images/teams/ateker-fc.jpg"
+      ];
+
+      return possibleAtekerLogos[0];
+    }
+
     return "";
   }
 
@@ -123,29 +133,37 @@ document.addEventListener("DOMContentLoaded", async () => {
         throw error;
       }
 
+      const forcedSeasonRecord = {
+        matches_played: 2,
+        wins: 2,
+        draws: 0,
+        losses: 0,
+        points: 6
+      };
+
       if (matchesPlayedElement) {
         matchesPlayedElement.textContent =
-          data?.matches_played ?? 0;
+          forcedSeasonRecord.matches_played;
       }
 
       if (winsElement) {
         winsElement.textContent =
-          data?.wins ?? 0;
+          forcedSeasonRecord.wins;
       }
 
       if (drawsElement) {
         drawsElement.textContent =
-          data?.draws ?? 0;
+          forcedSeasonRecord.draws;
       }
 
       if (lossesElement) {
         lossesElement.textContent =
-          data?.losses ?? 0;
+          forcedSeasonRecord.losses;
       }
 
       if (pointsElement) {
         pointsElement.textContent =
-          data?.points ?? 0;
+          forcedSeasonRecord.points;
       }
     } catch (error) {
       console.error(
@@ -159,7 +177,25 @@ document.addEventListener("DOMContentLoaded", async () => {
      RESULTS
      ========================================================= */
 
-  function renderResults(results) {
+  
+  /* TWF-FORCED-ATEKER-RESULT-START */
+
+  const officialAtekerResult = {
+    id: "forced-ateker-2026-11-07",
+    fixture_id: null,
+    competition: "North East Regional League",
+    opponent: "Ateker FC",
+    match_date: "2026-11-07",
+    venue: "Moroto Booma Grounds, Moroto",
+    home_away: "away",
+    teso_warriors_score: 1,
+    opponent_score: 0,
+    notes: ""
+  };
+
+  /* TWF-FORCED-ATEKER-RESULT-END */
+
+function renderResults(results) {
     if (!resultsList) {
       return;
     }
@@ -398,7 +434,28 @@ document.addEventListener("DOMContentLoaded", async () => {
         throw error;
       }
 
-      renderResults(data);
+      const existingResults = Array.isArray(data) ? data : [];
+
+      const alreadyHasAtekerResult = existingResults.some((result) => {
+        return (
+          String(result.opponent || "").trim().toLowerCase() === "ateker fc" &&
+          String(result.match_date || "") === "2026-11-07" &&
+          Number(result.teso_warriors_score) === 1 &&
+          Number(result.opponent_score) === 0
+        );
+      });
+
+      const finalResults = alreadyHasAtekerResult
+        ? existingResults
+        : [officialAtekerResult, ...existingResults];
+
+      finalResults.sort((a, b) => {
+        return String(b.match_date || "").localeCompare(
+          String(a.match_date || "")
+        );
+      });
+
+      renderResults(finalResults);
     } catch (error) {
       console.error(
         "Unable to load results:",
