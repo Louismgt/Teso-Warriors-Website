@@ -14,7 +14,7 @@
 
     <link rel="icon" type="image/png" href="images/teso-warriors-crest.png" />
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css?v=20261108-central-news" />
 
     <style>
       .news-page {
@@ -504,178 +504,32 @@
         </div>
       </section>
 
+      
       <div class="news-content">
-        <div class="news-section-heading">
-          <span> Latest News </span>
 
+        <div class="news-section-heading">
+          <span>Latest News</span>
           <h2>From the Warriors.</h2>
         </div>
 
-        <!-- FIRST OFFICIAL STORY -->
-
-        
-        
-        <article class="featured-story">
-
-          <div class="featured-story-copy">
-
-            <span class="story-category">
-              First Team / Match Report
-            </span>
-
-            <span class="story-date">
-              7 November 2026
-            </span>
-
-            <h2>
-              Teso Warriors Earn Deserved Away Win Over Ateker FC
-            </h2>
-
-            <p>
-              Teso Warriors FC secured a hard-fought 1-0 away victory
-              over Ateker FC in a physical North East Regional League
-              contest at Moroto Booma Grounds.
-            </p>
-
-            <div class="fixture-details">
-
-              <div class="fixture-detail">
-                <span>Competition</span>
-                <strong>North East Regional League</strong>
-              </div>
-
-              <div class="fixture-detail">
-                <span>Result</span>
-                <strong>Ateker FC 0-1 Teso Warriors FC</strong>
-              </div>
-
-              <div class="fixture-detail">
-                <span>Date</span>
-                <strong>Saturday, 7 November 2026</strong>
-              </div>
-
-              <div class="fixture-detail">
-                <span>Venue</span>
-                <strong>Moroto Booma Grounds, Moroto</strong>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="featured-story-visual featured-story-photo">
-
-            <img
-              src="images/news/ateker-fc-v-teso-warriors-2026-11-07.jpg"
-              alt="Teso Warriors FC in action during the 1-0 away victory over Ateker FC in Moroto"
-            />
-
-            <span class="match-label">
-              Match Report / Away Victory
-            </span>
-
-          </div>
-
-        </article>
-
-
-
-        <!-- STORY TEXT -->
-
-        
-        
-        <div class="article-body">
-
-          <p>
-            Teso Warriors FC secured an important 1-0 away victory
-            over Ateker FC in the North East Regional League,
-            continuing a strong start to the 2026/27 campaign.
-          </p>
-
-          <p>
-            The match at Moroto Booma Grounds was a highly physical
-            contest, with both teams competing strongly throughout.
-            The Warriors matched the intensity of the hosts, remained
-            disciplined and stayed focused in difficult away conditions.
-          </p>
-
-          <p>
-            Despite the physical nature of the game, Teso Warriors
-            produced the better overall performance and created enough
-            chances to deserve all three points.
-          </p>
-
-          <p>
-            The team showed determination, organisation and attacking
-            intent, repeatedly finding its way into dangerous areas
-            and creating opportunities to extend the advantage.
-          </p>
-
-          <p>
-            While the victory was deserved, the performance also
-            highlighted an important area for improvement. The Warriors
-            created enough chances to make the result more comfortable
-            and will continue working to improve their finishing.
-          </p>
-
-          <h3>Key Takeaways</h3>
-
-          <p>
-            <strong>Deserved victory:</strong>
-            Teso Warriors created enough opportunities and did enough
-            over the course of the match to merit the three points.
-          </p>
-
-          <p>
-            <strong>Physical contest:</strong>
-            Ateker FC provided a demanding challenge, but the Warriors
-            competed strongly and maintained their discipline.
-          </p>
-
-          <p>
-            <strong>Positive chance creation:</strong>
-            The team continued to create opportunities in dangerous
-            attacking areas.
-          </p>
-
-          <p>
-            <strong>Finishing remains a focus:</strong>
-            Greater efficiency in front of goal could have made the
-            result more comfortable, and this remains an area the team
-            hopes to improve.
-          </p>
-
-          <p>
-            The victory takes Teso Warriors to two wins from their
-            opening two league matches, with five goals scored and
-            one conceded.
-          </p>
-
-          <div class="article-signoff">
-            Strength. Pride. Glory.
-          </div>
-
+        <div id="news-featured">
+          <p>Loading latest Warriors news...</p>
         </div>
-<!-- FUTURE NEWS -->
 
         <section class="more-news">
+
           <div class="news-section-heading">
-            <span> More From The Club </span>
-
-            <h2>Latest Updates.</h2>
+            <span>More From The Club</span>
+            <h2>Previous Stories.</h2>
           </div>
 
-          <div class="news-placeholder">
-            <h3>More Warriors News Coming</h3>
+          <div id="news-archive"></div>
 
-            <p>
-              Match reports, team announcements and club updates will be
-              published here throughout the season.
-            </p>
-          </div>
         </section>
+
       </div>
-    </main>
+
+</main>
 
     <footer class="site-footer">
       <div class="container footer-main">
@@ -725,6 +579,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase.js"></script>
+    
+    <script src="js/news-data.js?v=20261108-news-system"></script>
+    <script src="js/news.js?v=20261108-news-system"></script>
     <script src="js/main.js"></script>
+
   </body>
 </html>
