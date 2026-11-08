@@ -262,7 +262,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 1,
       pos: 1,
-
       club: "Kumi United FC",
       club_name: "Kumi United FC",
       team: "Kumi United FC",
@@ -285,6 +284,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       losses: 0,
       l: 0,
 
+      goals_for: 6,
+      gf: 6,
+
+      goals_against: 0,
+      ga: 0,
+
       goal_difference: 6,
       gd: 6,
 
@@ -295,7 +300,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 2,
       pos: 2,
-
       club: "Teso Warriors FC",
       club_name: "Teso Warriors FC",
       team: "Teso Warriors FC",
@@ -318,6 +322,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       losses: 0,
       l: 0,
 
+      goals_for: 5,
+      gf: 5,
+
+      goals_against: 1,
+      ga: 1,
+
       goal_difference: 4,
       gd: 4,
 
@@ -328,7 +338,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 3,
       pos: 3,
-
       club: "Tapoh FC",
       club_name: "Tapoh FC",
       team: "Tapoh FC",
@@ -351,6 +360,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       losses: 0,
       l: 0,
 
+      goals_for: 2,
+      gf: 2,
+
+      goals_against: 1,
+      ga: 1,
+
       goal_difference: 1,
       gd: 1,
 
@@ -361,7 +376,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 4,
       pos: 4,
-
       club: "MYDA FC",
       club_name: "MYDA FC",
       team: "MYDA FC",
@@ -384,6 +398,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       losses: 1,
       l: 1,
 
+      goals_for: 8,
+      gf: 8,
+
+      goals_against: 2,
+      ga: 2,
+
       goal_difference: 6,
       gd: 6,
 
@@ -394,7 +414,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 5,
       pos: 5,
-
       club: "Obule Earth Quake FC",
       club_name: "Obule Earth Quake FC",
       team: "Obule Earth Quake FC",
@@ -417,6 +436,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       losses: 0,
       l: 0,
 
+      goals_for: 0,
+      gf: 0,
+
+      goals_against: 0,
+      ga: 0,
+
       goal_difference: 0,
       gd: 0,
 
@@ -427,7 +452,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 6,
       pos: 6,
-
       club: "Tita SC",
       club_name: "Tita SC",
       team: "Tita SC",
@@ -450,6 +474,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       losses: 0,
       l: 0,
 
+      goals_for: 0,
+      gf: 0,
+
+      goals_against: 0,
+      ga: 0,
+
       goal_difference: 0,
       gd: 0,
 
@@ -460,7 +490,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 7,
       pos: 7,
-
       club: "Kapchorwa Vikings Academy FC",
       club_name: "Kapchorwa Vikings Academy FC",
       team: "Kapchorwa Vikings Academy FC",
@@ -483,6 +512,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       losses: 0,
       l: 0,
 
+      goals_for: 0,
+      gf: 0,
+
+      goals_against: 0,
+      ga: 0,
+
       goal_difference: 0,
       gd: 0,
 
@@ -493,7 +528,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 8,
       pos: 8,
-
       club: "Ateker FC",
       club_name: "Ateker FC",
       team: "Ateker FC",
@@ -516,6 +550,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       losses: 1,
       l: 1,
 
+      goals_for: 0,
+      gf: 0,
+
+      goals_against: 1,
+      ga: 1,
+
       goal_difference: -1,
       gd: -1,
 
@@ -526,7 +566,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 9,
       pos: 9,
-
       club: "Kadam United FC",
       club_name: "Kadam United FC",
       team: "Kadam United FC",
@@ -549,6 +588,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       losses: 1,
       l: 1,
 
+      goals_for: 0,
+      gf: 0,
+
+      goals_against: 2,
+      ga: 2,
+
       goal_difference: -2,
       gd: -2,
 
@@ -559,7 +604,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 10,
       pos: 10,
-
       club: "Rupa United FC",
       club_name: "Rupa United FC",
       team: "Rupa United FC",
@@ -582,6 +626,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       losses: 1,
       l: 1,
 
+      goals_for: 1,
+      gf: 1,
+
+      goals_against: 4,
+      ga: 4,
+
       goal_difference: -3,
       gd: -3,
 
@@ -592,7 +642,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 11,
       pos: 11,
-
       club: "Kamet United FC",
       club_name: "Kamet United FC",
       team: "Kamet United FC",
@@ -614,6 +663,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       lost: 2,
       losses: 2,
       l: 2,
+
+      goals_for: 0,
+      gf: 0,
+
+      goals_against: 11,
+      ga: 11,
 
       goal_difference: -11,
       gd: -11,
