@@ -258,26 +258,36 @@ document.addEventListener("DOMContentLoaded", async () => {
   /* TWF-OFFICIAL-STANDINGS-2026-11-07-START */
 
   const OFFICIAL_STANDINGS_2026_11_07 = [
+
     {
       position: 1,
       pos: 1,
+
       club: "Kumi United FC",
       club_name: "Kumi United FC",
       team: "Kumi United FC",
       team_name: "Kumi United FC",
+
+      matches_played: 2,
+      mp: 2,
       played: 2,
       p: 2,
+
       won: 2,
       wins: 2,
       w: 2,
+
       drawn: 0,
       draws: 0,
       d: 0,
+
       lost: 0,
       losses: 0,
       l: 0,
+
       goal_difference: 6,
       gd: 6,
+
       points: 6,
       pts: 6
     },
@@ -285,23 +295,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 2,
       pos: 2,
+
       club: "Teso Warriors FC",
       club_name: "Teso Warriors FC",
       team: "Teso Warriors FC",
       team_name: "Teso Warriors FC",
+
+      matches_played: 2,
+      mp: 2,
       played: 2,
       p: 2,
+
       won: 2,
       wins: 2,
       w: 2,
+
       drawn: 0,
       draws: 0,
       d: 0,
+
       lost: 0,
       losses: 0,
       l: 0,
+
       goal_difference: 4,
       gd: 4,
+
       points: 6,
       pts: 6
     },
@@ -309,23 +328,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 3,
       pos: 3,
+
       club: "Tapoh FC",
       club_name: "Tapoh FC",
       team: "Tapoh FC",
       team_name: "Tapoh FC",
+
+      matches_played: 1,
+      mp: 1,
       played: 1,
       p: 1,
+
       won: 1,
       wins: 1,
       w: 1,
+
       drawn: 0,
       draws: 0,
       d: 0,
+
       lost: 0,
       losses: 0,
       l: 0,
+
       goal_difference: 1,
       gd: 1,
+
       points: 3,
       pts: 3
     },
@@ -333,23 +361,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 4,
       pos: 4,
+
       club: "MYDA FC",
       club_name: "MYDA FC",
       team: "MYDA FC",
       team_name: "MYDA FC",
+
+      matches_played: 2,
+      mp: 2,
       played: 2,
       p: 2,
+
       won: 1,
       wins: 1,
       w: 1,
+
       drawn: 0,
       draws: 0,
       d: 0,
+
       lost: 1,
       losses: 1,
       l: 1,
+
       goal_difference: 6,
       gd: 6,
+
       points: 3,
       pts: 3
     },
@@ -357,23 +394,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 5,
       pos: 5,
+
       club: "Obule Earth Quake FC",
       club_name: "Obule Earth Quake FC",
       team: "Obule Earth Quake FC",
       team_name: "Obule Earth Quake FC",
+
+      matches_played: 1,
+      mp: 1,
       played: 1,
       p: 1,
+
       won: 0,
       wins: 0,
       w: 0,
+
       drawn: 1,
       draws: 1,
       d: 1,
+
       lost: 0,
       losses: 0,
       l: 0,
+
       goal_difference: 0,
       gd: 0,
+
       points: 1,
       pts: 1
     },
@@ -381,23 +427,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 6,
       pos: 6,
+
       club: "Tita SC",
       club_name: "Tita SC",
       team: "Tita SC",
       team_name: "Tita SC",
+
+      matches_played: 1,
+      mp: 1,
       played: 1,
       p: 1,
+
       won: 0,
       wins: 0,
       w: 0,
+
       drawn: 1,
       draws: 1,
       d: 1,
+
       lost: 0,
       losses: 0,
       l: 0,
+
       goal_difference: 0,
       gd: 0,
+
       points: 1,
       pts: 1
     },
@@ -405,23 +460,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 7,
       pos: 7,
+
       club: "Kapchorwa Vikings Academy FC",
       club_name: "Kapchorwa Vikings Academy FC",
       team: "Kapchorwa Vikings Academy FC",
       team_name: "Kapchorwa Vikings Academy FC",
+
+      matches_played: 0,
+      mp: 0,
       played: 0,
       p: 0,
+
       won: 0,
       wins: 0,
       w: 0,
+
       drawn: 0,
       draws: 0,
       d: 0,
+
       lost: 0,
       losses: 0,
       l: 0,
+
       goal_difference: 0,
       gd: 0,
+
       points: 0,
       pts: 0
     },
@@ -429,23 +493,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 8,
       pos: 8,
+
       club: "Ateker FC",
       club_name: "Ateker FC",
       team: "Ateker FC",
       team_name: "Ateker FC",
+
+      matches_played: 1,
+      mp: 1,
       played: 1,
       p: 1,
+
       won: 0,
       wins: 0,
       w: 0,
+
       drawn: 0,
       draws: 0,
       d: 0,
+
       lost: 1,
       losses: 1,
       l: 1,
+
       goal_difference: -1,
       gd: -1,
+
       points: 0,
       pts: 0
     },
@@ -453,23 +526,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 9,
       pos: 9,
+
       club: "Kadam United FC",
       club_name: "Kadam United FC",
       team: "Kadam United FC",
       team_name: "Kadam United FC",
+
+      matches_played: 1,
+      mp: 1,
       played: 1,
       p: 1,
+
       won: 0,
       wins: 0,
       w: 0,
+
       drawn: 0,
       draws: 0,
       d: 0,
+
       lost: 1,
       losses: 1,
       l: 1,
+
       goal_difference: -2,
       gd: -2,
+
       points: 0,
       pts: 0
     },
@@ -477,23 +559,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 10,
       pos: 10,
+
       club: "Rupa United FC",
       club_name: "Rupa United FC",
       team: "Rupa United FC",
       team_name: "Rupa United FC",
+
+      matches_played: 1,
+      mp: 1,
       played: 1,
       p: 1,
+
       won: 0,
       wins: 0,
       w: 0,
+
       drawn: 0,
       draws: 0,
       d: 0,
+
       lost: 1,
       losses: 1,
       l: 1,
+
       goal_difference: -3,
       gd: -3,
+
       points: 0,
       pts: 0
     },
@@ -501,26 +592,36 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
       position: 11,
       pos: 11,
+
       club: "Kamet United FC",
       club_name: "Kamet United FC",
       team: "Kamet United FC",
       team_name: "Kamet United FC",
+
+      matches_played: 2,
+      mp: 2,
       played: 2,
       p: 2,
+
       won: 0,
       wins: 0,
       w: 0,
+
       drawn: 0,
       draws: 0,
       d: 0,
+
       lost: 2,
       losses: 2,
       l: 2,
+
       goal_difference: -11,
       gd: -11,
+
       points: 0,
       pts: 0
     }
+
   ];
 
   /* TWF-OFFICIAL-STANDINGS-2026-11-07-END */
