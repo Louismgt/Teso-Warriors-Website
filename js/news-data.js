@@ -9,6 +9,77 @@
 window.TWF_NEWS = [
 
   {
+    id: "rupa-home-win-2026-10-30",
+
+    date: "2026-10-30",
+    displayDate: "30 October 2026",
+
+    category: "First Team",
+    type: "Match Report",
+
+    title:
+      "Warriors Open League Campaign with Commanding 4-1 Victory Over Rupa United",
+
+    summary:
+      "Teso Warriors FC made a strong start to the 2026/27 North East Regional League season with an impressive 4-1 home victory over Rupa United FC at Soroti City Stadium.",
+
+    image:
+      "images/news/teso-warriors-rupa-united-4-1-2026-10-30.jpg",
+
+    imageAlt:
+      "Teso Warriors FC full-time graphic following the 4-1 victory over Rupa United FC",
+
+    imageType: "photo",
+
+    competition: "North East Regional League",
+    result: "Teso Warriors FC 4-1 Rupa United FC",
+    venue: "Soroti City Stadium (Oligoi Stadium)",
+
+    body: [
+      "Teso Warriors FC opened the 2026/27 North East Regional League campaign in emphatic fashion with a 4-1 victory over Rupa United FC at Soroti City Stadium.",
+
+      "The Warriors made a fast start and established control early in the contest, converting their attacking pressure into goals and taking a commanding advantage into the latter stages of the match.",
+
+      "Zentel opened the scoring in the 3rd minute before Israel doubled the advantage in the 16th minute. Odongo Enos added a third in first-half stoppage time, sending Teso Warriors into the break firmly in control.",
+
+      "Adoku Aaron converted from the penalty spot in the 68th minute to complete the Warriors' scoring and secure an important opening-day victory.",
+
+      "The result provided a positive foundation for the new league campaign and rewarded the team's attacking intent, discipline and ability to convert important opportunities."
+    ],
+
+    takeaways: [
+      {
+        title: "Strong start",
+        text:
+          "Teso Warriors began the league campaign with an important three points and a convincing home performance."
+      },
+
+      {
+        title: "Fast attacking impact",
+        text:
+          "The Warriors established control early and scored three times before half-time."
+      },
+
+      {
+        title: "Multiple goalscorers",
+        text:
+          "Zentel, Israel, Odongo Enos and Adoku Aaron all contributed goals to the victory."
+      },
+
+      {
+        title: "Positive foundation",
+        text:
+          "The performance gave the squad confidence and momentum at the beginning of the 2026/27 campaign."
+      }
+    ],
+
+    closing:
+      "Teso Warriors completed Matchday One with three points, four goals scored and a positive start to the North East Regional League season."
+  },
+
+
+
+  {
     id: "ateker-away-win-2026-11-07",
 
     date: "2026-11-07",
