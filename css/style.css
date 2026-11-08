@@ -5697,3 +5697,131 @@ button:focus-visible {
 
 /* TWF EDITORIAL MEDIA NAV END */
 
+
+
+
+/* TWF MEDIA INTRO START */
+
+.twf-media-intro {
+  position: relative;
+  padding: 88px 0 92px;
+  background: #f7f7f5;
+  overflow: hidden;
+}
+
+.twf-media-intro::after {
+  content: "";
+  position: absolute;
+  right: -130px;
+  top: -140px;
+  width: 420px;
+  height: 420px;
+  border: 1px solid rgba(181,18,27,.08);
+  transform: rotate(45deg);
+}
+
+.twf-media-intro-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.35fr)
+    minmax(320px, .65fr);
+  gap: 90px;
+  align-items: end;
+}
+
+.twf-media-intro-kicker {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: #b5121b;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.twf-media-intro-main h2 {
+  margin: 0;
+  max-width: 900px;
+  color: #111315;
+  font-size: clamp(54px, 7vw, 92px);
+  line-height: .9;
+  letter-spacing: -.06em;
+  text-transform: uppercase;
+}
+
+.twf-media-intro-main h2 em {
+  display: inline-block;
+  color: #b5121b;
+  font-style: normal;
+  font-weight: inherit;
+}
+
+.twf-media-intro-rule {
+  width: 120px;
+  height: 4px;
+  margin-top: 30px;
+  background: #b5121b;
+}
+
+.twf-media-intro-copy {
+  padding-left: 28px;
+  border-left: 1px solid #cfd2d5;
+}
+
+.twf-media-intro-copy > span {
+  display: block;
+  margin-bottom: 20px;
+  color: #111315;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.twf-media-intro-copy p {
+  margin: 0 0 15px;
+  color: #575c62;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.twf-media-intro-copy p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+
+  .twf-media-intro {
+    padding: 72px 0;
+  }
+
+  .twf-media-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .twf-media-intro-copy {
+    max-width: 680px;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .twf-media-intro {
+    padding: 58px 0 64px;
+  }
+
+  .twf-media-intro-main h2 {
+    font-size: 48px;
+  }
+
+  .twf-media-intro-copy {
+    padding-left: 20px;
+  }
+
+}
+
+/* TWF MEDIA INTRO END */
