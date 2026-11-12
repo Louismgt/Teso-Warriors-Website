@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
      ACTIVE NAVIGATION LINK
      ========================================================= */
 
-  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const currentPage = window.location.pathname.split("/").pop() || "/";
 
   document.querySelectorAll(".main-nav a").forEach((link) => {
     if (link.getAttribute("href") === currentPage) {

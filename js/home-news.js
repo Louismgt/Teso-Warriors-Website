@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
               ${escapeHTML(story.summary)}
             </p>
 
-            <a href="news.html#${story.id}">
+            <a href="news#${story.id}">
               Read More →
             </a>
 

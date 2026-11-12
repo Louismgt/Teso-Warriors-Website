@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
               <a
                 class="twf-archive-image"
-                href="news.html#${story.id}"
+                href="news#${story.id}"
               >
 
                 <img
@@ -243,7 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </span>
 
                 <h3>
-                  <a href="news.html#${story.id}">
+                  <a href="news#${story.id}">
                     ${escapeHTML(story.title)}
                   </a>
                 </h3>
@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 <a
                   class="twf-news-read-more"
-                  href="news.html#${story.id}"
+                  href="news#${story.id}"
                 >
                   Read Story →
                 </a>

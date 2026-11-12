@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       <span>2026/27 Season</span>
     </div>
 
-    <a href="results.html" class="match-link">
+    <a href="results" class="match-link">
       View Results →
     </a>
   `;
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <span>To Be Confirmed</span>
       </div>
 
-      <a href="fixtures.html" class="match-link">
+      <a href="fixtures" class="match-link">
         View Fixtures →
       </a>
     `;
@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         </div>
 
         <a
-          href="fixtures.html"
+          href="fixtures"
           class="match-link"
         >
           View Fixtures →
@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>
 
       <a
-        href="fixtures.html"
+        href="fixtures"
         class="match-link"
       >
         View Fixtures →
@@ -263,7 +263,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>
 
       <a
-        href="fixtures.html"
+        href="fixtures"
         class="match-link"
       >
         View Fixtures →
