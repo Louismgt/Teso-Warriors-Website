@@ -579,7 +579,8 @@
           player_id: "adoku-aaron-maxi",
           first_name: "Adoku",
           last_name: "Aaron",
-          display_name: "Maxi",
+          display_name: "Adoku Aaron",
+          nickname: "Maxi",
           position: "Forward",
           position_group: "forward",
           jersey_number: 14,
@@ -600,7 +601,8 @@
           player_id: "ewou-patrick-mane",
           first_name: "Ewou",
           last_name: "Patrick",
-          display_name: "Mane",
+          display_name: "Ewou Patrick",
+          nickname: "Mane",
           position: "Forward",
           position_group: "forward",
           jersey_number: 20,
@@ -612,10 +614,10 @@
           previous_club: "N/A",
           joined: "2026/27 season",
           role: "",
-          appearances: 1,
+          appearances: 2,
           goals: 0,
           assists: 0,
-          bio: "Mane is a right-footed Ugandan forward who joined Teso Warriors FC for the 2026/27 season. He has made one first-team appearance for the Warriors."
+          bio: "Mane is a right-footed Ugandan forward who joined Teso Warriors FC for the 2026/27 season. He has made two first-team appearances for the Warriors."
         }
       ];
 
@@ -734,6 +736,13 @@
           .map((player) => {
             const fullName = `${player.first_name || ""} ${player.last_name || ""}`.trim();
             const displayName = player.display_name || fullName;
+            const nickname = player.nickname || "";
+            const primaryName = nickname ? fullName : displayName;
+            const secondaryName = nickname
+              ? `“${nickname}”`
+              : displayName !== fullName
+                ? fullName
+                : "";
             const jerseyNumber =
               player.jersey_number !== null && player.jersey_number !== undefined
                 ? String(player.jersey_number).padStart(2, "0")
@@ -754,7 +763,7 @@
                 data-player-key="${escapeHtml(playerKey(player))}"
                 tabindex="0"
                 role="button"
-                aria-label="View ${escapeHtml(displayName)} profile"
+                aria-label="View ${escapeHtml(primaryName)} profile"
               >
                 <div class="player-card-image">
                   ${photo}
@@ -764,8 +773,8 @@
 
                 <div class="player-card-content">
                   <p class="player-position">${escapeHtml(player.position || "PLAYER")}</p>
-                  <h3>${escapeHtml(displayName)}</h3>
-                  ${displayName !== fullName ? `<p class="player-full-name">${escapeHtml(fullName)}</p>` : ""}
+                  <h3>${escapeHtml(primaryName)}</h3>
+                  ${secondaryName ? `<p class="player-full-name">${escapeHtml(secondaryName)}</p>` : ""}
                   <div class="player-card-footer">
                     <span>${escapeHtml(player.nationality || "UGANDA")}</span>
                     <span>VIEW PROFILE →</span>
@@ -815,17 +824,23 @@
 
         const fullName = `${player.first_name || ""} ${player.last_name || ""}`.trim();
         const displayName = player.display_name || fullName;
+        const nickname = player.nickname || "";
+        const primaryName = nickname ? fullName : displayName;
 
         modalImage.src = player.photo_url || "images/teso-warriors-crest.png";
-        modalImage.alt = displayName;
+        modalImage.alt = primaryName;
         modalNumber.textContent =
           player.jersey_number !== null && player.jersey_number !== undefined
             ? String(player.jersey_number).padStart(2, "0")
             : "—";
 
         modalPosition.textContent = player.position || "PLAYER";
-        modalName.textContent = displayName;
-        modalFullName.textContent = displayName !== fullName ? fullName : "";
+        modalName.textContent = primaryName;
+        modalFullName.textContent = nickname
+          ? `Nickname: “${nickname}”`
+          : displayName !== fullName
+            ? fullName
+            : "";
         modalRole.textContent = player.role || "";
         modalRole.hidden = !player.role;
 
