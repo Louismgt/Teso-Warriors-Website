@@ -6303,62 +6303,239 @@ button:focus-visible {
 
 /* TWF PLAYER PROFILES V1 END */
 
-/* TWF PLAYER PAGE HOTFIX START */
 
-.player-card {
-  position: relative;
-  isolation: isolate;
-  cursor: pointer;
+
+/* TWF PREMIUM PLAYER CARDS START */
+
+#players-grid,
+.players-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+  align-items: stretch !important;
 }
 
-.player-card::before,
-.player-card::after,
-.player-card-image::before,
-.player-card-image::after {
-  pointer-events: none;
+.player-card {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  background: #0b0d10 !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.14) !important;
+  cursor: pointer !important;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease !important;
+}
+
+.player-card:hover,
+.player-card:focus-visible {
+  transform: translateY(-6px) !important;
+  border-color: rgba(214,20,36,0.72) !important;
+  box-shadow: 0 28px 60px rgba(0,0,0,0.22) !important;
+}
+
+.player-card:focus-visible {
+  outline: none !important;
 }
 
 .player-card-image {
-  position: relative;
-  overflow: hidden;
-  background: #0b0d10;
+  position: relative !important;
+  height: 470px !important;
+  min-height: 470px !important;
+  overflow: hidden !important;
+  background: #111418 !important;
 }
 
 .player-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 18%;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 14% !important;
   opacity: 1 !important;
-  filter: none !important;
-  transform: scale(1.01);
+  filter: saturate(1.08) contrast(1.06) brightness(0.99) !important;
+  transform: scale(1.015) !important;
+  transition: transform 350ms ease !important;
+}
+
+.player-card:hover .player-card-image img,
+.player-card:focus-visible .player-card-image img {
+  transform: scale(1.045) !important;
+}
+
+.player-card-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.00) 0%,
+    rgba(0,0,0,0.00) 58%,
+    rgba(0,0,0,0.68) 100%
+  );
 }
 
 .player-card-image::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.16) 100%);
-  z-index: 1;
-}
-
-.player-card-number,
-.player-card-role,
-.player-card-content {
-  position: relative;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 2;
+  height: 4px;
+  background: #d41424;
+  pointer-events: none;
 }
 
-.player-card:hover .player-card-image img,
-.player-card:focus-visible .player-card-image img {
-  transform: scale(1.035);
+.player-card-number {
+  position: absolute !important;
+  top: 18px !important;
+  right: 20px !important;
+  z-index: 3 !important;
+  color: #fff !important;
+  font-size: clamp(3rem, 4.2vw, 4.7rem) !important;
+  font-weight: 900 !important;
+  line-height: 0.9 !important;
+  letter-spacing: -0.08em !important;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.34) !important;
+}
+
+.player-card-role {
+  position: absolute !important;
+  left: 18px !important;
+  bottom: 18px !important;
+  z-index: 3 !important;
+  padding: 7px 10px !important;
+  background: #d41424 !important;
+  color: #fff !important;
+  font-size: 0.61rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.13em !important;
+  text-transform: uppercase !important;
+}
+
+.player-card-content {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  padding: 22px 22px 20px !important;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(212,20,36,0.10), transparent 34%),
+    #0d1013 !important;
+  color: #fff !important;
+}
+
+.player-card-content::before {
+  content: "TESO WARRIORS FC";
+  display: block;
+  margin-bottom: 10px;
+  color: rgba(255,255,255,0.34);
+  font-size: 0.54rem;
+  font-weight: 900;
+  letter-spacing: 0.17em;
+}
+
+.player-position {
+  margin: 0 0 6px !important;
+  color: #ff6570 !important;
+  font-size: 0.64rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+}
+
+.player-card-content h3 {
+  margin: 0 !important;
+  color: #fff !important;
+  font-size: clamp(2rem, 2.9vw, 2.85rem) !important;
+  line-height: 0.95 !important;
+  letter-spacing: -0.045em !important;
+  text-transform: uppercase !important;
+}
+
+.player-full-name {
+  margin: 8px 0 0 !important;
+  color: #b9c0c9 !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+}
+
+.player-card-footer {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 14px !important;
+  margin-top: 22px !important;
+  padding-top: 18px !important;
+  border-top: 1px solid rgba(255,255,255,0.10) !important;
+  color: #9fa7b0 !important;
+  font-size: 0.60rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.10em !important;
+  text-transform: uppercase !important;
+}
+
+.player-card-footer span:last-child {
+  color: #fff !important;
+}
+
+.player-card:hover .player-card-footer span:last-child {
+  color: #ff6570 !important;
+}
+
+.twf-player-modal-panel {
+  border-top: 5px solid #d41424 !important;
 }
 
 .twf-player-modal-photo img {
-  opacity: 1 !important;
-  filter: none !important;
-  object-position: center 12%;
+  filter: saturate(1.07) contrast(1.05) brightness(0.99) !important;
 }
 
-/* TWF PLAYER PAGE HOTFIX END */
+@media (max-width: 1100px) {
+  #players-grid,
+  .players-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .player-card-image {
+    height: 500px !important;
+    min-height: 500px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  #players-grid,
+  .players-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .player-card {
+    width: min(100%, 520px) !important;
+    margin-inline: auto !important;
+  }
+
+  .player-card-image {
+    height: 520px !important;
+    min-height: 520px !important;
+  }
+}
+
+@media (max-width: 460px) {
+  .player-card-image {
+    height: 455px !important;
+    min-height: 455px !important;
+  }
+
+  .player-card-content {
+    padding: 20px 18px 18px !important;
+  }
+}
+
+/* TWF PREMIUM PLAYER CARDS END */
