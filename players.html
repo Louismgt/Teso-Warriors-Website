@@ -81,7 +81,7 @@
 
 
     <link rel="icon" type="image/png" href="images/teso-warriors-crest.png" />
-    <link rel="stylesheet" href="css/style.css?v=20261113-premium-players-v2" />
+    <link rel="stylesheet" href="css/style.css?v=20261113-profile-v2-verified" />
 </head>
 
   <body>
@@ -458,6 +458,7 @@
               <div><span>Nationality</span><strong id="twf-player-modal-nationality">—</strong></div>
               <div><span>Date of Birth / Age</span><strong id="twf-player-modal-dob">—</strong></div>
               <div><span>Preferred Foot</span><strong id="twf-player-modal-foot">—</strong></div>
+              <div><span>Other Positions</span><strong id="twf-player-modal-secondary">—</strong></div>
               <div><span>Previous Club</span><strong id="twf-player-modal-previous">—</strong></div>
               <div><span>Joined Teso Warriors</span><strong id="twf-player-modal-joined">—</strong></div>
             </div>
@@ -567,13 +568,14 @@
           age_text: "",
           nationality: "Ugandan",
           preferred_foot: "Right",
+          secondary_positions: "Full Back · Centre Back",
           previous_club: "N/A",
           joined: "2025/26 season",
           role: "Captain",
           appearances: 2,
           goals: 0,
           assists: 0,
-          bio: "Gerald is a defensive midfielder and captain of Teso Warriors FC. He joined the club in the 2025/26 season and is part of the Warriors' midfield unit."
+          bio: "Gerald is the captain of Teso Warriors FC and a versatile defensive player. His primary role is defensive midfield, and he can also operate effectively at full back and centre back, giving the Warriors valuable tactical flexibility across midfield and defence."
         },
         {
           player_id: "adoku-aaron-maxi",
@@ -812,6 +814,7 @@
       const modalNationality = document.getElementById("twf-player-modal-nationality");
       const modalDob = document.getElementById("twf-player-modal-dob");
       const modalFoot = document.getElementById("twf-player-modal-foot");
+      const modalSecondary = document.getElementById("twf-player-modal-secondary");
       const modalPrevious = document.getElementById("twf-player-modal-previous");
       const modalJoined = document.getElementById("twf-player-modal-joined");
       const modalApps = document.getElementById("twf-player-modal-apps");
@@ -847,6 +850,7 @@
         modalNationality.textContent = player.nationality || "—";
         modalDob.textContent = player.date_of_birth || player.age_text || "—";
         modalFoot.textContent = player.preferred_foot || "—";
+        modalSecondary.textContent = player.secondary_positions || "—";
         modalPrevious.textContent = player.previous_club || "—";
         modalJoined.textContent = player.joined || "—";
 

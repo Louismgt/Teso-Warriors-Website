@@ -6539,3 +6539,143 @@ button:focus-visible {
 }
 
 /* TWF PREMIUM PLAYER CARDS END */
+
+/* TWF PLAYER PROFILE V2 START */
+
+.twf-player-modal-backdrop {
+  background: rgba(4, 6, 8, 0.93) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.twf-player-modal-panel {
+  width: min(1160px, 100%) !important;
+  max-height: 90vh !important;
+  grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1.1fr) !important;
+  background: #0d1014 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-top: 5px solid #b5121b !important;
+  box-shadow: 0 34px 100px rgba(0, 0, 0, 0.62) !important;
+}
+
+.twf-player-modal-close {
+  background: #b5121b !important;
+  color: #fff !important;
+}
+
+.twf-player-modal-photo {
+  min-height: 700px !important;
+  background: #080a0d !important;
+}
+
+.twf-player-modal-photo img {
+  min-height: 700px !important;
+  object-fit: cover !important;
+  object-position: center 12% !important;
+  filter: saturate(1.08) contrast(1.05) brightness(0.98) !important;
+}
+
+.twf-player-modal-photo::after {
+  background: linear-gradient(180deg, transparent 52%, rgba(0, 0, 0, 0.82)) !important;
+}
+
+.twf-player-modal-photo > span {
+  color: #fff !important;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+}
+
+.twf-player-modal-content {
+  padding: 48px 50px 42px !important;
+  background: radial-gradient(circle at 100% 0%, rgba(181, 18, 27, 0.15), transparent 30%), #101318 !important;
+  color: #fff !important;
+}
+
+.twf-player-modal-content .section-label {
+  color: #ef4b55 !important;
+}
+
+.twf-player-modal-heading {
+  padding-bottom: 24px !important;
+  margin-bottom: 26px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.twf-player-modal-heading h2,
+.twf-player-detail-grid strong,
+.twf-player-stat-grid strong {
+  color: #fff !important;
+}
+
+.twf-player-modal-heading p {
+  color: #aeb5bf !important;
+}
+
+.twf-player-modal-role {
+  background: #b5121b !important;
+  color: #fff !important;
+}
+
+.twf-player-detail-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+  border: 0 !important;
+}
+
+.twf-player-detail-grid > div {
+  min-height: 80px !important;
+  padding: 15px 16px !important;
+  background: #161a20 !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+.twf-player-detail-grid span,
+.twf-player-bio > span,
+.twf-player-stat-grid span {
+  color: #818b98 !important;
+}
+
+.twf-player-stat-grid {
+  margin-top: 22px !important;
+  gap: 10px !important;
+  background: transparent !important;
+}
+
+.twf-player-stat-grid > div {
+  background: #080a0d !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.twf-player-bio {
+  margin-top: 26px !important;
+  padding-top: 22px !important;
+  border-top: 2px solid #b5121b !important;
+}
+
+.twf-player-bio p {
+  color: #c5cad1 !important;
+  line-height: 1.72 !important;
+}
+
+@media (max-width: 900px) {
+  .twf-player-modal-panel {
+    grid-template-columns: 1fr !important;
+  }
+  .twf-player-modal-photo,
+  .twf-player-modal-photo img {
+    min-height: 500px !important;
+    height: 58vh !important;
+  }
+  .twf-player-modal-content {
+    padding: 34px 24px 30px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .twf-player-detail-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .twf-player-modal-heading {
+    flex-direction: column !important;
+  }
+}
+
+/* TWF PLAYER PROFILE V2 END */
