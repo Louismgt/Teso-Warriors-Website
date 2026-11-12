@@ -851,7 +851,12 @@
         modalNationality.textContent = player.nationality || "—";
         modalDob.textContent = player.date_of_birth || player.age_text || "—";
         modalFoot.textContent = player.preferred_foot || "—";
-        modalSecondary.textContent = player.secondary_positions || "—";
+        // TWF OPTIONAL SECONDARY POSITION DISPLAY
+        const secondaryPosition = (player.secondary_positions || "").trim();
+        modalSecondary.textContent = secondaryPosition;
+        if (modalSecondary.parentElement) {
+          modalSecondary.parentElement.style.display = secondaryPosition ? "" : "none";
+        }
         modalPrevious.textContent = player.previous_club || "—";
         modalJoined.textContent = player.joined || "—";
 
