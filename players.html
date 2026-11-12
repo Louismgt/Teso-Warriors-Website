@@ -76,9 +76,9 @@
 <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    
 
-    
+
+
 
     <link rel="icon" type="image/png" href="images/teso-warriors-crest.png" />
     <link rel="stylesheet" href="css/style.css" />
@@ -411,6 +411,72 @@
           <a href="contact" class="btn btn-primary">Contact The Club</a>
         </div>
       </section>
+
+      <!-- TWF PLAYER PROFILE MODAL START -->
+      <div
+        class="twf-player-modal"
+        id="twf-player-modal"
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="twf-player-modal-name"
+      >
+        <button
+          class="twf-player-modal-backdrop"
+          type="button"
+          data-player-close
+          aria-label="Close player profile"
+        ></button>
+
+        <div class="twf-player-modal-panel">
+          <button
+            class="twf-player-modal-close"
+            type="button"
+            data-player-close
+            aria-label="Close player profile"
+          >
+            ×
+          </button>
+
+          <div class="twf-player-modal-photo">
+            <img id="twf-player-modal-image" src="" alt="" />
+            <span id="twf-player-modal-number"></span>
+          </div>
+
+          <div class="twf-player-modal-content">
+            <p class="section-label" id="twf-player-modal-position">PLAYER</p>
+
+            <div class="twf-player-modal-heading">
+              <div>
+                <h2 id="twf-player-modal-name"></h2>
+                <p id="twf-player-modal-full-name"></p>
+              </div>
+              <span class="twf-player-modal-role" id="twf-player-modal-role"></span>
+            </div>
+
+            <div class="twf-player-detail-grid">
+              <div><span>Nationality</span><strong id="twf-player-modal-nationality">—</strong></div>
+              <div><span>Date of Birth / Age</span><strong id="twf-player-modal-dob">—</strong></div>
+              <div><span>Preferred Foot</span><strong id="twf-player-modal-foot">—</strong></div>
+              <div><span>Previous Club</span><strong id="twf-player-modal-previous">—</strong></div>
+              <div><span>Joined Teso Warriors</span><strong id="twf-player-modal-joined">—</strong></div>
+            </div>
+
+            <div class="twf-player-stat-grid">
+              <div><strong id="twf-player-modal-apps">0</strong><span>Appearances</span></div>
+              <div><strong id="twf-player-modal-goals">0</strong><span>Goals</span></div>
+              <div><strong id="twf-player-modal-assists">0</strong><span>Assists</span></div>
+            </div>
+
+            <div class="twf-player-bio">
+              <span>PLAYER PROFILE</span>
+              <p id="twf-player-modal-bio"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- TWF PLAYER PROFILE MODAL END -->
+
     </main>
 
     <footer class="site-footer">
@@ -482,51 +548,169 @@
     <script src="js/supabase.js"></script>
     <script src="js/main.js"></script>
 
-    <script>
+        <script>
       const playersGrid = document.getElementById("players-grid");
       const playerCount = document.getElementById("player-count");
       const rosterStatus = document.getElementById("roster-status");
 
+      const officialLocalPlayers = [
+        {
+          player_id: "gerald-ogwang",
+          first_name: "Ogwang",
+          last_name: "Gerald",
+          display_name: "Gerald",
+          position: "Defensive Midfielder",
+          position_group: "midfielder",
+          jersey_number: 8,
+          photo_url: "images/players/gerald-ogwang.jpg",
+          date_of_birth: "30 August 2008",
+          age_text: "",
+          nationality: "Ugandan",
+          preferred_foot: "Right",
+          previous_club: "N/A",
+          joined: "2025/26 season",
+          role: "Captain",
+          appearances: 2,
+          goals: 0,
+          assists: 0,
+          bio: "Gerald is a defensive midfielder and captain of Teso Warriors FC. He joined the club in the 2025/26 season and is part of the Warriors' midfield unit."
+        },
+        {
+          player_id: "adoku-aaron-maxi",
+          first_name: "Adoku",
+          last_name: "Aaron",
+          display_name: "Maxi",
+          position: "Forward",
+          position_group: "forward",
+          jersey_number: 14,
+          photo_url: "images/players/adoku-aaron-maxi.jpg",
+          date_of_birth: "4 April 2000",
+          age_text: "",
+          nationality: "Ugandan",
+          preferred_foot: "Left",
+          previous_club: "Mbale Heroes FC",
+          joined: "2026/27 season",
+          role: "",
+          appearances: 1,
+          goals: 1,
+          assists: 0,
+          bio: "Maxi joined Teso Warriors FC for the 2026/27 season from Mbale Heroes FC. The left-footed forward has opened his Warriors account with one goal in his first appearance."
+        },
+        {
+          player_id: "ewou-patrick-mane",
+          first_name: "Ewou",
+          last_name: "Patrick",
+          display_name: "Mane",
+          position: "Forward",
+          position_group: "forward",
+          jersey_number: 20,
+          photo_url: "images/players/ewou-patrick-mane.jpg",
+          date_of_birth: "",
+          age_text: "20 years",
+          nationality: "Ugandan",
+          preferred_foot: "Right",
+          previous_club: "N/A",
+          joined: "2026/27 season",
+          role: "",
+          appearances: 1,
+          goals: 0,
+          assists: 0,
+          bio: "Mane is a right-footed Ugandan forward who joined Teso Warriors FC for the 2026/27 season. He has made one first-team appearance for the Warriors."
+        }
+      ];
+
       let allPlayers = [];
 
-      async function loadPlayers() {
-        try {
-          const { data, error } = await window.twfSupabase
-            .from("players")
-            .select(
-              "player_id, first_name, last_name, position, jersey_number, photo_url, bio",
-            )
-            .eq("status", "active")
-            .order("jersey_number", {
-              ascending: true,
-              nullsFirst: false,
-            });
+      function playerKey(player) {
+        const name = `${player.first_name || ""}-${player.last_name || ""}`
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-|-$/g, "");
 
-          if (error) {
-            throw error;
+        return player.player_id || name || String(player.jersey_number || "");
+      }
+
+      function mergePlayers(localPlayers, databasePlayers) {
+        const merged = new Map();
+
+        localPlayers.forEach((player) => merged.set(playerKey(player), player));
+
+        (databasePlayers || []).forEach((player) => {
+          const duplicateLocal = localPlayers.find((localPlayer) => {
+            const sameNumber =
+              localPlayer.jersey_number !== null &&
+              player.jersey_number !== null &&
+              Number(localPlayer.jersey_number) === Number(player.jersey_number);
+
+            const sameName =
+              `${localPlayer.first_name} ${localPlayer.last_name}`.toLowerCase() ===
+              `${player.first_name || ""} ${player.last_name || ""}`.toLowerCase();
+
+            return sameNumber || sameName;
+          });
+
+          if (duplicateLocal) {
+            merged.set(playerKey(duplicateLocal), { ...player, ...duplicateLocal });
+          } else {
+            merged.set(playerKey(player), player);
           }
+        });
 
-          allPlayers = data || [];
-          playerCount.textContent = String(allPlayers.length).padStart(2, "0");
-          renderPlayers(allPlayers);
+        return Array.from(merged.values()).sort((a, b) => {
+          const aNumber = Number(a.jersey_number ?? 999);
+          const bNumber = Number(b.jersey_number ?? 999);
+          return aNumber - bNumber;
+        });
+      }
+
+      async function loadPlayers() {
+        let databasePlayers = [];
+
+        try {
+          if (window.twfSupabase) {
+            const { data, error } = await window.twfSupabase
+              .from("players")
+              .select("player_id, first_name, last_name, position, jersey_number, photo_url, bio")
+              .eq("status", "active")
+              .order("jersey_number", { ascending: true, nullsFirst: false });
+
+            if (error) throw error;
+            databasePlayers = data || [];
+          }
         } catch (error) {
-          console.error("Failed to load players:", error);
-
-          playerCount.textContent = "—";
-          rosterStatus.textContent =
-            "Squad information is temporarily unavailable.";
-
-          playersGrid.innerHTML = `
-            <div class="players-error">
-              <p class="section-label">UNAVAILABLE</p>
-              <h3>Squad Information Could Not Be Loaded.</h3>
-              <p>
-                Please try again later or contact the club for official player
-                information.
-              </p>
-            </div>
-          `;
+          console.warn(
+            "Supabase squad data unavailable; showing official website profiles.",
+            error
+          );
         }
+
+        allPlayers = mergePlayers(officialLocalPlayers, databasePlayers);
+        playerCount.textContent = String(allPlayers.length).padStart(2, "0");
+        renderPlayers(allPlayers);
+      }
+
+      function normalizePosition(player) {
+        if (player.position_group) return player.position_group;
+
+        const value = (player.position || "").toLowerCase();
+
+        if (value.includes("goal")) return "goalkeeper";
+        if (value.includes("defend")) return "defender";
+        if (value.includes("midfield")) return "midfielder";
+        if (value.includes("forward") || value.includes("striker") || value.includes("wing")) {
+          return "forward";
+        }
+
+        return "player";
+      }
+
+      function escapeHtml(value) {
+        return String(value ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
       }
 
       function renderPlayers(players) {
@@ -534,74 +718,56 @@
           playersGrid.innerHTML = `
             <div class="players-empty">
               <div class="players-empty-crest">
-                <img
-                  src="images/teso-warriors-crest.png"
-                  alt=""
-                  aria-hidden="true"
-                />
+                <img src="images/teso-warriors-crest.png" alt="" aria-hidden="true" />
               </div>
-
               <div class="players-empty-content">
                 <p class="section-label">SQUAD INFORMATION</p>
                 <h3>Player Profiles Coming Soon.</h3>
-                <p>
-                  Official Teso Warriors FC player profiles will appear here
-                  as the squad is registered in the club's digital system.
-                </p>
+                <p>Official Teso Warriors FC player profiles will appear here as the squad is registered in the club's digital system.</p>
               </div>
             </div>
           `;
-
           return;
         }
 
         playersGrid.innerHTML = players
           .map((player) => {
-            const fullName = `${player.first_name} ${player.last_name}`;
-
+            const fullName = `${player.first_name || ""} ${player.last_name || ""}`.trim();
+            const displayName = player.display_name || fullName;
             const jerseyNumber =
-              player.jersey_number !== null
+              player.jersey_number !== null && player.jersey_number !== undefined
                 ? String(player.jersey_number).padStart(2, "0")
                 : "—";
 
             const photo = player.photo_url
-              ? `
-                <img
-                  src="${player.photo_url}"
-                  alt="${fullName}"
-                  loading="lazy"
-                />
-              `
-              : `
-                <div class="player-photo-placeholder">
-                  <img
-                    src="images/teso-warriors-crest.png"
-                    alt=""
-                    aria-hidden="true"
-                  />
-                </div>
-              `;
+              ? `<img src="${escapeHtml(player.photo_url)}" alt="${escapeHtml(displayName)}" loading="lazy" />`
+              : `<div class="player-photo-placeholder"><img src="images/teso-warriors-crest.png" alt="" aria-hidden="true" /></div>`;
 
-            const normalizedPosition = (player.position || "player")
-              .toLowerCase()
-              .replace(/s$/, "");
+            const roleBadge = player.role
+              ? `<span class="player-card-role">${escapeHtml(player.role)}</span>`
+              : "";
 
             return `
               <article
                 class="player-card"
-                data-player-position="${normalizedPosition}"
+                data-player-position="${normalizePosition(player)}"
+                data-player-key="${escapeHtml(playerKey(player))}"
+                tabindex="0"
+                role="button"
+                aria-label="View ${escapeHtml(displayName)} profile"
               >
                 <div class="player-card-image">
                   ${photo}
                   <span class="player-card-number">${jerseyNumber}</span>
+                  ${roleBadge}
                 </div>
 
                 <div class="player-card-content">
-                  <p class="player-position">${player.position || "PLAYER"}</p>
-                  <h3>${fullName}</h3>
-
+                  <p class="player-position">${escapeHtml(player.position || "PLAYER")}</p>
+                  <h3>${escapeHtml(displayName)}</h3>
+                  ${displayName !== fullName ? `<p class="player-full-name">${escapeHtml(fullName)}</p>` : ""}
                   <div class="player-card-footer">
-                    <span>${player.player_id}</span>
+                    <span>${escapeHtml(player.nationality || "UGANDA")}</span>
                     <span>VIEW PROFILE →</span>
                   </div>
                 </div>
@@ -611,6 +777,7 @@
           .join("");
 
         rosterStatus.textContent = `${players.length} active player${players.length === 1 ? "" : "s"} registered.`;
+        bindPlayerCards();
       }
 
       function filterPlayers(position) {
@@ -619,23 +786,98 @@
           return;
         }
 
-        const filteredPlayers = allPlayers.filter((player) => {
-          const normalizedPosition = (player.position || "player")
-            .toLowerCase()
-            .replace(/s$/, "");
-
-          return normalizedPosition === position;
-        });
-
-        renderPlayers(filteredPlayers);
+        renderPlayers(allPlayers.filter((player) => normalizePosition(player) === position));
       }
+
+      function getPlayerByKey(key) {
+        return allPlayers.find((player) => playerKey(player) === key);
+      }
+
+      const playerModal = document.getElementById("twf-player-modal");
+      const modalImage = document.getElementById("twf-player-modal-image");
+      const modalNumber = document.getElementById("twf-player-modal-number");
+      const modalPosition = document.getElementById("twf-player-modal-position");
+      const modalName = document.getElementById("twf-player-modal-name");
+      const modalFullName = document.getElementById("twf-player-modal-full-name");
+      const modalRole = document.getElementById("twf-player-modal-role");
+      const modalNationality = document.getElementById("twf-player-modal-nationality");
+      const modalDob = document.getElementById("twf-player-modal-dob");
+      const modalFoot = document.getElementById("twf-player-modal-foot");
+      const modalPrevious = document.getElementById("twf-player-modal-previous");
+      const modalJoined = document.getElementById("twf-player-modal-joined");
+      const modalApps = document.getElementById("twf-player-modal-apps");
+      const modalGoals = document.getElementById("twf-player-modal-goals");
+      const modalAssists = document.getElementById("twf-player-modal-assists");
+      const modalBio = document.getElementById("twf-player-modal-bio");
+
+      function openPlayerProfile(player) {
+        if (!player) return;
+
+        const fullName = `${player.first_name || ""} ${player.last_name || ""}`.trim();
+        const displayName = player.display_name || fullName;
+
+        modalImage.src = player.photo_url || "images/teso-warriors-crest.png";
+        modalImage.alt = displayName;
+        modalNumber.textContent =
+          player.jersey_number !== null && player.jersey_number !== undefined
+            ? String(player.jersey_number).padStart(2, "0")
+            : "—";
+
+        modalPosition.textContent = player.position || "PLAYER";
+        modalName.textContent = displayName;
+        modalFullName.textContent = displayName !== fullName ? fullName : "";
+        modalRole.textContent = player.role || "";
+        modalRole.hidden = !player.role;
+
+        modalNationality.textContent = player.nationality || "—";
+        modalDob.textContent = player.date_of_birth || player.age_text || "—";
+        modalFoot.textContent = player.preferred_foot || "—";
+        modalPrevious.textContent = player.previous_club || "—";
+        modalJoined.textContent = player.joined || "—";
+
+        modalApps.textContent = player.appearances ?? "—";
+        modalGoals.textContent = player.goals ?? "—";
+        modalAssists.textContent = player.assists ?? "—";
+        modalBio.textContent = player.bio || "Official Teso Warriors FC first-team player.";
+
+        playerModal.classList.add("is-open");
+        playerModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("player-modal-open");
+      }
+
+      function closePlayerProfile() {
+        playerModal.classList.remove("is-open");
+        playerModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("player-modal-open");
+      }
+
+      function bindPlayerCards() {
+        document.querySelectorAll(".player-card[data-player-key]").forEach((card) => {
+          const open = () => openPlayerProfile(getPlayerByKey(card.dataset.playerKey));
+
+          card.addEventListener("click", open);
+          card.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              open();
+            }
+          });
+        });
+      }
+
+      document.querySelectorAll("[data-player-close]").forEach((button) => {
+        button.addEventListener("click", closePlayerProfile);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && playerModal.classList.contains("is-open")) {
+          closePlayerProfile();
+        }
+      });
 
       document.querySelectorAll(".position-filter").forEach((button) => {
         button.addEventListener("click", () => {
-          document
-            .querySelectorAll(".position-filter")
-            .forEach((item) => item.classList.remove("active"));
-
+          document.querySelectorAll(".position-filter").forEach((item) => item.classList.remove("active"));
           button.classList.add("active");
           filterPlayers(button.dataset.position);
         });
@@ -643,10 +885,7 @@
 
       document.querySelectorAll(".squad-tab").forEach((button) => {
         button.addEventListener("click", () => {
-          document
-            .querySelectorAll(".squad-tab")
-            .forEach((item) => item.classList.remove("active"));
-
+          document.querySelectorAll(".squad-tab").forEach((item) => item.classList.remove("active"));
           button.classList.add("active");
         });
       });
