@@ -892,5 +892,49 @@
 
       loadPlayers();
     </script>
-  </body>
+
+  <!-- TWF PLAYER PAGE HOTFIX START -->
+  <script>
+    (function () {
+      function wirePlayerCardsFallback() {
+        document.querySelectorAll(".player-card[data-player-key]").forEach((card) => {
+          if (card.dataset.twfBound === "yes") return;
+
+          const openCardProfile = function () {
+            const key = card.dataset.playerKey;
+
+            if (typeof getPlayerByKey === "function" && typeof openPlayerProfile === "function") {
+              openPlayerProfile(getPlayerByKey(key));
+            }
+          };
+
+          card.addEventListener("click", function (event) {
+            event.preventDefault();
+            openCardProfile();
+          });
+
+          card.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              openCardProfile();
+            }
+          });
+
+          card.dataset.twfBound = "yes";
+        });
+      }
+
+      function runHotfix() {
+        wirePlayerCardsFallback();
+      }
+
+      document.addEventListener("DOMContentLoaded", runHotfix);
+      window.addEventListener("load", runHotfix);
+      setTimeout(runHotfix, 400);
+      setTimeout(runHotfix, 1200);
+    })();
+  </script>
+  <!-- TWF PLAYER PAGE HOTFIX END -->
+
+</body>
 </html>

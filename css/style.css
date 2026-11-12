@@ -6302,3 +6302,63 @@ button:focus-visible {
 }
 
 /* TWF PLAYER PROFILES V1 END */
+
+/* TWF PLAYER PAGE HOTFIX START */
+
+.player-card {
+  position: relative;
+  isolation: isolate;
+  cursor: pointer;
+}
+
+.player-card::before,
+.player-card::after,
+.player-card-image::before,
+.player-card-image::after {
+  pointer-events: none;
+}
+
+.player-card-image {
+  position: relative;
+  overflow: hidden;
+  background: #0b0d10;
+}
+
+.player-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: scale(1.01);
+}
+
+.player-card-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.16) 100%);
+  z-index: 1;
+}
+
+.player-card-number,
+.player-card-role,
+.player-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.player-card:hover .player-card-image img,
+.player-card:focus-visible .player-card-image img {
+  transform: scale(1.035);
+}
+
+.twf-player-modal-photo img {
+  opacity: 1 !important;
+  filter: none !important;
+  object-position: center 12%;
+}
+
+/* TWF PLAYER PAGE HOTFIX END */
