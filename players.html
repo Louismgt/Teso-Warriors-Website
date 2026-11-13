@@ -455,6 +455,7 @@
             </div>
 
             <div class="twf-player-detail-grid">
+              <div><span>Player ID</span><strong id="twf-player-modal-club-id">—</strong></div>
               <div><span>Position</span><strong id="twf-player-modal-position-detail">—</strong></div>
               <div><span>Nationality</span><strong id="twf-player-modal-nationality">—</strong></div>
               <div><span>Date of Birth / Age</span><strong id="twf-player-modal-dob">—</strong></div>
@@ -556,8 +557,10 @@
       const rosterStatus = document.getElementById("roster-status");
 
       const officialLocalPlayers = [
+      // TWF-2026-003 reserved for Gerald Okilima
         {
           player_id: "gerald-ogwang",
+          club_player_id: "TWF-2026-001",
           first_name: "Ogwang",
           last_name: "Gerald",
           display_name: "Gerald",
@@ -580,6 +583,7 @@
         },
         {
           player_id: "adoku-aaron-maxi",
+          club_player_id: "TWF-2026-005",
           first_name: "Adoku",
           last_name: "Aaron",
           display_name: "Adoku Aaron",
@@ -602,6 +606,7 @@
         },
         {
           player_id: "ewou-patrick-mane",
+          club_player_id: "TWF-2026-004",
           first_name: "Ewou",
           last_name: "Patrick",
           display_name: "Ewou Patrick",
@@ -625,6 +630,7 @@
         },
         {
           player_id: "opus-micheal",
+          club_player_id: "TWF-2026-002",
           first_name: "Opus",
           last_name: "Micheal",
           display_name: "Opus Micheal",
@@ -831,6 +837,7 @@
       const modalImage = document.getElementById("twf-player-modal-image");
       const modalNumber = document.getElementById("twf-player-modal-number");
       const modalPosition = document.getElementById("twf-player-modal-position");
+      const modalClubId = document.getElementById("twf-player-modal-club-id");
       const modalPositionDetail = document.getElementById("twf-player-modal-position-detail");
       const modalName = document.getElementById("twf-player-modal-name");
       const modalFullName = document.getElementById("twf-player-modal-full-name");
@@ -862,6 +869,7 @@
             : "—";
 
         modalPosition.textContent = player.position || "PLAYER";
+        modalClubId.textContent = player.club_player_id || "—";
         modalPositionDetail.textContent = player.position || "—";
         modalName.textContent = primaryName;
         modalFullName.textContent = nickname
