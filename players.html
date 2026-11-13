@@ -455,6 +455,7 @@
             </div>
 
             <div class="twf-player-detail-grid">
+              <div><span>Position</span><strong id="twf-player-modal-position-detail">—</strong></div>
               <div><span>Nationality</span><strong id="twf-player-modal-nationality">—</strong></div>
               <div><span>Date of Birth / Age</span><strong id="twf-player-modal-dob">—</strong></div>
               <div><span>Preferred Foot</span><strong id="twf-player-modal-foot">—</strong></div>
@@ -830,6 +831,7 @@
       const modalImage = document.getElementById("twf-player-modal-image");
       const modalNumber = document.getElementById("twf-player-modal-number");
       const modalPosition = document.getElementById("twf-player-modal-position");
+      const modalPositionDetail = document.getElementById("twf-player-modal-position-detail");
       const modalName = document.getElementById("twf-player-modal-name");
       const modalFullName = document.getElementById("twf-player-modal-full-name");
       const modalRole = document.getElementById("twf-player-modal-role");
@@ -860,6 +862,7 @@
             : "—";
 
         modalPosition.textContent = player.position || "PLAYER";
+        modalPositionDetail.textContent = player.position || "—";
         modalName.textContent = primaryName;
         modalFullName.textContent = nickname
           ? `Nickname: “${nickname}”`
