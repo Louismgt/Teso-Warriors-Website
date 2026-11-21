@@ -128,11 +128,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
 
       const forcedSeasonRecord = {
-        matches_played: 2,
-        wins: 2,
+        matches_played: 4,
+        wins: 3,
         draws: 0,
-        losses: 0,
-        points: 6
+        losses: 1,
+        points: 9
       };
 
       if (matchesPlayedElement) {
@@ -172,22 +172,48 @@ document.addEventListener("DOMContentLoaded", async () => {
      ========================================================= */
 
   
-  /* TWF-FORCED-ATEKER-RESULT-START */
+  /* TWF-FORCED-OFFICIAL-RESULTS-START */
 
-  const officialAtekerResult = {
-    id: "forced-ateker-2026-11-07",
-    fixture_id: null,
-    competition: "North East Regional League",
-    opponent: "Ateker FC",
-    match_date: "2026-11-07",
-    venue: "Moroto Booma Grounds, Moroto",
-    home_away: "away",
-    teso_warriors_score: 1,
-    opponent_score: 0,
-    notes: ""
-  };
+  const officialForcedResults = [
+    {
+      id: "forced-kamet-2026-11-21",
+      fixture_id: null,
+      competition: "North East Regional League",
+      opponent: "Kamet United FC",
+      match_date: "2026-11-21",
+      venue: "Soroti City Stadium, Soroti City",
+      home_away: "home",
+      teso_warriors_score: 10,
+      opponent_score: 0,
+      notes: ""
+    },
+    {
+      id: "forced-myda-2026-11-15",
+      fixture_id: null,
+      competition: "North East Regional League",
+      opponent: "MYDA FC",
+      match_date: "2026-11-15",
+      venue: "Kongunga Primary School P/G",
+      home_away: "away",
+      teso_warriors_score: 0,
+      opponent_score: 3,
+      notes: ""
+    },
+    {
+      id: "forced-ateker-2026-11-07",
+      fixture_id: null,
+      competition: "North East Regional League",
+      opponent: "Ateker FC",
+      match_date: "2026-11-07",
+      venue: "Moroto Booma Grounds, Moroto",
+      home_away: "away",
+      teso_warriors_score: 1,
+      opponent_score: 0,
+      notes: ""
+    }
+  ];
 
-  /* TWF-FORCED-ATEKER-RESULT-END */
+  /* TWF-FORCED-OFFICIAL-RESULTS-END */
 
 function renderResults(results) {
     if (!resultsList) {
@@ -430,18 +456,21 @@ function renderResults(results) {
 
       const existingResults = Array.isArray(data) ? data : [];
 
-      const alreadyHasAtekerResult = existingResults.some((result) => {
-        return (
-          String(result.opponent || "").trim().toLowerCase() === "ateker fc" &&
-          String(result.match_date || "") === "2026-11-07" &&
-          Number(result.teso_warriors_score) === 1 &&
-          Number(result.opponent_score) === 0
-        );
-      });
+      const officialKeys = new Set(
+        officialForcedResults.map((result) =>
+          `${String(result.opponent || "").trim().toLowerCase()}|${String(result.match_date || "")}`
+        )
+      );
 
-      const finalResults = alreadyHasAtekerResult
-        ? existingResults
-        : [officialAtekerResult, ...existingResults];
+      const finalResults = [
+        ...officialForcedResults,
+        ...existingResults.filter((result) => {
+          const key =
+            `${String(result.opponent || "").trim().toLowerCase()}|${String(result.match_date || "")}`;
+
+          return !officialKeys.has(key);
+        })
+      ];
 
       finalResults.sort((a, b) => {
         return String(b.match_date || "").localeCompare(
