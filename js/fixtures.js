@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const fixturesList = document.getElementById("fixtures-list");
 
+  const matchStatus =
+    document.querySelector(".match-status");
+
   /*
    * =========================================================
    * BASIC CHECKS
@@ -146,6 +149,84 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
   }
 
+  /*
+   * =========================================================
+   * COMPLETED FIXTURE FILTER
+   * =========================================================
+   *
+   * Supabase may retain a fixture as "Upcoming" after full time.
+   * The official result below is already confirmed, so it must
+   * never appear again as the club's next fixture.
+   */
+
+  const completedFixtureKeys = new Set([
+    "2026-11-21|kamet united fc",
+  ]);
+
+  function fixtureKey(fixture) {
+    return [
+      String(fixture.match_date || "").trim(),
+      String(fixture.opponent || "").trim().toLowerCase(),
+    ].join("|");
+  }
+
+  function fixtureKickoffTimestamp(fixture) {
+    const date = String(fixture.match_date || "").trim();
+    const rawTime = String(fixture.kickoff_time || "").trim();
+
+    if (!date || !rawTime) {
+      return null;
+    }
+
+    const normalizedTime =
+      rawTime.length === 5
+        ? `${rawTime}:00`
+        : rawTime;
+
+    const timestamp = Date.parse(
+      `${date}T${normalizedTime}+03:00`,
+    );
+
+    return Number.isNaN(timestamp)
+      ? null
+      : timestamp;
+  }
+
+  function isUpcomingFixture(fixture) {
+    if (completedFixtureKeys.has(fixtureKey(fixture))) {
+      return false;
+    }
+
+    const status = String(fixture.status || "")
+      .trim()
+      .toLowerCase();
+
+    if (
+      [
+        "completed",
+        "full time",
+        "full-time",
+        "cancelled",
+        "canceled",
+        "abandoned",
+      ].includes(status)
+    ) {
+      return false;
+    }
+
+    const kickoffTimestamp =
+      fixtureKickoffTimestamp(fixture);
+
+    if (
+      kickoffTimestamp !== null &&
+      kickoffTimestamp <= Date.now()
+    ) {
+      return false;
+    }
+
+    return true;
+  }
+
   function teamBadge(teamName, isTeso) {
     if (isTeso) {
       return `
@@ -171,6 +252,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function renderNextMatch(fixture) {
     const teams = getTeams(fixture);
+
+    if (matchStatus) {
+      matchStatus.textContent = "Upcoming";
+    }
 
     nextMatchCard.innerHTML = `
       <div class="next-match-meta">
@@ -428,11 +513,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       throw error;
     }
 
-    const fixtures = data ?? [];
+    const fixtures =
+      (data ?? []).filter(isUpcomingFixture);
 
     console.log("Fixtures loaded:", fixtures);
 
     if (!fixtures.length) {
+      if (matchStatus) {
+        matchStatus.textContent = "Awaiting Fixture";
+      }
+
       nextMatchCard.innerHTML = `
         <div class="next-match-loading">
 
